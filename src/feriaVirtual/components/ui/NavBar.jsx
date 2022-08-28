@@ -32,7 +32,7 @@ export const NavBar = () => {
                         </li>
                         <li className="nav-item p-1">
                             <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
-                                to='login'>
+                                to='crearcuenta'>
                                 Cuenta
                             </NavLink>
                         </li>

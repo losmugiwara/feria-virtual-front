@@ -1,0 +1,36 @@
+.contenedor {
+    border: 0.5px solid #666 !important;
+    border-radius: 10px !important;
+    width: 500px;
+    margin: 20px;
+}
+.d-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.login-contenedor {
+    border: 0.5px solid #666 !important;
+    border-radius: 10px !important;
+    width: 500px;
+    height: 90%;
+    margin: 20px;
+}
+
+.formulario {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 200px;
+}
+
+.btn-form{
+    background-color: #06B140;
+    color: #fff;
+    transition: 0.2s;
+}
+.btn-form:hover{
+    background-color: #fff;
+    border: 0.5px solid #06B140;
+    color: #06B140;
+}

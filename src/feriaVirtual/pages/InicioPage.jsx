@@ -1,7 +1,7 @@
 import './pages.css'
-import { CardImages } from '../components/inicio/CardImages';
+import { CardImages } from '../components/ui/CardImages';
 
-export const Inicio = () => {
+export const InicioPage = () => {
     return (
         <>
             <CardImages/>

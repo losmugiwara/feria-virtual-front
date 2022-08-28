@@ -5,3 +5,52 @@
 .text-active {
     color: #06B140 !important;
 }
+.pose{
+    display: grid;
+    grid-column: 1;
+    grid-row: 2;
+}
+.tamaño{
+    width: 5rem;
+}
+.marco {
+    width: 18rem !important;
+}
+
+.btn-color {
+    background-color: #06B140 !important;
+    transition: 0.5s !important;
+    border-radius: 31px !important;
+}
+
+.btn-color:hover {
+    background-color: #ffff !important;
+    color: #06B140 !important;
+    border: 0.5px solid #06B140 !important;
+    
+}
+
+.color-text {
+    color: #ffff !important;
+}
+
+.d-grid {
+    display: grid !important;
+    gap: 10px !important;
+}
+
+.uno {
+    grid-column: 1 / 3 !important;
+    grid-row: 1 !important;
+}
+
+.dos {
+    grid-column: 2 !important;
+    grid-row: 2 !important;
+}
+
+
+.tres {
+    grid-column: 1 / 3 !important;
+    grid-row: 3 !important;
+}
