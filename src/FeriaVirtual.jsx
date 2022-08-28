@@ -1,8 +1,14 @@
+import { NavBar } from './feriaVirtual/components/ui/NavBar';
+import { AppRoutes } from './routes/AppRoutes';
+
 
 export const FeriaVirtual = () => {
   return (
     <>
-        <h1>Feria Virtual</h1>
+      <NavBar />
+
+      <AppRoutes/>
     </>
+
   )
 }
