@@ -1,0 +1,15 @@
+.marco{
+    width: 18rem !important;
+}
+.btn-color{
+    background-color: #06B140 !important;
+    transition: 0.5s !important;
+}
+.btn-color:hover{   
+    background-color: #ffff !important;
+    color: #06B140 !important;
+    border: 0.5px solid #06B140 !important;
+}
+.color-text{
+    color: #ffff !important;
+}
