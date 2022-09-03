@@ -1,0 +1,24 @@
+.icon {
+    height: 30px;
+}
+.marcoImg{
+    border: 0.5px solid  #000 !important;
+    height: 60px;
+    width: 60px;
+    border-radius: 5px;
+}
+.color-icon{
+    color: #06B140;
+}
+.label-info{
+    color: #6B6B6B !important;
+}
+.info{
+    border: 0.5px solid #000 ;
+    border-radius: 5px; 
+    width: 300px;
+    height: 350px;
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: column !important;
+}

@@ -16,7 +16,7 @@ export const CardImages = () => {
                     </div>
                 </li>
                 <li className="card marco m-1" >
-                <img src={palta} className="card-img" />
+                    <img src={palta} className="card-img" />
                     <div className="card-body grid text-center d-grid">
                         <h5 className="card-title uno">Palta</h5>
                         <p className="card-text dos">$ 2.500</p>
@@ -25,7 +25,7 @@ export const CardImages = () => {
                     </div>
                 </li>
                 <li className="card marco m-1" >
-                     <img src={palta} className="card-img" />
+                    <img src={palta} className="card-img" />
                     <div className="card-body grid text-center d-grid">
                         <h5 className="card-title uno">Palta</h5>
                         <p className="card-text dos">$ 2.500</p>
@@ -34,7 +34,7 @@ export const CardImages = () => {
                     </div>
                 </li>
                 <li className="card marco m-1" >
-                     <img src={palta} className="card-img" />
+                    <img src={palta} className="card-img" />
                     <div className="card-body grid text-center d-grid">
                         <h5 className="card-title uno">Palta</h5>
                         <p className="card-text dos">$ 2.500</p>
@@ -43,7 +43,7 @@ export const CardImages = () => {
                     </div>
                 </li>
                 <li className="card marco m-1" >
-                     <img src={palta} className="card-img" />
+                    <img src={palta} className="card-img" />
                     <div className="card-body grid text-center d-grid">
                         <h5 className="card-title uno">Palta</h5>
                         <p className="card-text dos">$ 2.500</p>
@@ -52,7 +52,7 @@ export const CardImages = () => {
                     </div>
                 </li>
                 <li className="card marco m-1" >
-                     <img src={palta} className="card-img" />
+                    <img src={palta} className="card-img" />
                     <div className="card-body grid text-center d-grid">
                         <h5 className="card-title uno">Palta</h5>
                         <p className="card-text dos">$ 2.500</p>
@@ -60,8 +60,6 @@ export const CardImages = () => {
                         <button className="btn btn-color fw-semibold color-text tres">Agregar</button>
                     </div>
                 </li>
-                
-                
             </ul>
         </>
     )

@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom';
 import './login.css';
 
 export const Login = () => {
+
     return (
         <div className="login-contenedor p-4">
-        <h3>Iniciar Sesión</h3>
+            <h3>Iniciar Sesión</h3>
             <form>
                 <div className="mb-3">
                     <label className="form-label">Correo electronico</label>
@@ -13,11 +15,12 @@ export const Login = () => {
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Contraseña</label>
-                    <input type="password" className="form-control" />
+                    <input type="password" className="form-control"></input>
                 </div>
                 <div className="mb-3 form-check">
                 </div>
-                <button type="submit" className="btn btn-form fw-semibold font-Jaldi">Iniciar Sesión</button>
+
+                <Link to='/cuenta' type="submit" className="btn btn-form fw-semibold font-Jaldi">Iniciar Sesión</Link>
             </form>
         </div>
     )

@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
-import { Sesion } from '../../auth/pages'
+import { SesionPage } from '../../auth/pages'
 import { NavBar } from '../components/ui'
-import { BuscarPage, InicioPage, ProductosPage, TransportePage,  } from '../pages'
+import { BuscarPage, InicioPage, ProductosPage, TransportePage, } from '../pages'
 
 
 export const FeriaRoutes = () => {
@@ -13,9 +13,11 @@ export const FeriaRoutes = () => {
                     <Route path="/" element={<InicioPage />} />
                     <Route path="productos" element={<ProductosPage />} />
                     <Route path="transporte" element={<TransportePage />} />
-                    <Route path="crearcuenta" element={<Sesion />} />
+                    <Route path="crearcuenta" element={<SesionPage />} />
+                    
 
                     <Route path='search' element={<BuscarPage />} />
+
 
                 </Routes>
             </div>
