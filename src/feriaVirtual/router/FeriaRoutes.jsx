@@ -1,22 +1,76 @@
-import { Routes, Route } from 'react-router-dom'
+import { useContext, useEffect } from 'react'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import { SesionPage } from '../../auth/pages'
+import { MaipoContext } from '../../context/maipoContext'
 import { NavBar } from '../components/ui'
 import { BuscarPage, InicioPage, ProductosPage, TransportePage, } from '../pages'
+import { ProtectedRoute } from './ProtectedRoute'
 
 
 export const FeriaRoutes = () => {
+
+    const {user} = useContext(MaipoContext);
+
+
+    const nav = useNavigate();
+
+    useEffect(() => {
+        if (user.active === false){
+            nav('/crearcuenta');
+        }
+    },[])
+
     return (
         <>
-            <NavBar />
+
+            
+
+            {
+                (user.active) ? <NavBar /> : null
+            }
+
+            
             <div className='container'>
                 <Routes>
-                    <Route path="/" element={<InicioPage />} />
-                    <Route path="productos" element={<ProductosPage />} />
-                    <Route path="transporte" element={<TransportePage />} />
-                    <Route path="crearcuenta" element={<SesionPage />} />
+                    
+                    <Route path="/" element={
+                        <ProtectedRoute user={user}>
+                            <InicioPage />
+                        </ProtectedRoute>
+                    } 
+                    />
+
+                    
+                    <Route path="productos" element={
+                        <ProtectedRoute user={user}>
+                            <ProductosPage />
+                        </ProtectedRoute>
+                    } 
+                    />
+
+                    <Route path="transporte" element={
+                        <ProtectedRoute user={user}>
+                            <TransportePage />
+                        </ProtectedRoute>
+                    } 
+                    />
+                    
                     
 
-                    <Route path='search' element={<BuscarPage />} />
+                    <Route path="crearcuenta" element={
+                        <ProtectedRoute user={user}>
+                            <SesionPage />
+                        </ProtectedRoute>
+                    } 
+                    />
+
+
+                    <Route path='search' element={
+                        <ProtectedRoute user={user}>
+                            <BuscarPage />
+                        </ProtectedRoute>
+                    } 
+                    />
 
 
                 </Routes>
