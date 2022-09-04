@@ -1,11 +1,6 @@
 import { axiosAuth } from "./api";
 
-export const loginApi = async () => {
-    
-    const user = {
-        userName: "admin2",
-        password: "admin2"
-    }
+export const loginApi = async (user = null) => {
 
     if (!user) return ; 
     
@@ -17,5 +12,12 @@ export const loginApi = async () => {
 };
 
 export const registerApi = async (user = null) => {
+
+    if (!user) return ;
+
+    const resp = await axiosAuth.post("/register", user);
+    const respJson = await resp.data;
+
+    console.log(respJson);
 
 };

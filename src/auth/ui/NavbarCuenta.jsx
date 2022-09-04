@@ -1,7 +1,13 @@
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { MaipoContext } from '../../context/maipoContext';
 import logo from '../../img/logoMaipoGrande.png'
 
 export const NavbarCuenta = () => {
+
+  const {user} = useContext(MaipoContext);
+
+
   return (
     <nav className="navbar navbar-expand-lg ">
       <div className="container-fluid d-flex">
@@ -13,7 +19,7 @@ export const NavbarCuenta = () => {
 
             <li className='nav-item p-1'>
               <NavLink to='perfil' className='nav-link text-active fw-bold'>
-                admin-001
+                {user.username}
               </NavLink>
             </li>
           </ul>
