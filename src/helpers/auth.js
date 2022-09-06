@@ -18,6 +18,6 @@ export const registerApi = async (user = null) => {
     const resp = await axiosAuth.post("/register", user);
     const respJson = await resp.data;
 
-    console.log(respJson);
+    return respJson;
 
 };
