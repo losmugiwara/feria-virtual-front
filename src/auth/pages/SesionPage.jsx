@@ -1,4 +1,4 @@
-import { Login, CreateAccount } from '../components';
+import { Login, CreateAccount } from '../components/IndexAuth';
 import './pageAuth.css';
 
 export const SesionPage = () => {

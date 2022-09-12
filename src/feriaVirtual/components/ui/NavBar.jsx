@@ -2,8 +2,11 @@ import { NavLink } from 'react-router-dom'
 
 import './ui.css';
 import logo from '../../../img/logoMaipoGrande.png'
+import { MaipoContext } from '../../../context/maipoContext';
 
 export const NavBar = () => {
+
+    const {user} = useContext(MaipoContext)
     return (
         <nav className="navbar navbar-expand-lg ">
             <div className="container-fluid d-flex">
@@ -31,8 +34,10 @@ export const NavBar = () => {
                             </NavLink>
                         </li>
                         <li className="nav-item p-1">
+
                             <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
                                 to='crearcuenta'>
+
                                 Cuenta
                             </NavLink>
                         </li>

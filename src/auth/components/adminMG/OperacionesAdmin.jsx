@@ -1,22 +1,23 @@
 import { Link } from "react-router-dom"
+import  './adminMG.css'
 
 export const Operaciones = () => {
   return (
-    <div>
-      <h1 className=''>Menú de operaciones</h1>
+    <div className='container inp-datos m-6'>
+      <h4 className='text-center'> Menú de operaciones </h4>
       <div>
-        <ul>
-          <li>
-            <Link to='datos'>Datos</Link>
+        <ul className='nav d-flex flex-column flex-wrap align-items-center'>
+          <li className='nav-item m-1 '>
+            <Link className='btn btn-w' to='datos'>Datos</Link>
           </li>
-          <li>
-            <Link to='procesoventas'>Procesos de ventas</Link>
+          <li className='nav-item m-1'>
+            <Link className='btn btn-w' to='procesoventas'>Procesos de ventas</Link>
           </li>
-          <li>
-            <Link to='pagos'>Pagos</Link>
+          <li className='nav-item m-1'>
+            <Link className='btn btn-w' to='pagos'>Pagos</Link>
           </li>
-          <li>
-            <Link to='informeventas'>Informe de ventas</Link>
+          <li className='nav-item m-1'>
+            <Link className='btn btn-w' to='informeventas'>Informe de ventas</Link>
           </li>
         </ul>
       </div>

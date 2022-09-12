@@ -3,8 +3,8 @@
 }
 .marcoImg{
     border: 0.5px solid  #000 !important;
-    height: 60px;
-    width: 60px;
+    height: auto;
+    width: auto;
     border-radius: 5px;
 }
 .color-icon{
@@ -16,8 +16,8 @@
 .info{
     border: 0.5px solid #000 ;
     border-radius: 5px; 
-    width: 300px;
-    height: 350px;
+    width: auto;
+    height: a;
     display: flex !important;
     align-items: center !important;
     flex-direction: column !important;

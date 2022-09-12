@@ -1,10 +1,6 @@
 // ADMINISTRADOR
+export * from './adminMG/IndexAdmin';
 export * from './InfoAdmin';
-export * from './adminMG/OperacionesAdmin';
-export * from './adminMG/Datos';
-export * from './adminMG/InformeVentas';
-export * from './adminMG/Pagos';
-export * from './adminMG/ProcesosVentas';
 // CLIENTE EXTERNO
 // export * from './clienteExtMG';
 // CLIENTE INTERNO

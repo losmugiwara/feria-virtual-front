@@ -1,8 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import { NavAdmin, NavbarCuenta } from "../ui";
-import { ProductorPage, PrincipalPage, AdminPage, 
-    ClienteExtPage, ClienteIntPage, TransportistaPage } from "../pages/Index";
-import { Datos, InformeVentas, Pagos, ProcesosVentas } from "../components";
+import { NavbarCuenta } from "../ui";
+import {
+    ProductorPage, PrincipalPage, AdminPage,
+    ClienteExtPage, ClienteIntPage, TransportistaPage
+} from "../pages/Index";
+import { Datos, InformeVentas, Pagos, ProcesosVentas } from "../components/IndexAuth";
 
 
 
@@ -12,7 +14,7 @@ export const AuthRoutes = () => {
             <div className='container'>
                 <NavbarCuenta />
                 <Routes>
-                {/* PERFILES "MAQUETA" */}
+                    {/* PERFILES "MAQUETA" */}
                     <Route path='perfil' element={<PrincipalPage />} />
                     {/* ADMINISTRADOR */}
                     <Route path='perfil/admin' element={<AdminPage />} />

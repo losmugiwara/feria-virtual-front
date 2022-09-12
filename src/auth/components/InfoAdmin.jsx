@@ -1,16 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faImage } from '@fortawesome/free-regular-svg-icons';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './components.css'
 
 export const InfoAdmin = () => {
   return (
-    <div className='container info '>
-      <h1 className='p-1'>Admin-001</h1>
+    <div className='container info m-2'>
+      <h6 className='p-1'>Admin-001</h6>
       <div className='d-flex marcoImg  p-2'>
-        <li className='d-flex flex-row align-items-center'>
-          <FontAwesomeIcon className='icon color-icon' icon={faImage} />
-          <FontAwesomeIcon className='color-icon' icon={faPlus} />
+        <li className='d-flex align-items-center'>
+          <FontAwesomeIcon className='icon color-icon' icon={faUser} />
         </li>
       </div>
       <ul className='p-2'>

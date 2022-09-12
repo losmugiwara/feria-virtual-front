@@ -1,0 +1,30 @@
+.btn-warning {
+    background-color: #ffc107 !important;
+}
+
+.btn-danger {
+    background-color: #dc3545 !important;
+}
+
+.inp-datos {
+    border: 0.5px solid #636363 !important;
+    border-radius: 5px;
+    width: auto;
+}
+
+.btn-cl {
+    color: #fff !important;
+}
+
+.btn-sl {
+    border: 0.5px solid #06B140 !important;
+    background-color: #fff !important;
+    color: #06B140 !important;
+}
+.search-w{
+    width: 200px;
+    margin-left: 10px;
+}
+.btn-w{
+    width: 200px;
+}

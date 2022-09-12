@@ -38,7 +38,7 @@ export const Login = () => {
 
         setUser({
             username: sub,
-            role: roles[0].authority,
+            role: roles[0]?.authority,
             active: true
         });
 
