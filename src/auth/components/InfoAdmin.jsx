@@ -1,11 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './components.css'
+import { MaipoContext } from '../../context/maipoContext';
+import { useContext } from 'react';
 
 export const InfoAdmin = () => {
+
+  const { user } = useContext(MaipoContext);
+
   return (
     <div className='container info m-2'>
-      <h6 className='p-1'>Admin-001</h6>
+      <h6 className='p-1'>{user.username}</h6>
       <div className='d-flex marcoImg  p-2'>
         <li className='d-flex align-items-center'>
           <FontAwesomeIcon className='icon color-icon' icon={faUser} />

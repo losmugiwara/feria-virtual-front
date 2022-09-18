@@ -8,7 +8,7 @@ import { permisos } from '../../../context/roles';
 
 export const NavBar = () => {
 
-    const {user, setUser} = useContext(MaipoContext);
+    const { user, setUser } = useContext(MaipoContext);
     const navigate = useNavigate();
 
     const onClickLogout = () => {
@@ -16,9 +16,9 @@ export const NavBar = () => {
             username: '',
             role: '',
             active: false
-          });
+        });
 
-          navigate('/crearcuenta');
+        navigate('/crearcuenta');
 
     }
 
@@ -45,16 +45,16 @@ export const NavBar = () => {
 
                         {
                             (user.role === permisos.ROLE_ADMIN || user.role === permisos.ROLE_CARRIER)
-                            ? 
-                            <li className="nav-item p-1">
-                            <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
-                                to='transporte'>
-                                Transporte
-                            </NavLink>
-                            </li> : ''
+                                ?
+                                <li className="nav-item p-1">
+                                    <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
+                                        to='transporte'>
+                                        Transporte
+                                    </NavLink>
+                                </li> : ''
                         }
 
-                        
+
                         <li className="nav-item p-1">
                             <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
                                 to='dashboard'>
@@ -65,7 +65,7 @@ export const NavBar = () => {
                         <li className="nav-item p-1">
                             <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
                                 to='profile'>
-                                Cuenta
+                                {user.active === true ? user.username : 'Cuenta'}
                             </NavLink>
                         </li>
                         <li className="nav-item p-1">

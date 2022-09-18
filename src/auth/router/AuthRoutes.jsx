@@ -16,7 +16,7 @@ export const AuthRoutes = () => {
                 <NavbarCuenta />
                 <Routes>
                     {/* PERFILES "MAQUETA" */}
-                    <Route path='perfil' element={<PrincipalPage />} />
+                    <Route path='perfil' element={<z />} />
                     {/* ADMINISTRADOR */}
                     <Route path='perfil/admin' element={<AdminPage />} />
                     <Route path='perfil/admin/datos' element={<Datos />} />

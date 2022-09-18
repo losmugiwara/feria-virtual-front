@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import jwt_decode from "jwt-decode";
 
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './login.css';
 import { useForm } from '../../../hooks/useForm';
 import { loginApi } from '../../../helpers/auth';
@@ -9,11 +9,11 @@ import { MaipoContext } from '../../../context/maipoContext';
 
 export const Login = () => {
 
-    const {setUser} = useContext(MaipoContext);
+    const { setUser } = useContext(MaipoContext);
     const navigate = useNavigate();
 
 
-    const { formState, onInputChange} = useForm({
+    const { formState, onInputChange } = useForm({
         username: '',
         password: ''
     });
@@ -28,13 +28,13 @@ export const Login = () => {
 
 
         const token = await loginApi(user);
-        
+
         localStorage.setItem('token', token);
 
         const dectoken = jwt_decode(token);
         console.log(dectoken);
 
-        const {sub, roles} = dectoken;
+        const { sub, roles } = dectoken;
 
         setUser({
             username: sub,
@@ -62,8 +62,8 @@ export const Login = () => {
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Contraseña</label>
-                    <input 
-                        type="password" 
+                    <input
+                        type="password"
                         value={formState.password}
                         onChange={onInputChange}
                         name="password"
@@ -72,7 +72,11 @@ export const Login = () => {
                 <div className="mb-3 form-check">
                 </div>
 
-                <Link to='/cuenta' onClick={onClickLogin} type="submit" className="btn btn-form fw-semibold font-Jaldi">Iniciar Sesión</Link>
+                <Link to='/profile' onClick={onClickLogin}
+                    type="submit"
+                    className="btn btn-form fw-semibold font-Jaldi">
+                    Iniciar Sesión
+                </Link>
             </form>
         </div>
     )

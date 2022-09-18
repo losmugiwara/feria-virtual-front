@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import  './adminMG.css'
 
-export const Operaciones = () => {
+export const OperacionesAdmin = () => {
   return (
     <div className='container inp-datos m-6'>
       <h5 className='text-center'> Menú de operaciones </h5>

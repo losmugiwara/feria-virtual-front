@@ -1,10 +1,11 @@
-import { faAngleDown, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faArrowAltCircleLeft, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from 'react-router-dom';
 import './procesos.css';
 
 
 export const ProcesosVentas = () => {
-
+  const nav = useNavigate();
 
 
   return (
@@ -12,14 +13,17 @@ export const ProcesosVentas = () => {
       <div>
 
         <h1 className='title-color d-flex justify-content-center'>Proceso de ventas</h1>
-        <div>
-        <div className='d-flex justify-content-end flex-row'>
-          <div className=' d-flex flex-row'>
-            <button className='btn btnSelect'>N° Pedido <FontAwesomeIcon icon={faAngleDown}/></button>
-            <input  className='form-control'  placeholder='INGRESAR DATOS'></input>
+        <div className='d-flex justify-content-between'>
+          <div className='d-flex justify-content-start'>
+            <button className='btn' onClick={()=>{nav(-1)}}> <FontAwesomeIcon icon={faArrowAltCircleLeft} /></button>
           </div>
-          <button className='btn btn-width'>Buscar <FontAwesomeIcon icon={faSearch}/></button>
-        </div>
+          <div className='d-flex justify-content-end'>
+            <div className=' d-flex flex-row'>
+              <button className='btn btnSelect'>N° Pedido <FontAwesomeIcon icon={faAngleDown} /></button>
+              <input className='form-control' placeholder='INGRESAR DATOS'></input>
+            </div>
+            <button className='btn btn-width'>Buscar <FontAwesomeIcon icon={faSearch} /></button>
+          </div>
         </div>
       </div>
 
