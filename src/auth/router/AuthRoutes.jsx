@@ -5,6 +5,7 @@ import {
     ClienteExtPage, ClienteIntPage, TransportistaPage
 } from "../pages/Index";
 import { Datos, InformeVentas, Pagos, ProcesosVentas } from "../components/IndexAuth";
+import { ProfilePage } from "../pages/ProfilePage";
 
 
 
@@ -30,6 +31,8 @@ export const AuthRoutes = () => {
                     <Route path='perfil/clienteint' element={<ClienteIntPage />} />
                     {/* TRANSPORTISTA */}
                     <Route path='perfil/transportista' element={<TransportistaPage />} />
+
+                  
                 </Routes>
 
             </div>

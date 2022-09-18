@@ -1,10 +1,26 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 import './ui.css';
-import logo from '../../../img/logoMaipoGrande.png'
+import logo from '../../../img/logoMaipoGrande.png';
 import { MaipoContext } from '../../../context/maipoContext';
+import { useContext } from 'react';
+import { permisos } from '../../../context/roles';
 
 export const NavBar = () => {
+
+    const {user, setUser} = useContext(MaipoContext);
+    const navigate = useNavigate();
+
+    const onClickLogout = () => {
+        setUser({
+            username: '',
+            role: '',
+            active: false
+          });
+
+          navigate('/crearcuenta');
+
+    }
 
     return (
         <nav className="navbar navbar-expand-lg ">
@@ -26,18 +42,36 @@ export const NavBar = () => {
                                 Productos
                             </NavLink>
                         </li>
-                        <li className="nav-item p-1">
+
+                        {
+                            (user.role === permisos.ROLE_ADMIN || user.role === permisos.ROLE_CARRIER)
+                            ? 
+                            <li className="nav-item p-1">
                             <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
                                 to='transporte'>
                                 Transporte
                             </NavLink>
+                            </li> : ''
+                        }
+
+                        
+                        <li className="nav-item p-1">
+                            <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
+                                to='dashboard'>
+                                Dashboard
+                            </NavLink>
+                        </li>
+
+                        <li className="nav-item p-1">
+                            <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
+                                to='profile'>
+                                Cuenta
+                            </NavLink>
                         </li>
                         <li className="nav-item p-1">
-
-                            <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
+                            <NavLink onClick={onClickLogout} className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
                                 to='crearcuenta'>
-
-                                Cuenta
+                                Logout
                             </NavLink>
                         </li>
                     </ul>
