@@ -7,7 +7,7 @@ export const ClienteExtAd = ({ active, setActive }) => {
     <>
       {active === 3 &&
         <div className='container'>
-          <h1 className='text-center'> Datos Cliente Externo </h1>
+          <h3 className='text-center'> Datos Cliente Externo </h3>
           <div className='container'>
             <div className='d-flex justify-content-evenly flex-row flex-wrap'>
               <div className='d-flex flex-row flex-wrap'>

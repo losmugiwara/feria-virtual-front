@@ -6,7 +6,7 @@ export const TransportistaAd = ({ active, setActive }) => {
     <>
       {active === 4 &&
         <div className='container'>
-          <h1 className='text-center'> Datos Transportista </h1>
+          <h3 className='text-center'> Datos Transportista </h3>
           <div className='container'>
             <div className='d-flex justify-content-evenly flex-row flex-wrap'>
               <div className='d-flex flex-row flex-wrap'>
