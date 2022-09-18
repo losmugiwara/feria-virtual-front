@@ -6,7 +6,6 @@ import { MaipoContext } from '../../../context/maipoContext';
 
 export const NavBar = () => {
 
-    const {user} = useContext(MaipoContext)
     return (
         <nav className="navbar navbar-expand-lg ">
             <div className="container-fluid d-flex">

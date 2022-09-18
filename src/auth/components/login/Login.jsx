@@ -42,7 +42,7 @@ export const Login = () => {
             active: true
         });
 
-        navigate('/cuenta');
+        navigate('/cuenta/perfil');
 
     }
 
