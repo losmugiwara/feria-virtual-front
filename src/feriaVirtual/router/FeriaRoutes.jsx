@@ -1,7 +1,10 @@
 import { useContext, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { SesionPage } from '../../auth/pages'
+import { DashboardPage } from '../../auth/pages/DashboardPage'
+import { ProfilePage } from '../../auth/pages/ProfilePage'
 import { MaipoContext } from '../../context/maipoContext'
+
 import { NavBar } from '../components/ui'
 import { BuscarPage, InicioPage, ProductosPage, TransportePage, } from '../pages'
 import { ProtectedRoute } from './ProtectedRoute'
@@ -71,6 +74,23 @@ export const FeriaRoutes = () => {
                         </ProtectedRoute>
                     } 
                     />
+
+                    <Route path='dashboard' element={
+                        <ProtectedRoute user={user}>
+                            <DashboardPage />
+                        </ProtectedRoute>
+                    } 
+                    />
+
+
+                    <Route path='profile' element={
+                        <ProtectedRoute user={user}>
+                            <ProfilePage />
+                        </ProtectedRoute>
+                    } 
+                    />
+
+
 
 
                 </Routes>
