@@ -3,7 +3,7 @@ import React from 'react'
 export const Procesos = () => {
     return (
         <div>
-            <div>
+            <div className=' '>
                 <ol>
                     <li>
                         <label>Cliente</label>

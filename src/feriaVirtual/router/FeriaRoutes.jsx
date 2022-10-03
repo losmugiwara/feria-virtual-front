@@ -1,12 +1,12 @@
-import { useContext, useEffect } from 'react'
-import { Routes, Route, useNavigate } from 'react-router-dom'
-import { Datos, ProcesosVentas } from '../../auth/components/IndexAuth'
-import { SesionPage } from '../../auth/pages'
-import { DashboardPage } from '../../auth/pages/DashboardPage'
-import { ProfilePage } from '../../auth/pages/ProfilePage'
-import { MaipoContext } from '../../context/maipoContext'
+import { useContext, useEffect } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import { AdminProcesos, SesionPage } from '../../auth/pages/IndexPages';
+import { DashboardPage } from '../../auth/pages/DashboardPage';
+import { ProfilePage } from '../../auth/pages/ProfilePage';
+import { MaipoContext } from '../../context/maipoContext';
 
-import { NavBar } from '../components/ui'
+import { Datos, Contratos } from '../../auth/components/adminMG/IndexAdmin';
+import { NavBar } from '../components/ui/IndexUi'
 import { BuscarPage, InicioPage, ProductosPage, TransportePage, } from '../pages'
 import { ProtectedRoute } from './ProtectedRoute'
 
@@ -26,9 +26,6 @@ export const FeriaRoutes = () => {
 
     return (
         <>
-
-
-
             {
                 (user.active) ? <NavBar /> : null
             }
@@ -83,30 +80,34 @@ export const FeriaRoutes = () => {
                     }
                     />
 
-
                     <Route path='profile' element={
                         <ProtectedRoute user={user}>
                             <ProfilePage />
                         </ProtectedRoute>
                     }
+
+
                     />
                     {/* RUTAS DE ADMINISTRADOR */}
+
+                    <Route path='profile/procesoventas' element={
+                        <ProtectedRoute user={user}>
+                            <AdminProcesos />
+                        </ProtectedRoute>
+                    }
+                    />
+                    <Route path='profile/procesoventas/contratos' element={
+                        <ProtectedRoute user={user}>
+                            <Contratos />
+                        </ProtectedRoute>
+                    }
+                    />
                     <Route path='profile/datos' element={
                         <ProtectedRoute user={user}>
                             <Datos />
                         </ProtectedRoute>
                     }
                     />
-                    <Route path='profile/procesoventas' element={
-                        <ProtectedRoute user={user}>
-                            <ProcesosVentas/>
-                        </ProtectedRoute>
-                    }
-                    />
-
-
-
-
                 </Routes>
             </div>
         </>

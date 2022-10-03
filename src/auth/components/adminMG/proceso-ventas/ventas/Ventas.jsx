@@ -1,10 +1,10 @@
 import { faAngleDown, faArrowAltCircleLeft, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
-import './procesos.css';
+import '../procesos.css';
 
 
-export const ProcesosVentas = () => {
+export const Ventas = () => {
   const nav = useNavigate();
 
 
