@@ -9,6 +9,7 @@ import { Datos, Contratos } from '../../auth/components/adminMG/IndexAdmin';
 import { NavBar } from '../components/ui/IndexUi'
 import { BuscarPage, InicioPage, ProductosPage, TransportePage, } from '../pages'
 import { ProtectedRoute } from './ProtectedRoute'
+import { AddContract } from '../../auth/components/adminMG/proceso-ventas/contratos/AddContract';
 
 
 export const FeriaRoutes = () => {
@@ -99,6 +100,12 @@ export const FeriaRoutes = () => {
                     <Route path='profile/procesoventas/contratos' element={
                         <ProtectedRoute user={user}>
                             <Contratos />
+                        </ProtectedRoute>
+                    }
+                    />
+                    <Route path='profile/procesoventas/contratos/add' element={
+                        <ProtectedRoute user={user}>
+                            <AddContract />
                         </ProtectedRoute>
                     }
                     />

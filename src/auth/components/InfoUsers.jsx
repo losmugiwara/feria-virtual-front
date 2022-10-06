@@ -4,7 +4,7 @@ import './components.css'
 import { MaipoContext } from '../../context/maipoContext';
 import { useContext } from 'react';
 
-export const InfoAdmin = () => {
+export const InfoUsers = () => {
 
   const { user } = useContext(MaipoContext);
 

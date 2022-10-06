@@ -1,10 +1,10 @@
-import { InfoAdmin } from "../components/InfoAdmin"
+import { InfoUsers } from '../components/IndexAuth';
 
 
 export const ProductorPage = () => {
   return (
-    <div className="container d-flex f-row">
-      <InfoAdmin />
+    <div className='container d-flex f-row'>
+      <InfoUsers />
       <h1>ProductorPage</h1>
     </div>
   )

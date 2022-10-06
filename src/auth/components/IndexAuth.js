@@ -1,6 +1,6 @@
 // ADMINISTRADOR
 export * from './adminMG/IndexAdmin';
-export * from './InfoAdmin';
+export * from './InfoUsers';
 // CLIENTE EXTERNO
 // export * from './clienteExtMG';
 // CLIENTE INTERNO

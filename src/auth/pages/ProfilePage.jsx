@@ -2,7 +2,7 @@
 import { useContext } from 'react';
 import { MaipoContext } from '../../context/maipoContext';
 import { permisos } from '../../context/roles';
-import { InfoAdmin, OperacionesAdmin } from '../components/IndexAuth';
+import { InfoUsers, OperacionesAdmin } from '../components/IndexAuth';
 
 export const ProfilePage = () => {
 
@@ -14,7 +14,7 @@ export const ProfilePage = () => {
       <hr />
       {user.role === permisos.ROLE_ADMIN ?
         <div className='container d-flex f-row flex-wrap justify-content-center p-2'>
-          <InfoAdmin />
+          <InfoUsers />
           <OperacionesAdmin />
         </div> : ''}
     </>

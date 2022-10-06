@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { MaipoContext } from '../../context/maipoContext';
 import { permisos } from '../../context/roles';
-import { InfoAdmin, ProcesosVentas } from '../components/IndexAuth';
+import {InfoUsers, ProcesosVentas } from '../components/IndexAuth';
 
 
 export const AdminProcesos = () => {
@@ -12,7 +12,7 @@ export const AdminProcesos = () => {
                 <hr />
                 {user.role === permisos.ROLE_ADMIN ?
                     <div className='container d-flex f-row flex-wrap justify-content-center p-2'>
-                        <InfoAdmin />
+                        <InfoUsers />
                         <ProcesosVentas />
                     </div> : ''}
         </>

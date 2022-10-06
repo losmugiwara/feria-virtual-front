@@ -1,10 +1,10 @@
-import { InfoAdmin } from '../components/InfoAdmin';
+import { InfoUsers } from '../components/IndexAuth';
 
 
 export const ClienteExtPage = () => {
   return (
     <div className='container d-flex f-row'>
-      <InfoAdmin />
+      <InfoUsers />
       <h1>ClienteExtPage</h1>
     </div>
   )
