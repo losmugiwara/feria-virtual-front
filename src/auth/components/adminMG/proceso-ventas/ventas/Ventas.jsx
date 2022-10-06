@@ -2,6 +2,7 @@ import { faAngleDown, faArrowAltCircleLeft, faSearch } from '@fortawesome/free-s
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
 import '../procesos.css';
+import { ListaVentas } from './ListaVentas';
 
 
 export const Ventas = () => {
@@ -25,6 +26,7 @@ export const Ventas = () => {
             <button className='btn btn-width'>Buscar <FontAwesomeIcon icon={faSearch} /></button>
           </div>
         </div>
+        <ListaVentas/>
       </div>
 
 

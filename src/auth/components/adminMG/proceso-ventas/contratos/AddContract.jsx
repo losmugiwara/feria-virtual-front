@@ -1,17 +1,18 @@
-import { faArrowAltCircleLeft, faSave } from "@fortawesome/free-regular-svg-icons"
-import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useNavigate } from "react-router-dom"
+import { faArrowAltCircleLeft, faSave } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from 'react-router-dom';
+import './contratos.css';
 
 
 export const AddContract = () => {
-    const nav = useNavigate();
-    return (
 
+    const nav = useNavigate();
+
+    return (
         <>
             <div className='container'>
-                <h3 className='text-center'> Datos Productor</h3>
-                <button className='btn' onClick={()=>{nav(-1)}}><FontAwesomeIcon icon={faArrowAltCircleLeft}/></button>
+                <h3 className='text-center title-color'> Datos Productor</h3>
+                <button className='btn' onClick={() => { nav(-1) }}><FontAwesomeIcon icon={faArrowAltCircleLeft} /></button>
                 <div className='container'>
                     <div className='d-flex flex-column m-3 p-3 inp-datos'>
                         <div className='d-flex flex-row flex-wrap justify-content-center'>

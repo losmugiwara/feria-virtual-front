@@ -1,6 +1,10 @@
 th{
     color: #06B140;
 }
+.title-color{
+    color: #06B140;
+    font-weight: 600;
+}
 .btn-list{
     all: unset;
 }

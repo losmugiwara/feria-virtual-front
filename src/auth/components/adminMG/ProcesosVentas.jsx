@@ -16,7 +16,7 @@ export const ProcesosVentas = () => {
             <Link className='btn btn-w' to='contratos'>Contratos</Link>
           </li>
           <li className='nav-item m-1'>
-            <Link className='btn btn-w' to=''>Ventas</Link>
+            <Link className='btn btn-w' to='ventas'>Ventas</Link>
           </li>
           <li className='nav-item m-1'>
             <Link className='btn btn-w' to=''>Transporte</Link>

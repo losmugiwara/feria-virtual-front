@@ -5,7 +5,7 @@ import { DashboardPage } from '../../auth/pages/DashboardPage';
 import { ProfilePage } from '../../auth/pages/ProfilePage';
 import { MaipoContext } from '../../context/maipoContext';
 
-import { Datos, Contratos } from '../../auth/components/adminMG/IndexAdmin';
+import { Datos, Contratos, Ventas } from '../../auth/components/adminMG/IndexAdmin';
 import { NavBar } from '../components/ui/IndexUi'
 import { BuscarPage, InicioPage, ProductosPage, TransportePage, } from '../pages'
 import { ProtectedRoute } from './ProtectedRoute'
@@ -112,6 +112,12 @@ export const FeriaRoutes = () => {
                     <Route path='profile/datos' element={
                         <ProtectedRoute user={user}>
                             <Datos />
+                        </ProtectedRoute>
+                    }
+                    />
+                    <Route path='profile/procesoventas/ventas' element={
+                        <ProtectedRoute user={user}>
+                            <Ventas />
                         </ProtectedRoute>
                     }
                     />
