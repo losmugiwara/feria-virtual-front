@@ -1,16 +1,23 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './components.css'
-import { MaipoContext } from '../../context/maipoContext';
-import { useContext } from 'react';
+import { useEffect, useState } from 'react';
+
+import { userProfile } from '../../helpers/auth';
 
 export const InfoUsers = () => {
 
-  const { user } = useContext(MaipoContext);
+  const [userInfo, setUserInfo] = useState({})
+
+  useEffect(() => {
+    userProfile().then((data) => {
+      setUserInfo(data)
+    });
+  }, [])
 
   return (
     <div className='container info m-2'>
-      <h6 className='p-1'>{user.username}</h6>
+      <h6 className='p-1'>{userInfo.userName}</h6>
       <div className='d-flex marcoImg  p-2'>
         <li className='d-flex align-items-center'>
           <FontAwesomeIcon className='icon color-icon' icon={faUser} />
@@ -19,19 +26,19 @@ export const InfoUsers = () => {
       <ul className='p-2'>
         <li className='d-flex flex-column '>
           <label className='label-info'>Nombre</label>
-          <label>Pedro Andres Perez Gonzales</label>
+          <label>{`${userInfo.name} ${userInfo.lastName}`}</label>
         </li>
         <li className='d-flex flex-column '>
           <label className='label-info'>Rut</label>
-          <label>12.345.678-9</label>
+          <label>{userInfo?.rut}</label>
         </li>
         <li className='d-flex flex-column '>
           <label className='label-info'>Fecha de Nacimiento</label>
-          <label>23/12/1999</label>
+          <label>{userInfo?.birthDate}</label>
         </li>
         <li className='d-flex flex-column '>
           <label className='label-info'>Correo</label>
-          <label>Pe.Perez@gmail.com</label>
+          <label>{userInfo?.email}</label>
         </li>
       </ul>
     </div >

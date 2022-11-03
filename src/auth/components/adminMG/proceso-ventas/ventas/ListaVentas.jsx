@@ -3,28 +3,20 @@ import './ventas.css';
 export const ListaVentas = () => {
   return (
     <>
-    <div className='marco'>
-    <table className="table">
+      <table className='table marco'>
         <thead>
           <tr>
-            <th scope="col" />
-            <th scope="col">ID</th>
-            <th scope="col">PRODUCTOR</th>
-            <th scope="col">PRODUCTOS</th>
-            <th scope="col">CALIDAD</th>
-            <th scope="col">INICIO DE CONTRATO</th>
-            <th scope="col">VIGENCIA</th>
+            <th scope='col'>ID</th>
+            <th scope='col'>PRODUCTOR</th>
+            <th scope='col'>PRODUCTOS</th>
+            <th scope='col'>CALIDAD</th>
+            <th scope='col'>INICIO DE CONTRATO</th>
+            <th scope='col'>VIGENCIA</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <input type='checkbox' onClick={() => {
-              if (!active) {
-                return setActive(active = true);
-              }
-              setActive(active = false)
-            }} />
-            <th scope="row">1</th>
+            <th scope='row'>1</th>
             <td>FRANCISCO</td>
             <td>FRUTA</td>
             <td>5/10</td>
@@ -33,8 +25,6 @@ export const ListaVentas = () => {
           </tr>
         </tbody>
       </table>
-
-    </div>
     </>
   )
 }

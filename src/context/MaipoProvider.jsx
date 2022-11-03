@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
-import { MaipoContext } from './maipoContext'
+import { useState } from 'react';
+import { MaipoContext } from './maipoContext';
 
 export const MaipoProvider = ({ children }) => {
 
+
+  
   const [user, setUser] = useState({
     username: '',
     role: '',
@@ -10,7 +12,7 @@ export const MaipoProvider = ({ children }) => {
   });
 
   return (
-    <MaipoContext.Provider value={{user, setUser}}>
+    <MaipoContext.Provider value={{ user, setUser}}>
       {children}
     </MaipoContext.Provider>
   )

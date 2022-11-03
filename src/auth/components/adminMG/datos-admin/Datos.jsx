@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavAdmin } from '../../../ui';
-import { ProductorAd, ClienteIntAd, ClienteExtAd, TransportistaAd } from '../datos-admin/components/IndexDatos';
+import { AddUser, ListUsers } from '../datos-admin/components/IndexDatos';
 import '../adminMG.css';
 
 
@@ -14,19 +14,11 @@ export const Datos = () => {
                 setActive={setActive}
             />
 
-            <ProductorAd
+            <AddUser
                 active={active}
                 setActive={setActive}
             />
-            <ClienteIntAd
-                active={active}
-                setActive={setActive}
-            />
-            <ClienteExtAd
-                active={active}
-                setActive={setActive}
-            />
-            <TransportistaAd
+            <ListUsers
                 active={active}
                 setActive={setActive}
             />
