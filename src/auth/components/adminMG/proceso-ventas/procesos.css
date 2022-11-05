@@ -9,3 +9,13 @@
     width: 160px;
     height: 40px;
 }
+.link{
+    text-decoration: none;
+    color: #fff;
+}
+.link:hover{
+    color: #fff !important;
+}
+.btn-color{
+    color: #06B140;
+}

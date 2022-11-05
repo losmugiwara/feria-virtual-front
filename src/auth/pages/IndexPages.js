@@ -1,5 +1,4 @@
 
-export * from './PrincipalPage';
 export * from './ProductorPage';
 export * from './SesionPage';
 export * from './ClienteExtPage';

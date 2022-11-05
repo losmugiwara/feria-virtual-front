@@ -14,7 +14,7 @@ export const OperacionesAdmin = () => {
             <Link className='btn btn-w' to='procesoventas'>Procesos de ventas</Link>
           </li>
           <li className='nav-item m-1'>
-            <Link className='btn btn-w' to='pagos'>Pagos</Link>
+            <Link className='btn btn-w' to='pay'>Pagos</Link>
           </li>
           <li className='nav-item m-1'>
             <Link className='btn btn-w' to='informeventas'>Informe de ventas</Link>

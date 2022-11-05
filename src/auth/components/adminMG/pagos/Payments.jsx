@@ -1,8 +1,11 @@
+import { Grid } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
+import { useNavigate } from "react-router-dom";
 
-import { DataGrid } from '@mui/x-data-grid';
-import './contratos.css';
 
-export const Contract = ({ active, setActive }) => {
+export const Payments = () => {
+
+  const nav = useNavigate();
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
@@ -39,16 +42,22 @@ export const Contract = ({ active, setActive }) => {
   ];
   return (
     <div className='container mt-5'>
-        <div style={{ height: 400, width: '100%' }}>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
-            checkboxSelection
-          />
+      <div style={{ height: 400, width: '100%' }}>
+        <Grid
+          container
+          justifyContent='center'>
+          <Grid item>
+            <h1>Recibo de pagos</h1>
+          </Grid>
+        </Grid>
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          onRowClick={() => { nav('result') }}
+        />
       </div>
     </div>
   )
 }
-

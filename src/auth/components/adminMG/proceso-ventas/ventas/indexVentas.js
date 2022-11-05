@@ -1,2 +1,3 @@
-export * from './ListaVentas';
-export * from './Ventas';
+export * from './ListSales';
+export * from './AddSales';
+export * from './CurrentSale';

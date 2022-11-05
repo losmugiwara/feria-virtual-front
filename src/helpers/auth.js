@@ -36,7 +36,7 @@ export const userProfile = async () => {
 
     const { data } = resp;
 
-    console.log({ data });
+    // console.log({ data });
 
     return  data ;
 

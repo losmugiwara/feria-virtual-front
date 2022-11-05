@@ -12,19 +12,13 @@ export const ProcesosVentas = () => {
       <h5 className='text-center'> Proceso de ventas </h5>
       <div>
         <ul className='nav d-flex flex-column flex-wrap align-items-center p-3'>
-          <li className='nav-item m-1 '>
+          <li className='nav-item mt-3 '>
             <Link className='btn btn-w' to='contratos'>Contratos</Link>
           </li>
-          <li className='nav-item m-1'>
+          <li className='nav-item mt-3'>
             <Link className='btn btn-w' to='ventas'>Ventas</Link>
           </li>
-          <li className='nav-item m-1'>
-            <Link className='btn btn-w' to=''>Transporte</Link>
-          </li>
-          <li className='nav-item m-1'>
-            <Link className='btn btn-w' to=''>Tipo de ventas</Link>
-          </li>
-          <li>
+          <li className='mt-4'>
             <button className="btn" onClick={() => { navigate(-1) }}>
               <FontAwesomeIcon icon={faArrowAltCircleLeft} />
             </button>
