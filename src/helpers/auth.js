@@ -23,6 +23,7 @@ export const registerApi = async (user = null) => {
 
 };
 export const userProfile = async () => {
+
     const token = localStorage.getItem('token');
     const dectoken = jwt_decode(token);
     const { sub } = dectoken;
@@ -38,6 +39,9 @@ export const userProfile = async () => {
 
     // console.log({ data });
 
-    return  data ;
-
+    return data;
 };
+export const addUser = async (user = null) => {
+    const resp = await axiosApi.post("/register/account", user);
+    console.log(resp);
+}

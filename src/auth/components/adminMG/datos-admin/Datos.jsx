@@ -5,7 +5,7 @@ import '../adminMG.css';
 
 
 export const Datos = () => {
-    const [active, setActive] = useState(0);
+    const [active, setActive] = useState(1);
 
     return (
         <div className='container d-flex flex-column'>
