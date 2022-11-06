@@ -5,8 +5,15 @@ import '../../adminMG.css';
 
 export const ListUsers = ({ active, setActive }) => {
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
 
+
+  useEffect(() => {
+    allUsers().then((data) => {
+      setUser(data);
+      console.log(data)
+    });
+  }, []);
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
@@ -26,22 +33,34 @@ export const ListUsers = ({ active, setActive }) => {
 
   ];
 
-  const rows = [
-    {
-      id: user.id, razonSocial: user.businessName === null ? 'No tiene' : user.businessName,
-      fullName: `${user.name} ${user.lastName}`, role: user.roles, rut: user.rut
-    },
-  ];
-  useEffect(() => {
-    allUsers().then((data) => {
-      setUser(data);
-      console.log(data)
-    });
-  }, [])
-  user.map((u) => {
-    console.log(u.userName)
-  })
-  // allUsers()
+  const rows = [];
+
+  
+  if (user != null){
+    user.map((u) => {
+
+      const userTable = {
+        id: u.id,
+        role: u.roles[0].roleName,
+        fullName: `${u.name} ${u.lastName}`,
+        rut: u.rut,
+        razonSocial: u.businessName
+
+      }
+
+      rows.push(userTable);
+    })
+  }
+
+
+  // const rows = [
+  //   {
+  //     id: user.id, razonSocial: user.businessName === null ? 'No tiene' : user.businessName,
+  //     fullName: `${user.name} ${user.lastName}`, role: user.roles, rut: user.rut
+  //   },
+  // ];
+
+
 
   return (
     <>
@@ -61,7 +80,7 @@ export const ListUsers = ({ active, setActive }) => {
             <div style={{ height: 400, width: '100%' }}>
               <DataGrid
                 rows={rows}
-                getRowId={user.id}
+        
                 columns={columns}
                 pageSize={5}
                 rowsPerPageOptions={[5]}
