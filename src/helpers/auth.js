@@ -42,6 +42,12 @@ export const userProfile = async () => {
     return data;
 };
 export const addUser = async (user = null) => {
-    const resp = await axiosApi.post("/register/account", user);
+
+
+    const resp = await axiosApi.post("/register/account", user, {
+        'headers': {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    });
     console.log(resp);
 }

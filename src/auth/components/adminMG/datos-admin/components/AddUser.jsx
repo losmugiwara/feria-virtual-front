@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { Box } from '@mui/system';
 import { permisos } from '../../../../../context/roles';
-import { addUser } from '../../../../../helpers/auth';
+import { addUser, registerApi } from '../../../../../helpers/auth';
 import { useForm } from '../../../../../hooks/useForm';
 import '../../adminMG.css';
 
@@ -15,14 +15,14 @@ export const AddUser = ({ active, setActive }) => {
 
 
   const { formState, onInputChange } = useForm({
-    username: '',
+    userName: '',
     name: '',
-    lastname: '',
+    lastName: '',
     email: '',
     password: '',
     roles: [],
     rut: '',
-    businessname: '',
+    businessName: '',
     country: '',
     city: '',
     commune: '',
@@ -32,7 +32,7 @@ export const AddUser = ({ active, setActive }) => {
   const onClickAdd = (e) => {
     e.preventDefault();
     console.log(formState);
-    addUser(formState);
+    registerApi(formState);
   }
 
   return (
@@ -47,9 +47,9 @@ export const AddUser = ({ active, setActive }) => {
                   <TextField
                     id='outlined-basic'
                     label='Nombre de usuario'
-                    name='username'
+                    name='userName'
                     variant='outlined'
-                    value={formState.username}
+                    value={formState.userName}
                     onChange={onInputChange}
                   />
                 </div>
@@ -67,9 +67,9 @@ export const AddUser = ({ active, setActive }) => {
                   <TextField
                     id='outlined-basic'
                     label='Apellidos'
-                    name='lastname'
+                    name='lastName'
                     variant='outlined'
-                    value={formState.lastname}
+                    value={formState.lastName}
                     onChange={onInputChange}
                   />
                 </div>
@@ -133,9 +133,9 @@ export const AddUser = ({ active, setActive }) => {
                   <TextField
                     id='outlined-basic'
                     label='Razón social'
-                    name='businessname'
+                    name='businessName'
                     variant='outlined'
-                    value={formState.businessname}
+                    value={formState.businessName}
                     onChange={onInputChange}
                   />
                 </div>
