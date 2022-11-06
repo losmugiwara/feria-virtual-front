@@ -1,6 +1,6 @@
 import { DataGrid } from '@mui/x-data-grid';
 import { useEffect, useState } from 'react';
-import { userProfile } from '../../../../../helpers/auth';
+import { allUsers, userProfile } from '../../../../../helpers/auth';
 import '../../adminMG.css';
 
 export const ListUsers = ({ active, setActive }) => {
@@ -29,14 +29,19 @@ export const ListUsers = ({ active, setActive }) => {
   const rows = [
     {
       id: user.id, razonSocial: user.businessName === null ? 'No tiene' : user.businessName,
-      fullName: `${user.name} ${user.lastName}`, role: user.roles[0].roleName, rut: user.rut
+      fullName: `${user.name} ${user.lastName}`, role: user.roles, rut: user.rut
     },
   ];
   useEffect(() => {
-    userProfile().then((data) => {
-      setUser(data)
+    allUsers().then((data) => {
+      setUser(data);
+      console.log(data)
     });
   }, [])
+  user.map((u) => {
+    console.log(u.userName)
+  })
+  // allUsers()
 
   return (
     <>
@@ -56,6 +61,7 @@ export const ListUsers = ({ active, setActive }) => {
             <div style={{ height: 400, width: '100%' }}>
               <DataGrid
                 rows={rows}
+                getRowId={user.id}
                 columns={columns}
                 pageSize={5}
                 rowsPerPageOptions={[5]}

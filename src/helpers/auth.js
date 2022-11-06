@@ -37,13 +37,29 @@ export const userProfile = async () => {
 
     const { data } = resp;
 
-    console.log({ data });
+    // console.log({ data });
 
     return data;
 };
 export const addUser = async (user = null) => {
-    
-    if (!user) return;
-    const resp = await axiosApi.post("/register/account", user);
+
+
+    const resp = await axiosApi.post("/register/account", user, {
+        'headers': {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    });
     console.log(resp);
+}
+export const allUsers = async () => {
+
+    const resp = await axiosApi.get("/users", {
+        'headers': {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    });
+    const { data } = resp;
+    // console.log(data);
+
+    return data;
 }
