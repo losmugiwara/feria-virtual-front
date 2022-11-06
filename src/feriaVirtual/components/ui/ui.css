@@ -54,3 +54,13 @@
     grid-column: 1 / 3 !important;
     grid-row: 3 !important;
 }
+
+.divLoading {
+    height: 100vh;
+
+    text-align: center;
+}
+
+.loading {
+    margin-top: 200px;
+}
