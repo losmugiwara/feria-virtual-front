@@ -37,11 +37,13 @@ export const userProfile = async () => {
 
     const { data } = resp;
 
-    // console.log({ data });
+    console.log({ data });
 
     return data;
 };
 export const addUser = async (user = null) => {
+    
+    if (!user) return;
     const resp = await axiosApi.post("/register/account", user);
     console.log(resp);
 }

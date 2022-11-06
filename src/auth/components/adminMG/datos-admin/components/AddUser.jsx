@@ -29,17 +29,34 @@ export const AddUser = ({ active, setActive }) => {
     address: ''
   });
 
-  const onClickAdd = (e) => {
+  const onClickAdd = async (e) => {
     e.preventDefault();
-    console.log(formState);
-    addUser(formState);
+    // console.log(formState);
+    const user = {
+      userName: formState.username,
+      name: formState.name,
+      lastName: formState.lastname,
+      email: formState.email,
+      password: formState.password,
+      roles: formState.roles,
+      rut: formState.rut,
+      businessName: formState.businessname,
+      country: formState.country,
+      city: formState.city,
+      commune: formState.commune,
+      address: formState.address
+    }
+
+    const resp = await addUser(user);
+
+    console.log(resp);
   }
 
   return (
     <>
       {active === 1 &&
         <div className='container'>
-          <h3 className='text-center'> Datos Productor</h3>
+          <h3 className='text-center'> Datos de usuarios</h3>
           <div className='container p-1'>
             <form className='d-flex flex-column m-3 p-3 inp-datos'>
               <div className='d-flex flex-row flex-wrap justify-content-center'>
