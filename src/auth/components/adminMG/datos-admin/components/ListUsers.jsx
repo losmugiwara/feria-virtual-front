@@ -38,9 +38,6 @@ export const ListUsers = ({ active, setActive }) => {
       console.log(data)
     });
   }, [])
-  user.map((u) => {
-    console.log(u.userName)
-  })
   // allUsers()
 
   return (
