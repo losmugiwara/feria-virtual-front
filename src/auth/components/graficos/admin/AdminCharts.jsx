@@ -1,5 +1,7 @@
 import React from 'react'
 import { SaleDateChart } from './admin-chart-components/SaleDateChart'
+import "./admin-chart.css";
+
 
 export const AdminCharts = () => {
     return (
