@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { MaipoContext } from '../../context/maipoContext';
-import { AdminCharts } from '../components/graficos/AdminCharts';
-import { ClientExtCharts } from '../components/graficos/ClientExtCharts';
-import { ClientIntCharts } from '../components/graficos/ClientIntCharts';
-import { ProducerCharts } from '../components/graficos/ProducerCharts';
+import { AdminCharts } from "../../auth/components/graficos/admin/AdminCharts";
+import { ClientIntCharts } from "../../auth/components/graficos/clientint/ClientIntCharts";
+import { ClientExtCharts } from "../../auth/components/graficos/clientext/ClientExtCharts";
+import { ProducerCharts } from "../../auth/components/graficos/producer/ProducerCharts";
 
 
 
