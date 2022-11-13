@@ -11,6 +11,7 @@ import { BuscarPage, InicioPage, ProductosPage, TransportePage, } from '../pages
 import { ProtectedRoute } from './ProtectedRoute'
 import { AddContract } from '../../auth/components/adminMG/proceso-ventas/contratos/AddContract';
 import { AddSales } from '../../auth/components/adminMG/proceso-ventas/ventas/AddSales';
+import { Contracts } from '../../auth/components/adminMG/proceso-ventas/contratos/Contracts';
 
 
 export const FeriaRoutes = () => {
@@ -88,7 +89,8 @@ export const FeriaRoutes = () => {
                     }/>
                     <Route path='profile/procesoventas/contratos' element={
                         <ProtectedRoute user={user}>
-                            <ContractsCustomer />
+                            {/* <ContractsCustomer /> */}
+                            <Contracts/>
                         </ProtectedRoute>
                     }/>
                     <Route path='profile/procesoventas/contratos/add' element={
