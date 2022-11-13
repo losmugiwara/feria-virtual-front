@@ -26,6 +26,7 @@ export const Contracts = () => {
                         <Grid item xs={4}>
                             <CardContract
                                 key={c.id}
+                                contract={c}
                             />
                         </Grid>
                     )) : ""

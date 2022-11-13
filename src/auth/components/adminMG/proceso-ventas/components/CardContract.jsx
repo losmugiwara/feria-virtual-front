@@ -1,27 +1,34 @@
 import { Button, Card, CardActions, CardContent, Typography} from '@mui/material'
 import React from 'react'
 
-export const CardContract = () => {
+export const CardContract = ({contract}) => {
+
+    const startDate = new Date(contract.startDate);
+
+    console.log(startDate.toLocaleDateString());
+
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
+          Estado de contrado: <b>{contract.contractValidity}</b>
         </Typography>
         <Typography variant="h5" component="div">
-            Hola Mundo
+            {contract.sale.producer.businessName}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
+          Fecha de creacion: <b>{startDate.toLocaleDateString()}</b>
+          <br />
+          Fecha de termino: <b>{startDate.toLocaleDateString()}</b>
         </Typography>
         <Typography variant="body2">
-          well meaning and kindly.
+          Observacion: 
           <br />
-          {'"a benevolent smile"'}
+            {contract.sale.requestSale.shippingAddress}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button href="./contrato-detalle" size="small">Ir a contrato</Button>
       </CardActions>
     </Card>
   )

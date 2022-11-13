@@ -11,6 +11,7 @@ export const getContractsAPI = async () => {
     });
 
     const {data} = resp;
+    console.log(data);
 
     return data;
 
