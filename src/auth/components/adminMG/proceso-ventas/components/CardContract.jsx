@@ -1,11 +1,19 @@
 import { Button, Card, CardActions, CardContent, Typography} from '@mui/material'
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export const CardContract = ({contract}) => {
+
+    const navigate = useNavigate();
 
     const startDate = new Date(contract.startDate);
 
     console.log(startDate.toLocaleDateString());
+
+
+    const onClickContractDetail = () => {
+        navigate('./detalle/' + contract.id)
+    };
 
   return (
     <Card sx={{ minWidth: 275 }}>
@@ -28,7 +36,7 @@ export const CardContract = ({contract}) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button href="./contrato-detalle" size="small">Ir a contrato</Button>
+        <Button onClick={onClickContractDetail} size="small">Ir a contrato</Button>
       </CardActions>
     </Card>
   )
