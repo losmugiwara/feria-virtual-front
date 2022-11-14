@@ -16,3 +16,18 @@ export const getContractsAPI = async () => {
     return data;
 
 }
+export const getContractByIdAPI = async (id) => {
+    const token = localStorage.getItem("token");
+
+    const resp = await axiosApi.get("/contracts/" + id, {
+        'headers': {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+
+    const {data} = resp;
+    console.log(data);
+
+    return data;
+
+}
