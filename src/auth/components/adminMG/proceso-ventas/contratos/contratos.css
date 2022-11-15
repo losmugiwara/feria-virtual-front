@@ -8,3 +8,14 @@ th{
 .btn-list{
     all: unset;
 }
+
+.statusSale {
+    align-items: center;
+    background: #aadfdf;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.icon-sale {
+    font-size: 50px;
+}
