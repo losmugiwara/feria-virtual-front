@@ -21,10 +21,46 @@
     background-color: #fff !important;
     color: #06B140 !important;
 }
-.search-w{
+
+.search-w {
     width: 200px;
     margin-left: 10px;
 }
-.btn-w{
+
+.btn-w {
     width: 200px;
+}
+
+.btn-u {
+    cursor: pointer;
+}
+
+.tittle-modal {
+    text-align: center;
+    padding: 40px;
+}
+
+.modal-up {
+    display: flex;
+    justify-content: center;
+    margin-top: 350px;
+    background-color: #fff;
+    width: 42%;
+    height: 55%;
+}
+
+.modal-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.modal-in{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.btn-modal{
+    display: flex;
 }
