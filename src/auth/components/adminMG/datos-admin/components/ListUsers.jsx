@@ -3,7 +3,6 @@ import { Button, FormControl, InputLabel, MenuItem, Modal, Select, Table, TableB
 import { Box } from '@mui/system';
 import { useEffect, useState } from 'react';
 import { allUsers } from '../../../../../helpers/auth';
-import { useForm } from '../../../../../hooks/useForm';
 import '../../adminMG.css';
 
 
@@ -47,7 +46,6 @@ export const ListUsers = ({ active, setActive }) => {
   useEffect(() => {
     allUsers().then((data) => {
       setUser(data);
-      console.log(data)
     });
   }, []);
 
