@@ -13,6 +13,8 @@ import { AddContract } from '../../auth/components/adminMG/proceso-ventas/contra
 import { AddSales } from '../../auth/components/adminMG/proceso-ventas/ventas/AddSales';
 import { Contracts } from '../../auth/components/adminMG/proceso-ventas/contratos/Contracts';
 import { ContractDetail } from '../../auth/components/adminMG/proceso-ventas/contratos/ContractDetail';
+import { RequestsSale } from '../../auth/components/adminMG/proceso-ventas/solicitudes/RequestsSale';
+import { RequestSaleDetail } from '../../auth/components/adminMG/proceso-ventas/solicitudes/RequestSaleDetail';
 
 
 export const FeriaRoutes = () => {
@@ -118,6 +120,16 @@ export const FeriaRoutes = () => {
                     <Route path='profile/procesoventas/ventas/crear-venta' element={
                         <ProtectedRoute user={user}>
                             <AddSales />
+                        </ProtectedRoute>
+                    }/>
+                    <Route path='profile/procesoventas/solicitudes' element={
+                        <ProtectedRoute user={user}>
+                            <RequestsSale />
+                        </ProtectedRoute>
+                    }/>
+                    <Route path='profile/procesoventas/solicitudes/detalle/:id' element={
+                        <ProtectedRoute user={user}>
+                            <RequestSaleDetail />
                         </ProtectedRoute>
                     }/>
                     <Route path='profile/pay' element={
