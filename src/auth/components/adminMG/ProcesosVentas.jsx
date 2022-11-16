@@ -13,6 +13,9 @@ export const ProcesosVentas = () => {
       <div>
         <ul className='nav d-flex flex-column flex-wrap align-items-center p-3'>
           <li className='nav-item mt-3 '>
+            <Link className='btn btn-w' to='solicitudes'>Solicitudes</Link>
+          </li>
+          <li className='nav-item mt-3 '>
             <Link className='btn btn-w' to='contratos'>Contratos</Link>
           </li>
           <li className='nav-item mt-3'>
