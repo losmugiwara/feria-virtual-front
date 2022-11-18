@@ -37,8 +37,6 @@ export const userProfile = async () => {
 
     const { data } = resp;
 
-    // console.log({ data });
-
     return data;
 };
 export const addUser = async (user = null) => {

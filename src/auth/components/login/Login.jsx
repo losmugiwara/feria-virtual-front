@@ -6,11 +6,14 @@ import './login.css';
 import { useForm } from '../../../hooks/useForm';
 import { loginApi } from '../../../helpers/auth';
 import { MaipoContext } from '../../../context/maipoContext';
+import { useDispatch } from 'react-redux';
+import { startLogin } from '../../../store/auth';
 
 export const Login = () => {
 
     const { setUser } = useContext(MaipoContext);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
 
     const { formState, onInputChange } = useForm({
@@ -21,12 +24,13 @@ export const Login = () => {
     const onClickLogin = async (e) => {
         e.preventDefault();
 
+
         const user = {
             userName: formState.username,
             password: formState.password
         }
 
-
+        dispatch(startLogin(user));
         const token = await loginApi(user);
 
         localStorage.setItem('token', token);

@@ -33,8 +33,8 @@ export const InfoUsers = () => {
           <label>{userInfo?.rut}</label>
         </li>
         <li className='d-flex flex-column '>
-          <label className='label-info'>Fecha de Nacimiento</label>
-          <label>{userInfo?.birthDate}</label>
+          <label className='label-info'>País</label>
+          <label>{userInfo?.country}</label>
         </li>
         <li className='d-flex flex-column '>
           <label className='label-info'>Correo</label>

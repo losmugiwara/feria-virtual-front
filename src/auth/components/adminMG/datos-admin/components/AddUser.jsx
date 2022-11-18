@@ -8,7 +8,6 @@ import { useForm } from '../../../../../hooks/useForm';
 import '../../adminMG.css';
 
 
-// const roles = [permisos.ROLE_ADMIN, permisos.ROLE_CARRIER, permisos.ROLE_CONSULTANT, permisos.ROLE_CUSTOMER_EXTERNAL, permisos.ROLE_CUSTOMER_INTERNAL];
 
 export const AddUser = ({ active, setActive }) => {
 
