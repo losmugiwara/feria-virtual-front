@@ -17,7 +17,7 @@ export const ContractDetail = () => {
 
         getContractByIdAPI(id).then((c) => {
             setContract(c);
-        })
+        });
 
         return () => {
             setContract(null);

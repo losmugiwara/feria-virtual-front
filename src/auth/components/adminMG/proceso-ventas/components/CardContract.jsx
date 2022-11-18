@@ -8,11 +8,8 @@ export const CardContract = ({contract}) => {
 
     const startDate = new Date(contract.startDate);
 
-    console.log(startDate.toLocaleDateString());
-
-
     const onClickContractDetail = () => {
-        navigate('./detalle/' + contract.id)
+        navigate('./detalle/' + contract.id);
     };
 
   return (

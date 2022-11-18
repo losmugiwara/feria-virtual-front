@@ -9,6 +9,10 @@ export const CardRequestSale = ({ request }) => {
     const startDate = new Date(request.createdDate);
     const approvalDate = new Date(request?.approvalDate).toLocaleDateString();
 
+    const onClickRequestSaleDetail = () => {
+        navigate('./detalle/' + request.id);
+    }
+
     return (
         <Card sx={{ minWidth: 275 }}>
             <CardContent>
@@ -37,7 +41,7 @@ export const CardRequestSale = ({ request }) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Ver detalle</Button>
+                <Button onClick={onClickRequestSaleDetail} size="small">Ver detalle</Button>
             </CardActions>
         </Card>
     )
