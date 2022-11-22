@@ -8,6 +8,7 @@ import { CardProduct } from '../components/CardProduct';
 export const RequestSaleDetail = () => {
 
   const [request, setRequest] = useState()
+  const createdDate = new Date(request?.createdDate).toLocaleDateString();
 
   const { id } = useParams();
 
@@ -29,9 +30,23 @@ export const RequestSaleDetail = () => {
         Solicitud de Venta
       </Typography>
       <hr />
-
+      <p>
+        Fecha de solicitud: <b>{createdDate}</b>
+        <br />
+        Estado de solicitud: {
+          (request?.approvalStatus === "ON_HOLD") && "En espera"
+        }
+         {
+          (request?.approvalStatus === "PASSED") && "Aceptada"
+        }
+         {
+          (request?.approvalStatus === "REFUSED") && "Rechazada"
+        }
+        <br />
+        Destino: {request?.shippingAddress}
+      </p>
       <Typography align='left' variant='h5' sx={{ mt: 5, mb: 5 }}>
-        Cliente
+        {request?.user.name}  {request?.user.lastName} - {request?.user.rut}
       </Typography>
 
       <Typography align='left' variant='h5' sx={{ mt: 5, mb: 5 }}>
@@ -50,7 +65,7 @@ export const RequestSaleDetail = () => {
       }
       </Grid>
 
-
+      
     </Container>
   )
 }
