@@ -64,7 +64,7 @@ export const RequestSaleDetail = () => {
           (status === "ON_HOLD") && "En espera"
         }
         {
-          (status === "PASSED") && "Aceptada"
+          (status === "PASSED") && "Aprobada"
         }
         {
           (status === "REFUSED") && "Rechazada"

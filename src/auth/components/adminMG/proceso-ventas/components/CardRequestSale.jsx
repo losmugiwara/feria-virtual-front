@@ -17,8 +17,15 @@ export const CardRequestSale = ({ request }) => {
         <Card sx={{ minWidth: 275 }}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    Estado de solicitud: {
-                        (request.approvalStatus == "ON_HOLD") && <b>En espera</b>
+                    Estado de solicitud:
+                    {
+                        (request.approvalStatus == "ON_HOLD") && <b> En espera</b>
+                    }
+                    {
+                        (request.approvalStatus == "PASSED") && <b> Aprobada</b>
+                    }
+                    {
+                        (request.approvalStatus == "REFUSED") && <b> Rechazada</b>
                     }
                 </Typography>
                 <Typography variant="h5" component="div">
