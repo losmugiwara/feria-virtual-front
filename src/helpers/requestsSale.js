@@ -31,4 +31,21 @@ export const getRequestsSaleByIdAPI = async (id) => {
 
     return data;
 
-}
+};
+
+export const updateRequestsSaleStatus = async (idRequest, approvalStatus) => {
+    const token = localStorage.getItem("token");
+
+    const url = `/requests-sale/request=${idRequest}/status=${approvalStatus}`;
+
+    const resp = await axiosApi.put(url, {}, {
+        'headers': {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+
+    const {data} = resp;
+    console.log(data);
+    
+    return data;
+};
