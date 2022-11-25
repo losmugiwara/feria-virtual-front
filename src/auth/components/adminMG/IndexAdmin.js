@@ -5,3 +5,4 @@ export * from './ProcesosVentas';
 export * from './proceso-ventas/Sales';
 export * from './OperacionesAdmin';
 export * from './proceso-ventas/ContractsCustomer';
+export * from './productos/AddProducts';

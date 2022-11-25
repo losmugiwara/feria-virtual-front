@@ -1,0 +1,9 @@
+.product{
+    color: #06B140;
+}
+.cont{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
