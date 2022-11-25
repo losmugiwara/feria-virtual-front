@@ -1,7 +1,9 @@
 import { Alert, Button, Grid, Stack, Typography } from '@mui/material';
 import { Container } from '@mui/system';
+import { createAction } from '@reduxjs/toolkit';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { createAuction, updateActiveAuction } from '../../../../../helpers/auctions';
 import { getRequestsSaleByIdAPI, updateRequestsSaleStatus } from '../../../../../helpers/requestsSale';
 import { CardProduct } from '../components/CardProduct';
 
@@ -30,24 +32,29 @@ export const RequestSaleDetail = () => {
   const onClickButtonPassed = () => {
     console.log("Aprobar Solicitud");
 
+    createAuction(request?.id).then((a) => {
+      console.log("esta es la subasta: ", a);
+    });
     updateRequestsSaleStatus(request?.id, 1).then((r) => {
       setStatus(r?.approvalStatus);
       setAlert(true);
 
       setTimeout(() => {
         setAlert();
-      }, 5000);
+      }, 2000);
     });
   }
 
   const onClickButtonRefused = () => {
     console.log("Rechazar Solicitud");
+
+    updateActiveAuction(request?.id, 0);
     updateRequestsSaleStatus(request?.id, 2).then((r) => {
       setStatus(r?.approvalStatus);
       setAlert(false);
       setTimeout(() => {
         setAlert();
-      }, 5000);
+      }, 2000);
     });
   }
 
@@ -77,8 +84,18 @@ export const RequestSaleDetail = () => {
       </Typography>
       <hr />
       <Stack spacing={3} direction="row" sx={{ justifyContent: 'center' }}>
-        <Button variant="contained" onClick={onClickButtonPassed} color="success">Aprobar</Button>
-        <Button variant="contained" onClick={onClickButtonRefused} color="error">Rechazar</Button>
+        {
+          (alert == false) ? <Button variant="contained" onClick={onClickButtonPassed} color="success" disabled>Aprobar</Button>
+          : 
+          <Button variant="contained" onClick={onClickButtonPassed} color="success">Aprobar</Button>
+
+        }
+
+        {
+          (alert == true) ? <Button variant="contained" onClick={onClickButtonRefused} color="error" disabled>Rechazar</Button>
+          :
+          <Button variant="contained" onClick={onClickButtonRefused} color="error">Rechazar</Button>
+        }
       </Stack>
       {
         (alert === true) && <Alert className='animate__animated animate__fadeIn' sx={{ m: 3 }} severity="success">Se ha aprobado la solicitud.</Alert>
