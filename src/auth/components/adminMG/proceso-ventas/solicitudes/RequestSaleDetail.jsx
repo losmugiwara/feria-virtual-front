@@ -10,6 +10,7 @@ import { CardProduct } from '../components/CardProduct';
 export const RequestSaleDetail = () => {
 
   const [request, setRequest] = useState();
+  const [auction, setAuction] = useState();
   const [alert, setAlert] = useState();
   const [status, setStatus] = useState("ON_HOLD");
   const createdDate = new Date(request?.createdDate).toLocaleDateString();
@@ -48,7 +49,6 @@ export const RequestSaleDetail = () => {
   const onClickButtonRefused = () => {
     console.log("Rechazar Solicitud");
 
-    updateActiveAuction(request?.id, 0);
     updateRequestsSaleStatus(request?.id, 2).then((r) => {
       setStatus(r?.approvalStatus);
       setAlert(false);
@@ -86,16 +86,21 @@ export const RequestSaleDetail = () => {
       <Stack spacing={3} direction="row" sx={{ justifyContent: 'center' }}>
         {
           (alert == false) ? <Button variant="contained" onClick={onClickButtonPassed} color="success" disabled>Aprobar</Button>
-          : 
-          <Button variant="contained" onClick={onClickButtonPassed} color="success">Aprobar</Button>
-
+            :
+            (status == "ON_HOLD") ?
+              <Button variant="contained" onClick={onClickButtonPassed} color="success">Aprobar</Button>
+              : <Button variant="contained" onClick={onClickButtonPassed} color="success" disabled>Aprobar</Button>
         }
 
         {
           (alert == true) ? <Button variant="contained" onClick={onClickButtonRefused} color="error" disabled>Rechazar</Button>
-          :
-          <Button variant="contained" onClick={onClickButtonRefused} color="error">Rechazar</Button>
+            :
+            (status == "ON_HOLD") ?
+              <Button variant="contained" onClick={onClickButtonRefused} color="error">Rechazar</Button> :
+              <Button variant="contained" onClick={onClickButtonRefused} color="error" disabled>Rechazar</Button>
         }
+
+
       </Stack>
       {
         (alert === true) && <Alert className='animate__animated animate__fadeIn' sx={{ m: 3 }} severity="success">Se ha aprobado la solicitud.</Alert>
