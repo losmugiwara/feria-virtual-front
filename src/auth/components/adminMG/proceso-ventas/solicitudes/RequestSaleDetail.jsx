@@ -3,7 +3,7 @@ import { Container } from '@mui/system';
 import { createAction } from '@reduxjs/toolkit';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { createAuction, updateActiveAuction } from '../../../../../helpers/auctions';
+import { createAuction } from '../../../../../helpers/auctions';
 import { getRequestsSaleByIdAPI, updateRequestsSaleStatus } from '../../../../../helpers/requestsSale';
 import { CardProduct } from '../components/CardProduct';
 

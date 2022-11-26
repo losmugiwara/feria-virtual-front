@@ -16,6 +16,7 @@ import { ContractDetail } from '../../auth/components/adminMG/proceso-ventas/con
 import { RequestsSale } from '../../auth/components/adminMG/proceso-ventas/solicitudes/RequestsSale';
 import { RequestSaleDetail } from '../../auth/components/adminMG/proceso-ventas/solicitudes/RequestSaleDetail';
 import { Auctions } from '../../auth/components/adminMG/proceso-ventas/subastas/Auctions';
+import { AuctionDetail } from '../../auth/components/adminMG/proceso-ventas/subastas/AuctionDetail';
 
 
 export const FeriaRoutes = () => {
@@ -136,6 +137,11 @@ export const FeriaRoutes = () => {
                     <Route path='profile/procesoventas/subastas' element={
                         <ProtectedRoute user={user}>
                             <Auctions />
+                        </ProtectedRoute>
+                    } />
+                    <Route path='profile/procesoventas/subastas/detalle/:id' element={
+                        <ProtectedRoute user={user}>
+                            <AuctionDetail />
                         </ProtectedRoute>
                     } />
                     <Route path='profile/pay' element={
