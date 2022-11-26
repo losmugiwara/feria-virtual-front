@@ -1,18 +1,18 @@
 
-import { useContext } from 'react';
-import { MaipoContext } from '../../context/maipoContext';
+import { useSelector } from 'react-redux';
 import { permisos } from '../../context/roles';
 import { InfoUsers, OperacionesAdmin } from '../components/IndexAuth';
 
 export const ProfilePage = () => {
 
-  const { user, setUser } = useContext(MaipoContext);
+  const { roles, userName } = useSelector(state => state.auth);
+  console.log({ roles });
 
   return (
     <>
-      <h3 className='d-flex justify-content-center'>Perfil {user.username}</h3>
+      <h3 className='d-flex justify-content-center'>Perfil {userName}</h3>
       <hr />
-      {user.role === permisos.ROLE_ADMIN ?
+      {roles[0]?.authority === permisos.ROLE_ADMIN ?
         <div className='container d-flex f-row flex-wrap justify-content-center p-2'>
           <InfoUsers />
           <OperacionesAdmin />

@@ -15,17 +15,23 @@ import { Contracts } from '../../auth/components/adminMG/proceso-ventas/contrato
 import { ContractDetail } from '../../auth/components/adminMG/proceso-ventas/contratos/ContractDetail';
 import { RequestsSale } from '../../auth/components/adminMG/proceso-ventas/solicitudes/RequestsSale';
 import { RequestSaleDetail } from '../../auth/components/adminMG/proceso-ventas/solicitudes/RequestSaleDetail';
+import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 
 
 export const FeriaRoutes = () => {
 
     const { user } = useContext(MaipoContext);
 
+    const { status } = useSelector(state => state.auth);
+
+    const isAuthenticating = useMemo(() => status === 'not-authenticated', [status]);
+
 
     const nav = useNavigate();
 
     useEffect(() => {
-        if (user.active === false) {
+        if (isAuthenticating) {
             nav('/crearcuenta');
         }
     }, [])
@@ -33,7 +39,7 @@ export const FeriaRoutes = () => {
     return (
         <>
             {
-                (user.active) ? <NavBar /> : null
+                (!isAuthenticating) ? <NavBar /> : null
             }
 
 

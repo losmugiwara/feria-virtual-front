@@ -5,13 +5,21 @@ import logo from '../../../img/logoMaipoGrande.png';
 import { MaipoContext } from '../../../context/maipoContext';
 import { useContext } from 'react';
 import { permisos } from '../../../context/roles';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../../store/auth';
+import { useMemo } from 'react';
 
 export const NavBar = () => {
 
+
+    const { userName, status } = useSelector(state => state.auth);
+    const isAuthenticated = useMemo(() => status === 'authenticated', [status]);
+    const dispatch = useDispatch();
     const { user, setUser } = useContext(MaipoContext);
     const navigate = useNavigate();
 
     const onClickLogout = () => {
+        dispatch(logout());
         setUser({
             username: '',
             role: '',
@@ -65,7 +73,7 @@ export const NavBar = () => {
                         <li className="nav-item p-1">
                             <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
                                 to='profile'>
-                                {user.active === true ? user.username : 'Cuenta'}
+                                {isAuthenticated ? userName : 'Cuenta'}
                             </NavLink>
                         </li>
                         <li className="nav-item p-1">
