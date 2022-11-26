@@ -5,7 +5,7 @@ import { DashboardPage } from '../../auth/pages/DashboardPage';
 import { ProfilePage } from '../../auth/pages/ProfilePage';
 import { MaipoContext } from '../../context/maipoContext';
 
-import { Datos, ContractsCustomer, Sales, Payments, AddProducts } from '../../auth/components/adminMG/IndexAdmin';
+import { Datos, Sales, Payments, AddProducts } from '../../auth/components/adminMG/IndexAdmin';
 import { NavBar } from '../components/ui/IndexUi'
 import { BuscarPage, InicioPage, ProductosPage, TransportePage, } from '../pages'
 import { ProtectedRoute } from './ProtectedRoute'
@@ -15,6 +15,7 @@ import { Contracts } from '../../auth/components/adminMG/proceso-ventas/contrato
 import { ContractDetail } from '../../auth/components/adminMG/proceso-ventas/contratos/ContractDetail';
 import { RequestsSale } from '../../auth/components/adminMG/proceso-ventas/solicitudes/RequestsSale';
 import { RequestSaleDetail } from '../../auth/components/adminMG/proceso-ventas/solicitudes/RequestSaleDetail';
+import { Auctions } from '../../auth/components/adminMG/proceso-ventas/subastas/Auctions';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -136,6 +137,11 @@ export const FeriaRoutes = () => {
                     <Route path='profile/procesoventas/solicitudes/detalle/:id' element={
                         <ProtectedRoute user={user}>
                             <RequestSaleDetail />
+                        </ProtectedRoute>
+                    } />
+                    <Route path='profile/procesoventas/subastas' element={
+                        <ProtectedRoute user={user}>
+                            <Auctions />
                         </ProtectedRoute>
                     } />
                     <Route path='profile/pay' element={

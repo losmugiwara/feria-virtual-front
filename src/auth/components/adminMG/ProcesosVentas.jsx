@@ -16,6 +16,9 @@ export const ProcesosVentas = () => {
             <Link className='btn btn-w' to='solicitudes'>Solicitudes</Link>
           </li>
           <li className='nav-item mt-3 '>
+            <Link className='btn btn-w' to='subastas'>Subastas</Link>
+          </li>
+          <li className='nav-item mt-3 '>
             <Link className='btn btn-w' to='contratos'>Contratos</Link>
           </li>
           <li className='nav-item mt-3'>
