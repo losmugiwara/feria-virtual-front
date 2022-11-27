@@ -8,6 +8,7 @@ import { permisos } from '../../../context/roles';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../../store/auth';
 import { useMemo } from 'react';
+import { ModalShopping } from './ModalShopping';
 
 export const NavBar = () => {
 
@@ -42,6 +43,9 @@ export const NavBar = () => {
                 </NavLink>
                 <div className="d-flex justify-content-end font-Inter" id="navbarNav">
                     <ul className="navbar-nav d-flex flex-row">
+                        <li className="nav-item p-1">
+                            <ModalShopping />
+                        </li>
                         <li className="nav-item p-1">
                             <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
                                 to='home'>
@@ -83,19 +87,22 @@ export const NavBar = () => {
                                 </NavLink>
                             </li>}
 
-                        {!isAuthenticated
-                            ? <li className="nav-item p-1">
-                                <NavLink onClick={onCLickLogin} className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
-                                    to='crearcuenta'>
-                                    Iniciar Sesión
-                                </NavLink>
-                            </li>
-                            : <li className="nav-item p-1">
-                                <NavLink onClick={onClickLogout} className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
-                                    to='crearcuenta'>
-                                    Logout
-                                </NavLink>
-                            </li>}
+                        {
+                            !isAuthenticated
+                                ? <li className="nav-item p-1">
+                                    <NavLink onClick={onCLickLogin} className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
+                                        to='crearcuenta'>
+                                        Iniciar Sesión
+                                    </NavLink>
+                                </li>
+                                : <li className="nav-item p-1">
+                                    <NavLink onClick={onClickLogout} className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
+                                        to='crearcuenta'>
+                                        Logout
+                                    </NavLink>
+                                </li>
+                        }
+
                     </ul>
                 </div>
             </div>
