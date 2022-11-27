@@ -1,6 +1,5 @@
 import { Alert, Button, Grid, Stack, Typography } from '@mui/material';
 import { Container } from '@mui/system';
-import { createAction } from '@reduxjs/toolkit';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { createAuction } from '../../../../../helpers/auctions';
