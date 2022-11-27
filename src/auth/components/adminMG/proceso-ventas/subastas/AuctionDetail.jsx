@@ -28,25 +28,15 @@ export const AuctionDetail = () => {
         }
     }, []);
 
-
     function createData(name, lastName, offer) {
         return { name, lastName, offer };
     }
 
-    let rows = [
-        // createData('Francisco', 'Uribe', 159),
-        // createData('Francisco', 'Uribe', 159),
-        // createData('Francisco', 'Uribe', 159),
-        // createData('Francisco', 'Uribe', 159),
-        // createData('Francisco', 'Uribe', 159),
-        // createData('Francisco', 'Uribe', 159)
-
-    ];
+    let rows = [];
 
     auction?.carrierOffers.map((c) => {
         rows.push(createData(c.user.name, c.user.lastName, c.offer))
     });
-
 
     return (
         <div>
