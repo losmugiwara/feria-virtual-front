@@ -76,7 +76,7 @@ export const Login = () => {
                 <div className="mb-3 form-check">
                 </div>
 
-                <Link to='/profile' onClick={onClickLogin}
+                <Link to='auth/profile' onClick={onClickLogin}
                     type="submit"
                     className="btn btn-form fw-semibold font-Jaldi">
                     Iniciar Sesión

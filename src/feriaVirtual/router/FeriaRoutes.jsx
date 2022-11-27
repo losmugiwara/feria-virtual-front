@@ -40,34 +40,24 @@ export const FeriaRoutes = () => {
 
     return (
         <>
-            {
-                (!isAuthenticating) ? <NavBar /> : null
-            }
 
 
             <div className='container'>
                 <Routes>
 
-                    <Route path="/" element={
-                        <ProtectedRoute user={user}>
-                            <InicioPage />
-                        </ProtectedRoute>
-                    } />
-
-
-                    <Route path="productos" element={
+                    <Route path='productos' element={
                         <ProtectedRoute user={user}>
                             <ProductosPage />
                         </ProtectedRoute>
                     } />
 
-                    <Route path="transporte" element={
+                    <Route path='transporte' element={
                         <ProtectedRoute user={user}>
                             <TransportePage />
                         </ProtectedRoute>
                     } />
 
-                    <Route path="crearcuenta" element={
+                    <Route path='crearcuenta' element={
                         <ProtectedRoute user={user}>
                             <SesionPage />
                         </ProtectedRoute>

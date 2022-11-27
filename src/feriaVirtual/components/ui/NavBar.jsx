@@ -18,6 +18,10 @@ export const NavBar = () => {
     const { user, setUser } = useContext(MaipoContext);
     const navigate = useNavigate();
 
+    const onCLickLogin = () => {
+        navigate('/crearcuenta');
+    }
+
     const onClickLogout = () => {
         dispatch(logout());
         setUser({
@@ -40,7 +44,7 @@ export const NavBar = () => {
                     <ul className="navbar-nav d-flex flex-row">
                         <li className="nav-item p-1">
                             <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
-                                to='/'>
+                                to='home'>
                                 Home
                             </NavLink>
                         </li>
@@ -63,25 +67,35 @@ export const NavBar = () => {
                         }
 
 
-                        <li className="nav-item p-1">
-                            <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
-                                to='dashboard'>
-                                Dashboard
-                            </NavLink>
-                        </li>
+                        {!isAuthenticated ? ''
+                            : <li className="nav-item p-1">
+                                <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
+                                    to='dashboard'>
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                        }
+                        {!isAuthenticated ? ''
+                            : <li className="nav-item p-1">
+                                <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
+                                    to='profile'>
+                                    {isAuthenticated ? userName : 'Cuenta'}
+                                </NavLink>
+                            </li>}
 
-                        <li className="nav-item p-1">
-                            <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
-                                to='profile'>
-                                {isAuthenticated ? userName : 'Cuenta'}
-                            </NavLink>
-                        </li>
-                        <li className="nav-item p-1">
-                            <NavLink onClick={onClickLogout} className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
-                                to='crearcuenta'>
-                                Logout
-                            </NavLink>
-                        </li>
+                        {!isAuthenticated
+                            ? <li className="nav-item p-1">
+                                <NavLink onClick={onCLickLogin} className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
+                                    to='crearcuenta'>
+                                    Iniciar Sesión
+                                </NavLink>
+                            </li>
+                            : <li className="nav-item p-1">
+                                <NavLink onClick={onClickLogout} className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
+                                    to='crearcuenta'>
+                                    Logout
+                                </NavLink>
+                            </li>}
                     </ul>
                 </div>
             </div>
