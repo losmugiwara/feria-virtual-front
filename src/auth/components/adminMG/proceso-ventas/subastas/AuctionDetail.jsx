@@ -69,7 +69,7 @@ export const AuctionDetail = () => {
                     </Typography>
                 </div>
                 <div className='col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6'>
-                    <Box textAlign='right'>
+                    <Box textAlign='right' sx={{mb:5}}>
                         <Button variant='contained' color='success' endIcon={<AttachMoneyIcon />}>
                             Seguir Venta
                         </Button>
@@ -81,7 +81,7 @@ export const AuctionDetail = () => {
 
 
 
-            <Typography align='center' variant='h5' sx={{ mb: 3 }}>
+            <Typography align='center' variant='h5' sx={{ mt:3, mb: 3 }}>
                 Ofertas realizadas por transportistas
             </Typography>
             <TableContainer component={Paper}>
