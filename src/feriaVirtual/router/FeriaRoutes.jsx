@@ -19,6 +19,7 @@ import { Auctions } from '../../auth/components/adminMG/proceso-ventas/subastas/
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { AuctionDetail } from '../../auth/components/adminMG/proceso-ventas/subastas/AuctionDetail';
+import { AuctionCarrier } from '../components/AuctionCarrier';
 
 
 export const FeriaRoutes = () => {
@@ -54,6 +55,11 @@ export const FeriaRoutes = () => {
                     <Route path='transporte' element={
                         <ProtectedRoute user={user}>
                             <TransportePage />
+                        </ProtectedRoute>
+                    } />
+                    <Route path='transporte/detalle/:id' element={
+                        <ProtectedRoute user={user}>
+                            <AuctionCarrier />
                         </ProtectedRoute>
                     } />
 

@@ -17,6 +17,8 @@ export const CardRequestSale = ({ request }) => {
         <Card sx={{ minWidth: 275 }}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                    <b>Nro Solicitud de venta: {request.id}</b>
+                    <br />
                     Estado de solicitud:
                     {
                         (request.approvalStatus == "ON_HOLD") && <b> En espera</b>

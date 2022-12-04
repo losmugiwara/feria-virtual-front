@@ -45,3 +45,17 @@ export const createAuction = async (idRequest) => {
     return data;
 };
 
+export const generateBid = async (auctionId, carrierId, bid) => {
+    const token = localStorage.getItem("token");
+
+    const resp = await axiosApi.put(`/auctions/auction=${auctionId}/carrier=${carrierId}`, {
+        'offer': bid
+    }, {
+        'headers': {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+
+    const { data } = resp;
+    console.log(data);
+};

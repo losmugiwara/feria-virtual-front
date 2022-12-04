@@ -4,6 +4,7 @@ import { ClientIntCharts } from "../../auth/components/graficos/clientint/Client
 import { ClientExtCharts } from "../../auth/components/graficos/clientext/ClientExtCharts";
 import { ProducerCharts } from "../../auth/components/graficos/producer/ProducerCharts";
 import { useSelector } from 'react-redux';
+import { TransportistaPage } from "./TransportistaPage";
 
 
 
@@ -28,6 +29,9 @@ export const DashboardPage = () => {
       }
       {
         (roles[0]?.authority === 'ROLE_PRODUCER') && <ProducerCharts />
+      }
+      {
+        (roles[0]?.authority === 'ROLE_CARRIER') && <TransportistaPage />
       }
 
 
