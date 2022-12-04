@@ -64,6 +64,8 @@ export const RequestSaleDetail = () => {
       </Typography>
       <hr />
       <p>
+        <b>Nro Solicitud de venta: {request?.id}</b>
+        <br />
         Fecha de solicitud: <b>{createdDate}</b>
         <br />
         Estado de solicitud: {

@@ -51,6 +51,7 @@ export const AuctionDetail = () => {
 
             <div className='row'>
                 <div className='col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6'>
+                    <b>Nro Solicitud de venta: {auction?.requestSale.id}</b>
                     <Typography>Información Cliente:</Typography>
                     <Typography align='center' variant='p' sx={{ mb: 3 }}>
                         <b>Rut:</b> {auction?.requestSale.user.rut}

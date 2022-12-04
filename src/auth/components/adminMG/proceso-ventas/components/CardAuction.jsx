@@ -27,6 +27,7 @@ export const CardAuction = ({auction}) => {
     <Card sx={{ minWidth: 275 }}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                <b>Nro Solicitud de venta: {auction?.requestSale.id}</b>
                 </Typography>
                 <Typography variant="h5" component="div">
                   {auction?.requestSale.user.name} {auction?.requestSale.user.lastName} - {producer}

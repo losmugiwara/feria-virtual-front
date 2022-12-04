@@ -38,6 +38,7 @@ export const userProfile = async () => {
     });
 
     const { data } = resp;
+    console.log(data);
 
     return data;
 };
