@@ -4,9 +4,11 @@ import jwt_decode from "jwt-decode";
 export const loginApi = async (user = null) => {
 
     if (!user) return;
-
+    console.log(user)
     const resp = await axiosAuth.post("/login", user);
+    console.log(resp)
     const respJson = await resp.data;
+    console.log(respJson)
     const { token } = respJson;
 
     return token;

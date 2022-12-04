@@ -11,9 +11,11 @@ export const checkingAuthentication = () => {
     }
 }
 export const startLogin = (user) => {
+    console.log(user)
     return async (dispatch) => {
         dispatch(checkingCredentials());
         const token = await loginApi(user);
+        console.log(token)
         const dectoken = jwt_decode(token);
         const { sub, roles } = dectoken;
         console.log({ sub, roles });
