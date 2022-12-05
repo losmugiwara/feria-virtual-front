@@ -8,6 +8,7 @@ import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const style = {
     position: 'absolute',
@@ -35,12 +36,14 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 export const ModalShopping = () => {
     const [open, setOpen] = useState(false);
     const { totalQuantity } = useSelector(state => state.cart);
+    const nav = useNavigate();
 
     const handleOpen = () => {
         setOpen(true);
     };
     const handleClose = () => {
         setOpen(false);
+        nav('/shop')
     };
     return (
         <div>
@@ -69,6 +72,9 @@ export const ModalShopping = () => {
                             </TableHead>
                         </Table>
                     </TableContainer>
+                    <Button onClick={handleClose}>
+                        Ir al carro
+                    </Button>
                 </Box>
             </Modal>
         </div>

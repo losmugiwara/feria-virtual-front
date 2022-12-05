@@ -1,5 +1,4 @@
-import { axiosApi, axiosAuth } from "./api";
-import jwt_decode from "jwt-decode";
+import { axiosApi } from "./api";
 
 export const productsApi = async () => {
     const productsResp = await axiosApi.get('/products');

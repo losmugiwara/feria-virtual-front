@@ -6,8 +6,7 @@ import { ProfilePage } from '../../auth/pages/ProfilePage';
 import { MaipoContext } from '../../context/maipoContext';
 
 import { Datos, Sales, Payments, AddProducts } from '../../auth/components/adminMG/IndexAdmin';
-import { NavBar } from '../components/ui/IndexUi'
-import { BuscarPage, InicioPage, ProductosPage, TransportePage, } from '../pages'
+import { ProductosPage, Shop, TransportePage, } from '../pages/Index';
 import { ProtectedRoute } from './ProtectedRoute'
 import { AddContract } from '../../auth/components/adminMG/proceso-ventas/contratos/AddContract';
 import { AddSales } from '../../auth/components/adminMG/proceso-ventas/ventas/AddSales';
@@ -47,11 +46,14 @@ export const FeriaRoutes = () => {
                 <Routes>
 
                     <Route path='productos' element={
-                        <ProtectedRoute user={user}>
+                        
                             <ProductosPage />
+                    } />
+                    <Route path='shop' element={
+                        <ProtectedRoute user={user}>
+                            <Shop />
                         </ProtectedRoute>
                     } />
-
                     <Route path='transporte' element={
                         <ProtectedRoute user={user}>
                             <TransportePage />
@@ -66,13 +68,6 @@ export const FeriaRoutes = () => {
                     <Route path='crearcuenta' element={
                         <ProtectedRoute user={user}>
                             <SesionPage />
-                        </ProtectedRoute>
-                    } />
-
-
-                    <Route path='search' element={
-                        <ProtectedRoute user={user}>
-                            <BuscarPage />
                         </ProtectedRoute>
                     } />
 

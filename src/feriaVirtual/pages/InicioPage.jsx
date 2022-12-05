@@ -14,7 +14,7 @@ export const InicioPage = () => {
         setTimeout(() => {
             productsApi().then((p) => { setProducts(p) });
             setReady(true);
-        }, 3000)
+        }, 1000)
 
         return () => {
             setProducts();
