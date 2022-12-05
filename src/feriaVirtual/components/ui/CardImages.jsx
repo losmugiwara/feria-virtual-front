@@ -1,19 +1,51 @@
 import './ui.css'
-import palta from '../../../img/paltas.jpg';
-import { Select } from './Select';
+import { Button, Card, CardActions, CardContent, CardMedia, Typography, Zoom } from '@mui/material';
+import { Add } from '@mui/icons-material';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../../../store/auth';
+import { useSnackbar } from 'notistack';
 
 export const CardImages = ({ product }) => {
+
+    const dispatch = useDispatch();
+    const { enqueueSnackbar } = useSnackbar();
+
+    const addCart = (variant) => () => {
+        dispatch(addItem({
+            id: product.id,
+            productName: product.nameProduct,
+            img: product.urlImage,
+            price: product.price,
+        }))
+        enqueueSnackbar('producto agregado al carro',
+            {
+                variant, autoHideDuration: 2000,
+                anchorOrigin: {
+                    vertical: 'top',
+                    horizontal: 'right'
+                }
+            })
+        console.log('producto cargado al carrito')
+    }
     return (
         <>
-
-
-            <img src={product.urlImage} className="card-img" />
-            <div className="card-body grid text-center d-grid">
-                <h5 className="card-title uno">{product.nameProduct}</h5>
-                <p className="card-text dos">$ {product.price}</p>
-                <Select />
-                <button className="btn btn-color fw-semibold color-text tres">Agregar</button>
-            </div>
+            <Card sx={{ naxWidth: 345 }}>
+                <CardMedia
+                    component='img'
+                    height='140'
+                    image={product.urlImage} />
+                <CardContent>
+                    <Typography gutterBottom variant='h5' component='div'>
+                        {product.nameProduct}
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    <Typography>
+                        $ {product.price}
+                    </Typography>
+                    <Button onClick={addCart('success')}><Add /></Button>
+                </CardActions>
+            </Card>
 
 
         </>

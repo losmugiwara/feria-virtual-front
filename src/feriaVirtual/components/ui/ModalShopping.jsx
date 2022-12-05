@@ -3,10 +3,11 @@ import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Box } from '@mui/material';
+import { Box, Table, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
+import { useSelector } from 'react-redux';
 
 const style = {
     position: 'absolute',
@@ -33,6 +34,8 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 export const ModalShopping = () => {
     const [open, setOpen] = useState(false);
+    const { totalQuantity } = useSelector(state => state.cart);
+
     const handleOpen = () => {
         setOpen(true);
     };
@@ -42,7 +45,7 @@ export const ModalShopping = () => {
     return (
         <div>
             <IconButton aria-label='cart' onClick={handleOpen}>
-                <StyledBadge badgeContent={4} color='secondary'>
+                <StyledBadge badgeContent={totalQuantity} color='secondary'>
                     <ShoppingCartIcon />
                 </StyledBadge>
             </IconButton>
@@ -54,9 +57,18 @@ export const ModalShopping = () => {
             >
                 <Box sx={{ ...style, width: 400 }}>
                     <h2 id="parent-modal-title">Text in a modal</h2>
-                    <p id="parent-modal-description">
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                    </p>
+                    <TableContainer>
+                        <Table>
+                            <TableHead  >
+                                <TableRow>
+                                    <TableCell>Imagen</TableCell>
+                                    <TableCell>Producto</TableCell>
+                                    <TableCell>Precio</TableCell>
+                                    <TableCell>Accion</TableCell>
+                                </TableRow>
+                            </TableHead>
+                        </Table>
+                    </TableContainer>
                 </Box>
             </Modal>
         </div>
