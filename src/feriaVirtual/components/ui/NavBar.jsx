@@ -38,7 +38,7 @@ export const NavBar = () => {
     return (
         <nav className="navbar navbar-expand-lg ">
             <div className="container-fluid d-flex">
-                <NavLink className="navbar-brand" to='/'>
+                <NavLink className="navbar-brand" to='home'>
                     <img className='logo' src={logo} />
                 </NavLink>
                 <div className="d-flex justify-content-end font-Inter" id="navbarNav">

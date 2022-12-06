@@ -1,5 +1,5 @@
-import { SearchOutlined } from "@mui/icons-material";
-import { Grid, IconButton, InputBase, Paper, Typography } from "@mui/material";
+
+import { Grid, InputBase, Paper, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -10,26 +10,27 @@ import { Loading } from "../components/ui/Loading";
 
 export const ProductosPage = () => {
   const [products, setProducts] = useState([]);
-  const [ready, setReady] = useState(false)
+  const [tableProducts, setTableProducts] = useState([]);
+  const [busqueda, setBusqueda] = useState('');
+  const [ready, setReady] = useState(false);
 
-  const productOnChange = (e) => {
-    e.preventDefault();
-    const searchTerm = e.target.value;
-    const searchedProducts = products.filter(products => products.nameProduct.toLowerCase().includes(searchTerm.toLowerCase()));
-
-    if (products.length > 1) {
-      setProducts(searchedProducts);
-    } else {
-      productsApi().then((p) => { setProducts(p) });
-    }
-    console.log(products)
+  const handleChange = (e) => {
+    setBusqueda(e.target.value);
+    filtrar(e.target.value);
   }
-
+  const filtrar = (terminoBusqueda) => {
+    const resultadosBusqueda = tableProducts.filter((elemento) => {
+      if (elemento.nameProduct.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())) {
+        return elemento;
+      }
+    });
+    setProducts(resultadosBusqueda);
+  }
 
 
   useEffect(() => {
     setTimeout(() => {
-      productsApi().then((p) => { setProducts(p) });
+      productsApi().then((p) => { setProducts(p), setTableProducts(p) });
       setReady(true);
     }, 1000)
 
@@ -38,7 +39,6 @@ export const ProductosPage = () => {
       setReady(false);
     }
   }, [])
-
 
   productsApi();
   return (
@@ -54,11 +54,10 @@ export const ProductosPage = () => {
               sx={{ ml: 1, flex: 1 }}
               placeholder='Buscar productos...'
               inputProps={{ 'aria-label': 'Productos...' }}
-              onChange={productOnChange}
+              onChange={handleChange}
+              name='product'
+              value={busqueda}
             />
-            <IconButton                        >
-              <SearchOutlined />
-            </IconButton>
           </Paper>
         </Grid>
         <Grid item sx={{ marginTop: '20px' }}>
