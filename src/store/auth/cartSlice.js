@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { useDispatch } from 'react-redux';
 
 export const cartSlice = createSlice({
 
@@ -11,29 +10,38 @@ export const cartSlice = createSlice({
     },
     reducers: {
         addItem: (state, { payload }) => {
-            const newItem = payload;
-            const existingItem = state.cartItems.find(item => item.id === newItem.id);
+            const existingItem = state.cartItems.find((item) => item.id === payload.id);
             state.totalQuantity++
             if (!existingItem) {
                 state.cartItems.push({
-                    id: newItem.id,
-                    productName: newItem.nameProduct,
-                    img: newItem.urlImage,
-                    price: newItem.price,
+                    id: payload.id,
+                    productName: payload.productName,
+                    img: payload.img,
+                    price: payload.price,
                     quantity: 1,
-                    totalPrice: newItem.price,
+                    totalPrice: payload.price,
                 });
             } else {
                 existingItem.quantity++
-                existingItem.totalPrice = Number(existingItem.totalPrice) + Number(newItem.price)
+                existingItem.totalPrice = Number(existingItem.totalPrice) + Number(payload.price)
             }
             state.totalAmount = state.cartItems.reduce((total, item) => total + Number(item.price) * Number(item.quantity));
             console.log(state.totalQuantity);
-            console.log(state.cartItems);
-            console.log(newItem);
+            console.log(payload);
+
         },
+        deleteItem: (state, { payload }) => {
+            const existingItem = state.cartItems.filter((item) => item.id === payload.id);
+            if (existingItem) {
+                state.cartItems = state.cartItems.filter((item) => item.id !== payload.id)
+                state.totalQuantity = state.totalQuantity - existingItem.quantity
+            }
+            state.totalAmount = state.cartItems.reduce(
+                (total, item) => total + Number(item.price) * Number(item.quantity)
+            );
+        }
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { addItem } = cartSlice.actions
+export const { addItem, deleteItem } = cartSlice.actions

@@ -25,7 +25,6 @@ export const CardImages = ({ product }) => {
                     horizontal: 'right'
                 }
             })
-        console.log('producto cargado al carrito')
     }
     return (
         <>

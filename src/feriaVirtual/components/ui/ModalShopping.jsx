@@ -1,14 +1,16 @@
-import React from 'react';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Box, Table, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import './ui.css'
+import { Delete } from '@mui/icons-material';
+import { deleteItem } from '../../../store/auth';
 
 const style = {
     position: 'absolute',
@@ -34,17 +36,26 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export const ModalShopping = () => {
-    const [open, setOpen] = useState(false);
-    const { totalQuantity } = useSelector(state => state.cart);
-    const nav = useNavigate();
 
+    const { cartItems, totalQuantity } = useSelector((state) => state.cart);
+    const [open, setOpen] = useState(false);
+    const nav = useNavigate();
+    const dispatch = useDispatch();
+
+    console.log(cartItems)
     const handleOpen = () => {
         setOpen(true);
     };
     const handleClose = () => {
         setOpen(false);
-        nav('/shop')
     };
+    const handleDirecc = () => {
+        setOpen(false);
+        nav('/shop')
+    }
+    const deleteItems = () => {
+        dispatch(deleteItem(c.id));
+    }
     return (
         <div>
             <IconButton aria-label='cart' onClick={handleOpen}>
@@ -58,21 +69,40 @@ export const ModalShopping = () => {
                 aria-labelledby="parent-modal-title"
                 aria-describedby="parent-modal-description"
             >
-                <Box sx={{ ...style, width: 400 }}>
+                <Box sx={{ ...style, width: 900 }}>
                     <h2 id="parent-modal-title">Text in a modal</h2>
                     <TableContainer>
-                        <Table>
-                            <TableHead  >
-                                <TableRow>
-                                    <TableCell>Imagen</TableCell>
-                                    <TableCell>Producto</TableCell>
-                                    <TableCell>Precio</TableCell>
-                                    <TableCell>Accion</TableCell>
-                                </TableRow>
-                            </TableHead>
-                        </Table>
+                        {cartItems.length != 0 ?
+                            <Table>
+                                <TableHead  >
+                                    <TableRow>
+                                        <TableCell>Imagen</TableCell>
+                                        <TableCell>Producto</TableCell>
+                                        <TableCell>Precio</TableCell>
+                                        <TableCell>Cantidad</TableCell>
+                                        <TableCell>Accion</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {cartItems.map((c) => (
+                                        <TableRow key={c.id}>
+                                            <TableCell><img className='imgFrut' src={c.img} /></TableCell>
+                                            <TableCell>{c.productName}</TableCell>
+                                            <TableCell>{`$ ${c.totalPrice}`}</TableCell>
+                                            <TableCell>{`${c.quantity} kg`}</TableCell>
+                                            <TableCell>
+                                                <IconButton onClick={deleteItems}>
+                                                    <Delete />
+                                                </IconButton>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))
+                                    }
+                                </TableBody>
+                            </Table>
+                            : <Typography>No hay productos en el carro</Typography>}
                     </TableContainer>
-                    <Button onClick={handleClose}>
+                    <Button onClick={handleDirecc}>
                         Ir al carro
                     </Button>
                 </Box>

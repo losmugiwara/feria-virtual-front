@@ -26,6 +26,10 @@ export const ProductosPage = () => {
     });
     setProducts(resultadosBusqueda);
   }
+  const onSumit = (e) => {
+    e.preventDefault();
+    setBusqueda(e.target.value);
+  }
 
 
   useEffect(() => {
@@ -39,7 +43,6 @@ export const ProductosPage = () => {
       setReady(false);
     }
   }, [])
-
   productsApi();
   return (
     <Container>
@@ -49,6 +52,7 @@ export const ProductosPage = () => {
           sx={{ marginTop: '10px' }}>
           <Paper
             component='form'
+            onSubmit={onSumit}
             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400 }}>
             <InputBase
               sx={{ ml: 1, flex: 1 }}
@@ -73,7 +77,7 @@ export const ProductosPage = () => {
                         product={p}
                       />
                     </li>
-                  )) : <Loading />
+                  )) : <Typography>Producto no encontrado</Typography>
 
                 }
               </ul>
