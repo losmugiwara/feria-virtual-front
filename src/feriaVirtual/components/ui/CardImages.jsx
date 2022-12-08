@@ -26,6 +26,7 @@ export const CardImages = ({ product }) => {
                 }
             })
     }
+    
     return (
         <>
             <Card sx={{ naxWidth: 345 }}>

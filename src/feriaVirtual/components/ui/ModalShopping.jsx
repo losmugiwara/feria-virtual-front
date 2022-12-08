@@ -11,6 +11,8 @@ import { useNavigate } from 'react-router-dom';
 import './ui.css'
 import { Delete } from '@mui/icons-material';
 import { deleteItem } from '../../../store/auth';
+import { productsApi } from '../../../helpers/products';
+import { useEffect } from 'react';
 
 const style = {
     position: 'absolute',
@@ -38,11 +40,13 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 export const ModalShopping = () => {
 
     const { cartItems, totalQuantity } = useSelector((state) => state.cart);
+    const [products, setProducts] = useState();
     const [open, setOpen] = useState(false);
     const nav = useNavigate();
     const dispatch = useDispatch();
 
-    console.log(cartItems)
+
+
     const handleOpen = () => {
         setOpen(true);
     };
@@ -53,9 +57,18 @@ export const ModalShopping = () => {
         setOpen(false);
         nav('/shop')
     }
-    const deleteItems = () => {
-        dispatch(deleteItem(c.id));
+    const deleteItems = (id) => {
+        dispatch(deleteItem(id));
     }
+    useEffect(() => {
+        productsApi().then((p) => { setProducts(p) });
+
+        return () => {
+            setProducts()
+        }
+    }, [])
+
+
     return (
         <div>
             <IconButton aria-label='cart' onClick={handleOpen}>
@@ -91,7 +104,7 @@ export const ModalShopping = () => {
                                             <TableCell>{`$ ${c.totalPrice}`}</TableCell>
                                             <TableCell>{`${c.quantity} kg`}</TableCell>
                                             <TableCell>
-                                                <IconButton onClick={deleteItems}>
+                                                <IconButton onClick={() => deleteItems(c.id)}>
                                                     <Delete />
                                                 </IconButton>
                                             </TableCell>
