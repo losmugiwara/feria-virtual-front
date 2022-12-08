@@ -91,7 +91,7 @@ export const NavBar = () => {
                             !isAuthenticated
                                 ? <li className="nav-item p-1">
                                     <NavLink onClick={onCLickLogin} className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
-                                        to='crearcuenta'>
+                                        to='iniciarsesion'>
                                         Iniciar Sesión
                                     </NavLink>
                                 </li>

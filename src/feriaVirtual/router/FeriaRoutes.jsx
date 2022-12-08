@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { AdminProcesos, SesionPage } from '../../auth/pages/IndexPages';
+import { AdminProcesos } from '../../auth/pages/IndexPages';
 import { DashboardPage } from '../../auth/pages/DashboardPage';
 import { ProfilePage } from '../../auth/pages/ProfilePage';
 import { MaipoContext } from '../../context/maipoContext';
@@ -19,6 +19,7 @@ import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { AuctionDetail } from '../../auth/components/adminMG/proceso-ventas/subastas/AuctionDetail';
 import { AuctionCarrier } from '../components/AuctionCarrier';
+import { CreateAccount, Login } from '../../auth/components/IndexAuth';
 
 
 export const FeriaRoutes = () => {
@@ -46,8 +47,8 @@ export const FeriaRoutes = () => {
                 <Routes>
 
                     <Route path='productos' element={
-                        
-                            <ProductosPage />
+
+                        <ProductosPage />
                     } />
                     <Route path='shop' element={
                         <ProtectedRoute user={user}>
@@ -67,7 +68,12 @@ export const FeriaRoutes = () => {
 
                     <Route path='crearcuenta' element={
                         <ProtectedRoute user={user}>
-                            <SesionPage />
+                            <CreateAccount />
+                        </ProtectedRoute>
+                    } />
+                    <Route path='iniciarsesion' element={
+                        <ProtectedRoute user={user}>
+                            <Login />
                         </ProtectedRoute>
                     } />
 

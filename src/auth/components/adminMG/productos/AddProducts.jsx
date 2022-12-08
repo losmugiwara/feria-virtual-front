@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { productsApi } from '../../../../helpers/products';
+import { ModalAddProduct } from './ModalAddProduct';
 import './products.css';
 
 
@@ -66,12 +67,7 @@ export const AddProducts = () => {
               onClick={() => { nav(-1) }}>
               <ArrowCircleLeftRounded />
             </Button>
-            <Button
-              variant='contained'
-              size='small'
-              onClick={() => openCloseAdd()}>
-              Agregar
-            </Button>
+            <ModalAddProduct />
           </div>
         </div>
         <Table>

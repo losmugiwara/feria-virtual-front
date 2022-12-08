@@ -1,20 +1,42 @@
 import './login.css'
 import { useForm } from '../../../hooks/useForm';
 import { registerApi } from '../../../helpers/auth';
+import { Alert, Button, Grid, Link, TextField, Typography } from '@mui/material';
+import { Link as LinkR } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useMemo } from 'react';
+import { useState } from 'react';
+
+const formData = {
+    name: '',
+    lastName: '',
+    username: '',
+    email: '',
+    password: ''
+}
+
+const formValidations = {
+    name: [(value) => value.length > 1, 'Campo requerido.'],
+    lastName: [(value) => value.length > 1, 'Campo requerido.'],
+    username: [(value) => value.length > 1, 'Campo requerido.'],
+    email: [(value) => value.includes('@'), 'Formato incorrecto, falta "@".'],
+    password: [(value) => value.length >= 6, 'Debe tener más de 6 caracteres'],
+}
 
 export const CreateAccount = () => {
-    const {formState, onInputChange} = useForm({
-        name: '',
-        lastName: '',
-        username: '',
-        email: '',
-        password: ''
-    }); 
+    const [formSubmitted, setFormSubmitted] = useState(false);
+    const { status, errorMessage } = useSelector((state) => state.auth);
+    const isCheckingAuth = useMemo(() => status === 'checking', [status]);
+    const {
+        formState, userName, name, lastName, email, password, onInputChange,
+        isFormValid, usernameValid, nameValid, lastNameValid, emailValid, passwordValid
+    } = useForm(formData, formValidations);
 
 
-    const onClickRegister = async (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-
+        setFormSubmitted(true);
+        if (!isFormValid) return;
         const user = {
             name: formState.name,
             lastName: formState.lastName,
@@ -23,78 +45,110 @@ export const CreateAccount = () => {
             password: formState.password,
             roles: ["ROLE_CUSTOMER_EXTERNAL"]
         }
-
         const resp = await registerApi(user);
-
         console.log(resp);
-
     }
 
 
     return (
-        <div className="contenedor p-4">
-            <h3>Crear Cuenta</h3>
-            <form >
-                <div className="mb-3 d-grid">
-                    <div>
-                        <label className="form-label">Nombres</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            value={formState.name}
-                            name="name"
+        <form
+            className='animate__animated animate__fadeIn animate__faster'
+            onSubmit={onSubmit}>
+            <Typography variant='h4' textAlign='center'>Crear tu cuenta</Typography>
+            <Grid container>
+                <Grid container direction='row' justifyContent='center' spacing={3}>
+                    <Grid item xs={4} sx={{ mt: 2 }}>
+                        <TextField
+                            label='Nombre '
+                            type='text'
+                            placeholder='Su nombre'
+                            fullWidth
+                            name='name'
+                            value={name}
                             onChange={onInputChange}
+                            error={!!nameValid && formSubmitted}
+                            helperText={nameValid}
                         />
-                    </div>
-                    <div>
-                        <label className="form-label">Apellidos</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            value={formState.lastName}
-                            name="lastName"
+                    </Grid>
+                    <Grid item xs={4} sx={{ mt: 2 }}>
+                        <TextField
+                            label='Apellido '
+                            type='text'
+                            placeholder='Su apellido'
+                            fullWidth
+                            name='lastName'
+                            value={lastName}
                             onChange={onInputChange}
+                            error={!!lastNameValid && formSubmitted}
+                            helperText={lastNameValid}
                         />
-                    </div>
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Nombre de usuario</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        value={formState.username}
-                        name="username"
-                        onChange={onInputChange}
-                    />
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Correo electronico</label>
-                    <input
-                        type="email"
-                        className="form-control"
-                        value={formState.email}
-                        name="email"
-                        onChange={onInputChange}
-                    />
-                </div>
-                <div className="mb-3">
-                    <label className="form-label">Contraseña</label>
-                    <input 
-                        type="password"
-                        className="form-control"
-                        value={formState.password}
-                        name="password"
-                        onChange={onInputChange}
-                    />
-                </div>
-                <div className="mb-3 form-check">
-                </div>
-                <button 
-                    type="submit" 
-                    className="btn btn-form fw-semibold font-Jaldi"
-                    onClick={onClickRegister}
-                    >Iniciar Sesión</button>
-            </form>
-        </div>
-    )
+                    </Grid>
+                </Grid>
+                <Grid container justifyContent='center'>
+                    <Grid item xs={8} sx={{ mt: 2 }}>
+                        <TextField
+                            label='Nombre de usuario'
+                            type='text'
+                            placeholder='Su nombre de usuario'
+                            fullWidth
+                            name='userName'
+                            value={userName}
+                            onChange={onInputChange}
+                            error={!!usernameValid && formSubmitted}
+                            helperText={usernameValid}
+                        />
+                    </Grid>
+                    <Grid item xs={8} sx={{ mt: 2 }}>
+                        <TextField
+                            label='Correo'
+                            type='email'
+                            placeholder='Su correo '
+                            fullWidth
+                            name='email'
+                            value={email}
+                            onChange={onInputChange}
+                            error={!!emailValid && formSubmitted}
+                            helperText={emailValid}
+                        />
+                    </Grid>
+                    <Grid item xs={8} sx={{ mt: 2 }}>
+                        <TextField
+                            label='Contraseña'
+                            type='password'
+                            placeholder='Contraseña'
+                            fullWidth
+                            name='password'
+                            value={password}
+                            onChange={onInputChange}
+                            error={!!passwordValid && formSubmitted}
+                            helperText={passwordValid}
+                        />
+                    </Grid>
+                </Grid>
+                <Grid container justifyContent='center' spacing={2} sx={{ mb: 2, mt: 1 }}>
+                    <Grid
+                        item
+                        xs={8}
+                        display={!!errorMessage ? '' : 'none'}>
+                        <Alert severity='error'>{errorMessage}</Alert>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Button
+                            disabled={isCheckingAuth}
+                            type='submit'
+                            variant='contained'
+                            fullWidth>
+                            Crear Cuenta
+                        </Button>
+                    </Grid>
+                    <Grid sx={{ mt: '5px' }} container direction='row' justifyContent='center'>
+                        <Typography>¿Ya tienes una cuenta?</Typography>
+                        <Link component={LinkR} sx={{ ml: 1 }} color='inherit' to='/iniciarsesion'>
+                            Ingresar
+                        </Link>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </form > 
+    );
 }
