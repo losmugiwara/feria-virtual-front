@@ -1,4 +1,4 @@
-import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
+import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import React, { useState } from 'react'
 import { useForm } from '../../../../hooks/useForm';
 
@@ -103,6 +103,11 @@ export const ProductForm = () => {
                     <MenuItem value={2}>De Primera</MenuItem>
                     <MenuItem value={3}>De Segunda</MenuItem>
                 </Select>
+            </FormControl>
+
+            <FormControl >
+
+            <Button variant="contained" color='success' sx={{m: 1}}>Guardar Producto</Button>
             </FormControl>
         </form>
 
