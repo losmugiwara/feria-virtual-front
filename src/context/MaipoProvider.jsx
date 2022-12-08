@@ -6,6 +6,7 @@ export const MaipoProvider = ({ children }) => {
 
   
   const [user, setUser] = useState({
+    id: null,
     username: '',
     role: '',
     active: false

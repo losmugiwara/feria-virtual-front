@@ -14,3 +14,20 @@
 .imgProduct {
     width: 200px;
 }
+
+
+.label-product {
+    font-size: small;
+    font-weight: 500;
+    color: grey;
+
+}
+.p-product {
+    font-size: 20px;
+    font-weight: 500;
+    color: #232323;
+}
+
+.form-product {
+    margin: 15px;
+}

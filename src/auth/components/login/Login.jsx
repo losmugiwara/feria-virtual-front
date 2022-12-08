@@ -40,9 +40,10 @@ export const Login = () => {
         const dectoken = jwt_decode(token);
         console.log(dectoken);
 
-        const { sub, roles } = dectoken;
+        const { id, sub, roles } = dectoken;
 
         setUser({
+            id: id,
             username: sub,
             role: roles[0]?.authority,
             active: true

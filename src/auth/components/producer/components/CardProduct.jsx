@@ -12,11 +12,14 @@ export const CardProduct = ({ product }) => {
                 <h5 className='text-center'>{product?.nameProduct}</h5>
                 <hr />
 
-                <ul>
-                    <li>Kilos: {product?.kilogram}</li>
-                
-                
-                </ul>
+                <label className='label-product'>Kilogramos</label>
+                <p className='p-product'>{product?.kilogram} kg</p>
+                <label className='label-product'>Precio</label>
+                <p className='p-product'>${product?.price}</p>
+                <label className='label-product'>Calidad</label>
+                <p className='p-product'>{product?.quality.name}</p>
+                <label className='label-product'>Unidades</label>
+                <p className='p-product'>{product?.stock}</p>
 
             </div>
 
