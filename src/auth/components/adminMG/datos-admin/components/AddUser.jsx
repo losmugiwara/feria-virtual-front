@@ -112,6 +112,7 @@ export const AddUser = ({ active, setActive }) => {
                           <MenuItem value={['ROLE_CARRIER']}>Transportista</MenuItem>
                           <MenuItem value={['ROLE_CONSULTANT']}>Consultor</MenuItem>
                           <MenuItem value={['ROLE_ADMIN']}>Administrador</MenuItem>
+                          <MenuItem value={['ROLE_PRODUCER']}>Productor</MenuItem>
 
                         </Select>
                       </FormControl>

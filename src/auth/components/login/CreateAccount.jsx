@@ -51,104 +51,124 @@ export const CreateAccount = () => {
 
 
     return (
-        <form
-            className='animate__animated animate__fadeIn animate__faster'
-            onSubmit={onSubmit}>
-            <Typography variant='h4' textAlign='center'>Crear tu cuenta</Typography>
-            <Grid container>
-                <Grid container direction='row' justifyContent='center' spacing={3}>
-                    <Grid item xs={4} sx={{ mt: 2 }}>
-                        <TextField
-                            label='Nombre '
-                            type='text'
-                            placeholder='Su nombre'
-                            fullWidth
-                            name='name'
-                            value={name}
-                            onChange={onInputChange}
-                            error={!!nameValid && formSubmitted}
-                            helperText={nameValid}
-                        />
+        <Grid
+            container
+            spacing={0}
+            direction='column'
+            alignItems='center'
+            justifyContent='center'
+            sx={{ minHeight: '100vh', padding: 4 }}>
+            <Grid
+                item
+                className='box-shadow'
+                xs={3}
+                sx={{
+                    width: { sm: 450 },
+                    padding: 3,
+                    borderRadius: 2,
+                    border: 0.5,
+                    borderColor: '#224b73'
+                }}>
+                <form
+                    className='animate__animated animate__fadeIn animate__faster'
+                    onSubmit={onSubmit}>
+                    <Typography variant='h4' textAlign='center'>Crear tu cuenta</Typography>
+                    <Grid container>
+                        <Grid container direction='row' justifyContent='center' spacing={3}>
+                            <Grid item xs={6} sx={{ mt: 2 }}>
+                                <TextField
+                                    label='Nombre '
+                                    type='text'
+                                    placeholder='Su nombre'
+                                    fullWidth
+                                    name='name'
+                                    value={name}
+                                    onChange={onInputChange}
+                                    error={!!nameValid && formSubmitted}
+                                    helperText={nameValid}
+                                />
+                            </Grid>
+                            <Grid item xs={6} sx={{ mt: 2 }}>
+                                <TextField
+                                    label='Apellido '
+                                    type='text'
+                                    placeholder='Su apellido'
+                                    fullWidth
+                                    name='lastName'
+                                    value={lastName}
+                                    onChange={onInputChange}
+                                    error={!!lastNameValid && formSubmitted}
+                                    helperText={lastNameValid}
+                                />
+                            </Grid>
+                        </Grid>
+                        <Grid container justifyContent='center'>
+                            <Grid item xs={12} sx={{ mt: 2 }}>
+                                <TextField
+                                    label='Nombre de usuario'
+                                    type='text'
+                                    placeholder='Su nombre de usuario'
+                                    fullWidth
+                                    name='userName'
+                                    value={userName}
+                                    onChange={onInputChange}
+                                    error={!!usernameValid && formSubmitted}
+                                    helperText={usernameValid}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sx={{ mt: 2 }}>
+                                <TextField
+                                    label='Correo'
+                                    type='email'
+                                    placeholder='Su correo '
+                                    fullWidth
+                                    name='email'
+                                    value={email}
+                                    onChange={onInputChange}
+                                    error={!!emailValid && formSubmitted}
+                                    helperText={emailValid}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sx={{ mt: 2 }}>
+                                <TextField
+                                    label='Contraseña'
+                                    type='password'
+                                    placeholder='Contraseña'
+                                    fullWidth
+                                    name='password'
+                                    value={password}
+                                    onChange={onInputChange}
+                                    error={!!passwordValid && formSubmitted}
+                                    helperText={passwordValid}
+                                />
+                            </Grid>
+                        </Grid>
+                        <Grid container justifyContent='center' spacing={2} sx={{ mb: 2, mt: 1 }}>
+                            <Grid
+                                item
+                                xs={8}
+                                display={!!errorMessage ? '' : 'none'}>
+                                <Alert severity='error'>{errorMessage}</Alert>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Button
+                                    disabled={isCheckingAuth}
+                                    type='submit'
+                                    variant='contained'
+                                    fullWidth>
+                                    Crear Cuenta
+                                </Button>
+                            </Grid>
+                            <Grid sx={{ mt: '5px' }} container direction='row' justifyContent='center'>
+                                <Typography>¿Ya tienes una cuenta?</Typography>
+                                <Link component={LinkR} sx={{ ml: 1 }} color='inherit' to='/iniciarsesion'>
+                                    Ingresar
+                                </Link>
+                            </Grid>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={4} sx={{ mt: 2 }}>
-                        <TextField
-                            label='Apellido '
-                            type='text'
-                            placeholder='Su apellido'
-                            fullWidth
-                            name='lastName'
-                            value={lastName}
-                            onChange={onInputChange}
-                            error={!!lastNameValid && formSubmitted}
-                            helperText={lastNameValid}
-                        />
-                    </Grid>
-                </Grid>
-                <Grid container justifyContent='center'>
-                    <Grid item xs={8} sx={{ mt: 2 }}>
-                        <TextField
-                            label='Nombre de usuario'
-                            type='text'
-                            placeholder='Su nombre de usuario'
-                            fullWidth
-                            name='userName'
-                            value={userName}
-                            onChange={onInputChange}
-                            error={!!usernameValid && formSubmitted}
-                            helperText={usernameValid}
-                        />
-                    </Grid>
-                    <Grid item xs={8} sx={{ mt: 2 }}>
-                        <TextField
-                            label='Correo'
-                            type='email'
-                            placeholder='Su correo '
-                            fullWidth
-                            name='email'
-                            value={email}
-                            onChange={onInputChange}
-                            error={!!emailValid && formSubmitted}
-                            helperText={emailValid}
-                        />
-                    </Grid>
-                    <Grid item xs={8} sx={{ mt: 2 }}>
-                        <TextField
-                            label='Contraseña'
-                            type='password'
-                            placeholder='Contraseña'
-                            fullWidth
-                            name='password'
-                            value={password}
-                            onChange={onInputChange}
-                            error={!!passwordValid && formSubmitted}
-                            helperText={passwordValid}
-                        />
-                    </Grid>
-                </Grid>
-                <Grid container justifyContent='center' spacing={2} sx={{ mb: 2, mt: 1 }}>
-                    <Grid
-                        item
-                        xs={8}
-                        display={!!errorMessage ? '' : 'none'}>
-                        <Alert severity='error'>{errorMessage}</Alert>
-                    </Grid>
-                    <Grid item xs={6}>
-                        <Button
-                            disabled={isCheckingAuth}
-                            type='submit'
-                            variant='contained'
-                            fullWidth>
-                            Crear Cuenta
-                        </Button>
-                    </Grid>
-                    <Grid sx={{ mt: '5px' }} container direction='row' justifyContent='center'>
-                        <Typography>¿Ya tienes una cuenta?</Typography>
-                        <Link component={LinkR} sx={{ ml: 1 }} color='inherit' to='/iniciarsesion'>
-                            Ingresar
-                        </Link>
-                    </Grid>
-                </Grid>
+                </form >
             </Grid>
-        </form > 
+        </Grid>
     );
 }
