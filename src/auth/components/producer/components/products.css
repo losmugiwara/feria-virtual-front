@@ -1,0 +1,16 @@
+.product-list {
+    margin: 15px;
+}
+
+.card-product {
+    display: flex;
+    margin: 15px;
+}
+
+.card-info {
+    width: 100%;
+}
+
+.imgProduct {
+    width: 200px;
+}

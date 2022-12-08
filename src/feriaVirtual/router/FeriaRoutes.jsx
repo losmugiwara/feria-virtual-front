@@ -19,6 +19,7 @@ import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { AuctionDetail } from '../../auth/components/adminMG/proceso-ventas/subastas/AuctionDetail';
 import { AuctionCarrier } from '../components/AuctionCarrier';
+import { ProductosProducer } from '../../auth/components/producer/ProductosProducer';
 
 
 export const FeriaRoutes = () => {
@@ -80,6 +81,11 @@ export const FeriaRoutes = () => {
                     <Route path='profile' element={
                         <ProtectedRoute user={user}>
                             <ProfilePage />
+                        </ProtectedRoute>
+                    } />
+                    <Route path='profile/productos' element={
+                        <ProtectedRoute user={user}>
+                            <ProductosProducer />
                         </ProtectedRoute>
                     } />
                     {/* RUTAS DE ADMINISTRADOR */}
