@@ -83,7 +83,7 @@ export const ModalShopping = () => {
                 aria-describedby="parent-modal-description"
             >
                 <Box sx={{ ...style, width: 900 }}>
-                    <h2 id="parent-modal-title">Text in a modal</h2>
+                    <h2 id="parent-modal-title">Su carrito de compras</h2>
                     <TableContainer>
                         {cartItems.length != 0 ?
                             <Table>

@@ -97,7 +97,7 @@ export const NavBar = () => {
                                 </li>
                                 : <li className="nav-item p-1">
                                     <NavLink onClick={onClickLogout} className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
-                                        to='/crearcuenta'>
+                                        to='/iniciarsesion'>
                                         Logout
                                     </NavLink>
                                 </li>
