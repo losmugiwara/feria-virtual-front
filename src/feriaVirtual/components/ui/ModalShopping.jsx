@@ -104,7 +104,7 @@ export const ModalShopping = () => {
                                             <TableCell>{`$ ${c.totalPrice}`}</TableCell>
                                             <TableCell>{`${c.quantity} kg`}</TableCell>
                                             <TableCell>
-                                                <IconButton onClick={() => deleteItems(c.id)}>
+                                                <IconButton onClick={() => deleteItems(c)}>
                                                     <Delete />
                                                 </IconButton>
                                             </TableCell>
