@@ -1,0 +1,18 @@
+.span-profile {
+    font-size: small;
+    font-weight: 600;
+    color: #555555;
+}
+.p-profile {
+    margin-top: -10px;
+    font-size: 20px;
+    font-weight: 450;
+    color: black;
+}
+
+.div-profile {
+    margin: 10px;
+}
+.div-profile-avatar {
+    text-align: center;
+}

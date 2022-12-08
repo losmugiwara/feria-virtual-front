@@ -20,7 +20,7 @@ export const NavBar = () => {
     const navigate = useNavigate();
 
     const onCLickLogin = () => {
-        navigate('/crearcuenta');
+        navigate('/iniciarsesion');
     }
 
     const onClickLogout = () => {
@@ -31,7 +31,7 @@ export const NavBar = () => {
             active: false
         });
 
-        navigate('/crearcuenta');
+        navigate('/iniciarsesion');
 
     }
 
@@ -91,13 +91,13 @@ export const NavBar = () => {
                             !isAuthenticated
                                 ? <li className="nav-item p-1">
                                     <NavLink onClick={onCLickLogin} className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
-                                        to='iniciarsesion'>
+                                        to='/iniciarsesion'>
                                         Iniciar Sesión
                                     </NavLink>
                                 </li>
                                 : <li className="nav-item p-1">
                                     <NavLink onClick={onClickLogout} className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
-                                        to='crearcuenta'>
+                                        to='/crearcuenta'>
                                         Logout
                                     </NavLink>
                                 </li>

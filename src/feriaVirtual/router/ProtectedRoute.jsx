@@ -10,7 +10,7 @@ export const ProtectedRoute = ({ user, children }) => {
 
     useEffect(() => {
         if (!isAuthenticating) {
-            nav('/crearcuenta');
+            nav('/iniciarsesion');
         }
     }, [])
 
