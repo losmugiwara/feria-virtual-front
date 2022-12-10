@@ -78,12 +78,6 @@ export const FeriaRoutes = () => {
                         </ProtectedRoute>
                     } />
 
-                    <Route path='dashboard' element={
-                        <ProtectedRoute user={user}>
-                            <DashboardPage />
-                        </ProtectedRoute>
-                    } />
-
                     <Route path='profile' element={
                         <ProtectedRoute user={user}>
                             <ProfilePage />

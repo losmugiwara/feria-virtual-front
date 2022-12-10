@@ -2,9 +2,9 @@ import { faSave } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import { Box } from '@mui/system';
-import { permisos } from '../../../../../context/roles';
-import { addUser, registerApi } from '../../../../../helpers/auth';
+import { registerApi } from '../../../../../helpers/auth';
 import { useForm } from '../../../../../hooks/useForm';
+import { useSnackbar } from 'notistack';
 import '../../adminMG.css';
 
 
@@ -12,7 +12,7 @@ import '../../adminMG.css';
 export const AddUser = ({ active, setActive }) => {
 
 
-
+  const { enqueueSnackbar } = useSnackbar();
   const { formState, onInputChange } = useForm({
     userName: '',
     name: '',
@@ -31,7 +31,29 @@ export const AddUser = ({ active, setActive }) => {
   const onClickAdd = async (e) => {
     e.preventDefault();
     console.log(formState);
-    registerApi(formState);
+    const { ok, infoMessage } = await registerApi(formState);
+    if (ok) {
+      console.log(infoMessage)
+      enqueueSnackbar(`${infoMessage}`,
+        {
+          variant: 'success', autoHideDuration: 1000,
+          anchorOrigin: {
+            vertical: 'top',
+            horizontal: 'right'
+          }
+        }
+      );
+    } else {
+      enqueueSnackbar('No se pudo agregar un usuario',
+        {
+          variant: 'error', autoHideDuration: 1000,
+          anchorOrigin: {
+            vertical: 'top',
+            horizontal: 'right'
+          }
+        }
+      );
+    }
   }
 
   return (

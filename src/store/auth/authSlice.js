@@ -4,6 +4,7 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState: {
         status: 'not-authenticated',
+        id: null,
         userName: null,
         roles: null,
         token: null,
@@ -12,6 +13,7 @@ export const authSlice = createSlice({
     reducers: {
         login: (state, { payload }) => {
             state.status = 'authenticated';
+            state.id = payload.id;
             state.token = payload.token;
             state.userName = payload.sub;
             state.roles = payload.roles;
@@ -19,6 +21,7 @@ export const authSlice = createSlice({
         },
         logout: (state, { payload }) => {
             state.status = 'not-authenticated';
+            state.id = null;
             state.token = null;
             state.userName = null;
             state.roles = null;

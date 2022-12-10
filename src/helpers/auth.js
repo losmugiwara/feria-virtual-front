@@ -8,9 +8,11 @@ export const loginApi = async (user = null) => {
         const resp = await axiosAuth.post("/login", user);
         const respJson = await resp.data;
         const { token } = respJson;
+        const {id} = jwt_decode(token)
+        console.log(id);
         return {
             ok: true,
-            token,
+            token, id,
         }
     } catch (error) {
         const errorMessage = error.message;
@@ -19,17 +21,26 @@ export const loginApi = async (user = null) => {
             errorMessage,
         }
     }
+    
 };
 
 export const registerApi = async (user = null) => {
 
     if (!user) return;
-
-    const resp = await axiosAuth.post("/register", user);
-    const respJson = await resp.data;
-
-    return respJson;
-
+    try {
+        const resp = await axiosAuth.post("/register", user);
+        const { infoMessage } = await resp.data;
+        return {
+            ok: true,
+            infoMessage,
+        }
+    } catch (error) {
+        const errorMessage = error?.message;
+        return {
+            ok: false,
+            errorMessage
+        }
+    }
 };
 export const userProfile = async () => {
 
@@ -49,9 +60,8 @@ export const userProfile = async () => {
 
     return data;
 };
+
 export const addUser = async (user = null) => {
-
-
     const resp = await axiosApi.post("/register/account", user, {
         'headers': {
             'Authorization': `Bearer ${localStorage.getItem('token')}`

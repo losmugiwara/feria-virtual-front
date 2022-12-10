@@ -69,16 +69,6 @@ export const NavBar = () => {
                                     </NavLink>
                                 </li> : ''
                         }
-
-
-                        {!isAuthenticated ? ''
-                            : <li className="nav-item p-1">
-                                <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
-                                    to='dashboard'>
-                                    Dashboard
-                                </NavLink>
-                            </li>
-                        }
                         {!isAuthenticated ? ''
                             : <li className="nav-item p-1">
                                 <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
@@ -102,7 +92,6 @@ export const NavBar = () => {
                                     </NavLink>
                                 </li>
                         }
-
                     </ul>
                 </div>
             </div>
