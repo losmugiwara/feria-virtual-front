@@ -49,3 +49,17 @@ export const updateRequestsSaleStatus = async (idRequest, approvalStatus) => {
     
     return data;
 };
+
+export const createRequestSale = async (idCustomer, requestSale) => {
+    const requestResp = await axiosApi.post(`/requests-sale/${idCustomer}`, requestSale, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+
+    const { data } = requestResp;
+
+    console.log(data);
+
+    return data;
+}
