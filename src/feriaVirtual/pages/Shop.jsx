@@ -2,7 +2,8 @@ import { Delete } from '@mui/icons-material';
 import { Box, Button, Grid, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteItem } from '../../store/auth';
+import { useNavigate } from 'react-router-dom';
+import { cancelCart, deleteItem } from '../../store/auth';
 
 
 export const Shop = () => {
@@ -10,6 +11,7 @@ export const Shop = () => {
   const { cartItems, totalQuantity, totalAmount } = useSelector((state) => state.cart);
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
+  const nav = useNavigate();
 
   const deleteItems = (id, variant) => {
     dispatch(deleteItem(id));
@@ -24,8 +26,20 @@ export const Shop = () => {
     )
 
   }
-  console.log(cartItems)
-  console.log(totalAmount)
+  const cancelPurchase = (variant) => {
+    dispatch(cancelCart());
+    enqueueSnackbar('Productos eliminados del carrito',
+      {
+        variant, autoHideDuration: 2000,
+        anchorOrigin: {
+          vertical: 'top',
+          horizontal: 'right'
+        }
+      }
+    );
+    nav('/home')
+  }
+
   return (
     <>
       <Box>
@@ -117,7 +131,7 @@ export const Shop = () => {
               </Grid>
               <Grid item sx={{ mt: '10px', mb: '10px' }}>
                 <Grid container justifyContent='space-around' >
-                  <Button variant='contained'>Cancelar compra</Button>
+                  <Button variant='contained' onClick={() => cancelPurchase('error')}>Cancelar compra</Button>
                   <Button variant='contained'>Comprar</Button>
                 </Grid>
               </Grid>
