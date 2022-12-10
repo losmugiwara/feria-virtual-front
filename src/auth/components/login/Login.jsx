@@ -44,7 +44,7 @@ export const Login = () => {
         }
 
         dispatch(startLogin(user));
-        const token = await loginApi(user);
+        const { token } = await loginApi(user);
 
         localStorage.setItem('token', token);
 
@@ -83,7 +83,7 @@ export const Login = () => {
                     borderRadius: 2,
                     border: 0.5,
                     borderColor: '#2A5299',
-                    mb:'200px'
+                    mb: '200px'
                 }}>
                 <form
                     className='animate__animated animate__fadeIn animate__faster'
