@@ -1,25 +1,54 @@
-import { FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
-import React, { useState } from 'react'
+import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
+import React, { useContext, useState } from 'react'
+import { MaipoContext } from '../../../../context/maipoContext';
+import { productCreate, productsApiByUser } from '../../../../helpers/products';
 import { useForm } from '../../../../hooks/useForm';
 
 export const ProductForm = () => {
 
+    const { user, setProductsCtx } = useContext(MaipoContext);
     const [quality, setQuality] = useState();
+    const [category, setCategory] = useState();
 
     const { nameProduct, priceProduct, stockProduct, imageProduct, kilogramProduct, formState, onInputChange } = useForm({
         nameProduct: '',
         priceProduct: '',
-        priceProduct: '',
+        stockProduct: '',
         imageProduct: '',
         kilogramProduct: 0,
 
     });
 
-    const handleChangeSelect = (e) => {
-
+    const handleChangeSelectCategory = async(e) => {
+        const dataCategory = e.target.value;
+    
+        setCategory(dataCategory);
+    }
+    const handleChangeSelectQuality = (e) => {
+        const dataQuality = e.target.value;
+    
+        setQuality(dataQuality);
     }
 
-    const onSubmit = () => {
+    const onSubmit = async (e) => {
+
+        e.preventDefault();
+
+        const p = {
+            nameProduct: formState.nameProduct,
+            price: formState.priceProduct,
+            stock: formState.stockProduct,
+            urlImage: formState.imageProduct,
+            kilogram: formState.kilogramProduct
+        };
+
+        await productCreate(user.id, category, quality, p);
+
+
+        const productResp = await productsApiByUser(user.id);
+
+        setProductsCtx(productResp);
+
 
     }
 
@@ -90,19 +119,40 @@ export const ProductForm = () => {
             </FormControl>
 
             <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Categoria Producto</InputLabel>
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={category}
+                    label="Categoria Producto"
+                    onChange={handleChangeSelectCategory}
+                    sx={{ m: 1 }}
+                >
+                    <MenuItem value={4}>Frutas</MenuItem>
+                    <MenuItem value={5}>Frutas Secos</MenuItem>
+                    <MenuItem value={6}>Verduras</MenuItem>
+                </Select>
+            </FormControl>
+
+            <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Calidad Producto</InputLabel>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={quality}
                     label="Calidad Producto"
-                    onChange={handleChangeSelect}
+                    onChange={handleChangeSelectQuality}
                     sx={{ m: 1 }}
                 >
                     <MenuItem value={1}>Extra</MenuItem>
                     <MenuItem value={2}>De Primera</MenuItem>
                     <MenuItem value={3}>De Segunda</MenuItem>
                 </Select>
+            </FormControl>
+
+            <FormControl >
+
+            <Button onClick={onSubmit} variant="contained" color='success' sx={{m: 1}}>Guardar Producto</Button>
             </FormControl>
         </form>
 
