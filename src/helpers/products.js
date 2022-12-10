@@ -21,3 +21,18 @@ export const productsApiByUser = async (id) => {
     console.log(data);
     return data;
 }
+
+export const productCreate = async (userId, categoryId, qualityId, p) => {
+    const token = localStorage.getItem("token");
+
+    const productResp = await axiosApi.post(`/products/user=${userId}/category=${categoryId}/quality=${qualityId}`, p, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+
+    const { data } = productResp;
+    console.log(data);
+
+    return data;
+}

@@ -6,18 +6,17 @@ import './products.css';
 
 export const ProductosList = () => {
 
-    const { user } = useContext(MaipoContext);
 
-    const [products, setProducts] = useState();
+    const { user, productsCtx, setProductsCtx } = useContext(MaipoContext);
 
     useEffect(() => {
         productsApiByUser(user.id).then((p) => {
-            setProducts(p);
+            setProductsCtx(p);
         })
 
         return () => {
             console.log("Componente desmontado!");
-            setProducts(null);
+            setProductsCtx(null);
         }
 
     }, []);
@@ -29,7 +28,7 @@ export const ProductosList = () => {
 
             <div className='product-list'>
                 {
-                (products) ? products.map((p) => (
+                (productsCtx) ? productsCtx.map((p) => (
                     <CardProduct
                     key={p?.id}
                     product={p}/>
