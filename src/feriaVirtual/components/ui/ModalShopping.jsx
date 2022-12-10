@@ -13,6 +13,7 @@ import { Delete } from '@mui/icons-material';
 import { deleteItem } from '../../../store/auth';
 import { productsApi } from '../../../helpers/products';
 import { useEffect } from 'react';
+import { useSnackbar } from 'notistack';
 
 const style = {
     position: 'absolute',
@@ -21,7 +22,7 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    border: '2px solid white',
     boxShadow: 24,
     pt: 2,
     px: 4,
@@ -40,11 +41,10 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 export const ModalShopping = () => {
 
     const { cartItems, totalQuantity } = useSelector((state) => state.cart);
-    const [products, setProducts] = useState();
     const [open, setOpen] = useState(false);
     const nav = useNavigate();
     const dispatch = useDispatch();
-
+    const { enqueueSnackbar } = useSnackbar();
 
 
     const handleOpen = () => {
@@ -57,18 +57,19 @@ export const ModalShopping = () => {
         setOpen(false);
         nav('/shop')
     }
-    const deleteItems = (id) => {
+    const deleteItems = (id, variant) => {
         dispatch(deleteItem(id));
+        enqueueSnackbar('Producto eliminado del carrito',
+            {
+                variant, autoHideDuration: 2000,
+                anchorOrigin: {
+                    vertical: 'top',
+                    horizontal: 'right'
+                }
+            }
+        )
+
     }
-    useEffect(() => {
-        productsApi().then((p) => { setProducts(p) });
-
-        return () => {
-            setProducts()
-        }
-    }, [])
-
-
     return (
         <div>
             <IconButton aria-label='cart' onClick={handleOpen}>
@@ -104,7 +105,7 @@ export const ModalShopping = () => {
                                             <TableCell>{`$ ${c.totalPrice}`}</TableCell>
                                             <TableCell>{`${c.quantity} kg`}</TableCell>
                                             <TableCell>
-                                                <IconButton onClick={() => deleteItems(c)}>
+                                                <IconButton sx={{ color: '#f44336' }} onClick={() => deleteItems(c, 'error')}>
                                                     <Delete />
                                                 </IconButton>
                                             </TableCell>
@@ -115,7 +116,7 @@ export const ModalShopping = () => {
                             </Table>
                             : <Typography>No hay productos en el carro</Typography>}
                     </TableContainer>
-                    <Button onClick={handleDirecc}>
+                    <Button variant='contained' sx={{ backgroundColor: '#2A5299' }} onClick={handleDirecc}>
                         Ir al carro
                     </Button>
                 </Box>

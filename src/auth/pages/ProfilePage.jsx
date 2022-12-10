@@ -16,10 +16,16 @@ export const ProfilePage = () => {
       <hr />
       {/* adminstrador */}
       {roles[0]?.authority === permisos.ROLE_ADMIN ?
-        <div className='container d-flex f-row flex-wrap justify-content-center p-2'>
-          <InfoUsers />
-          <OperacionesAdmin />
-        </div> : ''}
+        <div className='row'>
+          <div className='col-xs-12 col-sm-6 col-lg-4 col-xl-4'>
+            <Profile />
+          </div>
+          <div className='col-xs-12 col-sm-6 col-lg-8 col-xl-8'>
+            <OperacionesAdmin />
+          </div>
+        </div> 
+          : ''
+        }
       {/* productor */}
       {roles[0]?.authority === permisos.ROLE_PRODUCER ?
         <div className='row'>

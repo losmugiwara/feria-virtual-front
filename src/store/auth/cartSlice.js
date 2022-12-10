@@ -10,6 +10,7 @@ export const cartSlice = createSlice({
     },
     reducers: {
         addItem: (state, { payload }) => {
+            console.log(payload)
             const existingItem = state.cartItems.find((item) => item.id === payload.id);
             state.totalQuantity++
             if (!existingItem) {
@@ -21,11 +22,14 @@ export const cartSlice = createSlice({
                     quantity: 1,
                     totalPrice: payload.price,
                 });
+                // state.totalAmount = Number(payload.price)
             } else {
                 existingItem.quantity++
                 existingItem.totalPrice = Number(existingItem.totalPrice) + Number(payload.price)
             }
             state.totalAmount = state.cartItems.reduce((total, item) => { total + Number(item.price) * Number(item.quantity) });
+            console.log(state.cartItems)
+            console.log(state.totalAmount);
             console.log(state.totalQuantity);
             console.log(payload.id);
 

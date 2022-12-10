@@ -67,7 +67,8 @@ export const CreateAccount = () => {
                     padding: 3,
                     borderRadius: 2,
                     border: 0.5,
-                    borderColor: '#224b73'
+                    borderColor: '#2A5299',
+                    mb: '200px'
                 }}>
                 <form
                     className='animate__animated animate__fadeIn animate__faster'

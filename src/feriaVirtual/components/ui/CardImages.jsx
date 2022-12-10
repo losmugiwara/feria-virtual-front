@@ -29,7 +29,7 @@ export const CardImages = ({ product }) => {
     
     return (
         <>
-            <Card sx={{ naxWidth: 345 }}>
+            <Card sx={{ naxWidth: 345 }} key={product.id}>
                 <CardMedia
                     component='img'
                     height='140'
