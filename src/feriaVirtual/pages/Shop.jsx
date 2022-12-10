@@ -152,8 +152,13 @@ export const Shop = () => {
               </Grid>
               <Grid item sx={{ mt: '10px', mb: '10px' }}>
                 <Grid container justifyContent='space-around' >
+<<<<<<< HEAD
                   <Button variant='contained' onClick={() => cancelPurchase('error')}>Cancelar compra</Button>
                   <Button onClick={onClickRequestSale} variant='contained'>Comprar</Button>
+=======
+                  <Button variant='contained' color='error' onClick={() => cancelPurchase('error')}>Cancelar compra</Button>
+                  <Button variant='contained' color='success'>Comprar</Button>
+>>>>>>> 45afb9fd610452f3af02afbe253c1a0c178b566f
                 </Grid>
               </Grid>
             </Grid>

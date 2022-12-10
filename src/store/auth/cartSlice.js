@@ -38,7 +38,7 @@ export const cartSlice = createSlice({
                 state.totalAmount = state.totalAmount - payload.totalPrice;
             }
         },
-        cancelCart: (state, { payload }) => {
+        cancelCart: (state) => {
             state.cartItems = [];
             state.totalAmount = 0;
             state.totalQuantity = 0;
