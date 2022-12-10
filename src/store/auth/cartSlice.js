@@ -22,26 +22,21 @@ export const cartSlice = createSlice({
                     quantity: 1,
                     totalPrice: payload.price,
                 });
-                // state.totalAmount = Number(payload.price)
+                state.totalAmount = state.totalAmount + Number(payload.price);
+
             } else {
                 existingItem.quantity++
-                existingItem.totalPrice = Number(existingItem.totalPrice) + Number(payload.price)
+                existingItem.totalPrice = Number(existingItem.totalPrice) + Number(payload.price);
+                state.totalAmount = state.totalAmount + Number(payload.price);
             }
-            state.totalAmount = state.cartItems.reduce((total, item) => { total + Number(item.price) * Number(item.quantity) });
-            console.log(state.cartItems)
-            console.log(state.totalAmount);
-            console.log(state.totalQuantity);
-            console.log(payload.id);
-
         },
         deleteItem: (state, { payload }) => {
             const existingItem = state.cartItems.filter((item) => item.id === payload.id);
-            console.log(payload)
             if (existingItem) {
                 state.cartItems = state.cartItems.filter((item) => item.id !== payload.id)
                 state.totalQuantity = state.totalQuantity - payload.quantity;
+                state.totalAmount = state.totalAmount - payload.totalPrice;
             }
-            state.totalAmount = 0;
         }
     },
 });

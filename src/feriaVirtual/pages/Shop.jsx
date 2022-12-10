@@ -24,6 +24,7 @@ export const Shop = () => {
     )
 
   }
+  console.log(cartItems)
   console.log(totalAmount)
   return (
     <>
@@ -109,9 +110,9 @@ export const Shop = () => {
                   <Grid>
                     <Typography variant='h6' textAlign='center' sx={{ color: '#2A5299', ml: '70px' }}> Total del pedido</Typography>
                   </Grid>
-                  {/*<Grid>
+                  <Grid>
                     <Typography variant='h6' textAlign='center' sx={{ color: '#2A5299', mr: '70px' }}>{totalAmount}</Typography>
-                  </Grid>*/}
+                  </Grid>
                 </Grid>
               </Grid>
               <Grid item sx={{ mt: '10px', mb: '10px' }}>
