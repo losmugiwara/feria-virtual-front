@@ -1,7 +1,6 @@
 import { Delete } from '@mui/icons-material';
-import { Box, Button, Grid, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Button, Grid, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { cancelCart, deleteItem } from '../../store/auth';
@@ -12,6 +11,8 @@ export const Shop = () => {
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
   const nav = useNavigate();
+
+  const qunti = totalQuantity > 0;
 
   const deleteItems = (id, variant) => {
     dispatch(deleteItem(id));
@@ -39,11 +40,11 @@ export const Shop = () => {
     );
     nav('/home')
   }
-  
+
   const onClickRequestSale = () => {
-    
+
     let productsItem = [];
-    
+
     cartItems.map((ci) => {
       // console.log(ci);
 
@@ -51,15 +52,16 @@ export const Shop = () => {
         idProduct: ci.id,
         count: ci.quantity
       }
-      
+
       productsItem.push(ProductItem);
-      
+
     });
 
 
     console.log(productsItem);
 
   }
+
 
   return (
     <>
@@ -110,6 +112,21 @@ export const Shop = () => {
                     </Table>
                     : <Typography variant='h6' textAlign='center'>No hay productos en el carro</Typography>}
                 </TableContainer>
+                {qunti ?
+                  <Grid
+                    container
+                    spacing={2}
+                    justifyContent='start'
+                    alignItems='center'
+                    sx={{ mt: '10px' }}>
+                    <Grid item>
+                      <Typography variant='h6'>Dirección de entrega</Typography>
+                    </Grid>
+                    <Grid item
+                      width={300}>
+                      <TextField disabled={!qunti} fullWidth size='small' name='direccion' placeholder='Su dirección para la entrega'></TextField>
+                    </Grid>
+                  </Grid> : ''}
               </Grid>
             </Grid>
           </Grid>
@@ -152,13 +169,8 @@ export const Shop = () => {
               </Grid>
               <Grid item sx={{ mt: '10px', mb: '10px' }}>
                 <Grid container justifyContent='space-around' >
-<<<<<<< HEAD
-                  <Button variant='contained' onClick={() => cancelPurchase('error')}>Cancelar compra</Button>
-                  <Button onClick={onClickRequestSale} variant='contained'>Comprar</Button>
-=======
                   <Button variant='contained' color='error' onClick={() => cancelPurchase('error')}>Cancelar compra</Button>
-                  <Button variant='contained' color='success'>Comprar</Button>
->>>>>>> 45afb9fd610452f3af02afbe253c1a0c178b566f
+                  <Button onClick={onClickRequestSale} variant='contained' color='success'>Comprar</Button>
                 </Grid>
               </Grid>
             </Grid>
