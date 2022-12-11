@@ -32,7 +32,7 @@ export const TransportePage = () => {
                 {
                     (auctions) ? auctions.map((a) => (
 
-                        (a?.endDateAuction != null) &&
+                        (a?.endDateAuction == null) &&
 
                         <Grid item xs={12} md={12} lg={6}>
                             <CardAuction
