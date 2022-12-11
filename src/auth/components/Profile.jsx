@@ -26,7 +26,7 @@ export const Profile = () => {
           alignItems="center"
 
         >
-          <Avatar sx={{ bgcolor: deepPurple[500] }}>HF</Avatar>
+          <Avatar sx={{ bgcolor: deepPurple[500] }}>{`${profile?.name.charAt(0).toUpperCase()}${profile?.lastName.charAt(0).toUpperCase()}`}</Avatar>
         </Box>
     
 
