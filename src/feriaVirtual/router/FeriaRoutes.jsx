@@ -1,12 +1,11 @@
 import { useContext, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { AdminProcesos } from '../../auth/pages/IndexPages';
-import { DashboardPage } from '../../auth/pages/DashboardPage';
 import { ProfilePage } from '../../auth/pages/ProfilePage';
 import { MaipoContext } from '../../context/maipoContext';
 
-import { Datos, Sales, Payments, AddProducts } from '../../auth/components/adminMG/IndexAdmin';
-import { ProductosPage, Shop, TransportePage, } from '../pages/Index';
+import { Datos, Sales, Payments } from '../../auth/components/adminMG/IndexAdmin';
+import { Shop, TransportePage, } from '../pages/Index';
 import { ProtectedRoute } from './ProtectedRoute'
 import { AddContract } from '../../auth/components/adminMG/proceso-ventas/contratos/AddContract';
 import { AddSales } from '../../auth/components/adminMG/proceso-ventas/ventas/AddSales';
@@ -46,11 +45,6 @@ export const FeriaRoutes = () => {
 
             <div className='container'>
                 <Routes>
-
-                    <Route path='productos' element={
-
-                        <ProductosPage />
-                    } />
                     <Route path='shop' element={
                         <ProtectedRoute user={user}>
                             <Shop />
@@ -154,7 +148,7 @@ export const FeriaRoutes = () => {
                     } />
                     <Route path='profile/addProducts' element={
                         <ProtectedRoute user={user}>
-                            <AddProducts />
+                            <ProductosProducer />
                         </ProtectedRoute>
                     } />
                 </Routes>

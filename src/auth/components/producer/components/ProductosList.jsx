@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { MaipoContext } from '../../../../context/maipoContext';
 import { productsApiByUser } from '../../../../helpers/products';
 import { CardProduct } from './CardProduct';
@@ -6,11 +7,11 @@ import './products.css';
 
 export const ProductosList = () => {
 
-
+    const { id } = useSelector((state) => state.auth);
     const { user, productsCtx, setProductsCtx } = useContext(MaipoContext);
 
     useEffect(() => {
-        productsApiByUser(user.id).then((p) => {
+        productsApiByUser(id).then((p) => {
             setProductsCtx(p);
         })
 
@@ -21,6 +22,7 @@ export const ProductosList = () => {
 
     }, []);
 
+    console.log(productsCtx)
 
     return (
         <div className='inp-datos'>
@@ -28,12 +30,12 @@ export const ProductosList = () => {
 
             <div className='product-list'>
                 {
-                (productsCtx) ? productsCtx.map((p) => (
-                    <CardProduct
-                    key={p?.id}
-                    product={p}/>
-                )) : ''
-            }
+                    (productsCtx) ? productsCtx?.map((p) => (
+                        <CardProduct
+                            key={p?.id}
+                            product={p} />
+                    )) : ''
+                }
             </div>
 
         </div>

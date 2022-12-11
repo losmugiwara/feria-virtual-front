@@ -10,7 +10,7 @@ export const MaipoProvider = ({ children }) => {
     active: false
   });
 
-  const [productsCtx, setProductsCtx] = useState();
+  const [productsCtx, setProductsCtx] = useState([]);
 
   return (
     <MaipoContext.Provider value={{ user, setUser, productsCtx, setProductsCtx}}>

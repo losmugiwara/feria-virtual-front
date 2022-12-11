@@ -1,5 +1,6 @@
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
 import React, { useContext, useState } from 'react'
+import { useSelector } from 'react-redux';
 import { MaipoContext } from '../../../../context/maipoContext';
 import { productCreate, productsApiByUser } from '../../../../helpers/products';
 import { useForm } from '../../../../hooks/useForm';
@@ -9,6 +10,7 @@ export const ProductForm = () => {
     const { user, setProductsCtx } = useContext(MaipoContext);
     const [quality, setQuality] = useState();
     const [category, setCategory] = useState();
+    const { id } = useSelector((state) => state.auth);
 
     const { nameProduct, priceProduct, stockProduct, imageProduct, kilogramProduct, formState, onInputChange } = useForm({
         nameProduct: '',
@@ -19,14 +21,14 @@ export const ProductForm = () => {
 
     });
 
-    const handleChangeSelectCategory = async(e) => {
+    const handleChangeSelectCategory = async (e) => {
         const dataCategory = e.target.value;
-    
+
         setCategory(dataCategory);
     }
     const handleChangeSelectQuality = (e) => {
         const dataQuality = e.target.value;
-    
+
         setQuality(dataQuality);
     }
 
@@ -42,16 +44,15 @@ export const ProductForm = () => {
             kilogram: formState.kilogramProduct
         };
 
-        await productCreate(user.id, category, quality, p);
+        await productCreate(id, category, quality, p);
 
 
-        const productResp = await productsApiByUser(user.id);
+        const productResp = await productsApiByUser(id);
 
         setProductsCtx(productResp);
 
 
     }
-
     return (
 
         <form className='form-product'>
@@ -102,7 +103,7 @@ export const ProductForm = () => {
                     sx={{ m: 1 }}
                 />
             </FormControl>
-            
+
             <FormControl fullWidth>
                 <TextField
                     id="outlined-number"
@@ -128,9 +129,9 @@ export const ProductForm = () => {
                     onChange={handleChangeSelectCategory}
                     sx={{ m: 1 }}
                 >
-                    <MenuItem value={4}>Frutas</MenuItem>
-                    <MenuItem value={5}>Frutas Secos</MenuItem>
-                    <MenuItem value={6}>Verduras</MenuItem>
+                    <MenuItem value={1}>Frutas</MenuItem>
+                    <MenuItem value={2}>Frutas Secos</MenuItem>
+                    <MenuItem value={3}>Verduras</MenuItem>
                 </Select>
             </FormControl>
 
@@ -152,7 +153,7 @@ export const ProductForm = () => {
 
             <FormControl >
 
-            <Button onClick={onSubmit} variant="contained" color='success' sx={{m: 1}}>Guardar Producto</Button>
+                <Button onClick={onSubmit} variant="contained" color='success' sx={{ m: 1 }}>Guardar Producto</Button>
             </FormControl>
         </form>
 

@@ -1,29 +1,50 @@
-import { Link } from "react-router-dom"
-import  './adminMG.css'
+import { Button, Grid, Typography } from "@mui/material"
+import { Link as LinkR } from "react-router-dom"
+import './adminMG.css'
 
 export const OperacionesAdmin = () => {
   return (
-    <div className='container inp-datos m-6'>
-      <h5 className='text-center'> Menú de operaciones </h5>
-      <div>
-        <ul className='nav d-flex flex-column flex-wrap align-items-center p-3'>
-          <li className='nav-item m-1 '>
-            <Link className='btn btn-w' to='datos'>Datos</Link>
-          </li>
-          <li className='nav-item m-1'>
-            <Link className='btn btn-w' to='procesoventas'>Procesos de ventas</Link>
-          </li>
-          <li className='nav-item m-1'>
-            <Link className='btn btn-w' to='pay'>Pagos</Link>
-          </li>
-          <li className='nav-item m-1'>
-            <Link className='btn btn-w' to='informeventas'>Informe de ventas</Link>
-          </li>
-          <li className='nav-item m-1'>
-            <Link className='btn btn-w' to='addProducts'>Agregar productos</Link>
-          </li>
-        </ul>
-      </div>
-    </div>
-  )
+    <Grid container
+      justifyContent='center'
+      alignItems='center'
+      direction='column'
+      sx={{ border: '0.5px solid #2A5299', borderRadius: '5px', width:'400px', height:'350px'}}>
+      <Typography variant='h5' textAlign='center' sx={{ mt: '10px' }}>Menú de operaciones</Typography>
+
+      <Grid container
+        justifyContent='center'
+        direction='column'
+        spacing={1}
+        sx={{ width: '300px', mt: '10px' }}>
+        <Grid item
+        >
+          <Button fullWidth variant='contained' component={LinkR} to='datos'>
+            Datos
+          </Button>
+        </Grid>
+
+        <Grid item>
+          <Button fullWidth variant='contained' component={LinkR} to='procesoventas'>
+            Procesos de ventas
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button fullWidth variant='contained' component={LinkR} to='pay'>
+            Pagos
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button fullWidth variant='contained' component={LinkR} to='informeventas'>
+            Informe de ventas
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button fullWidth variant='contained' component={LinkR} to='addProducts'>
+            Agregar productos
+          </Button>
+        </Grid>
+      </Grid>
+
+    </Grid>
+  );
 }

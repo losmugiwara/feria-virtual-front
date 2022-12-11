@@ -63,10 +63,11 @@ export const ModalAddUser = () => {
         setOpen(false);
     };
 
-    const onClickAdd = async (e) => {
+    const onSubmit = async (e) => {
+        console.log('esoooooooo')
         e.preventDefault();
         setFormSubmitted(true);
-        if (!isFormValid) return;
+        // if (!isFormValid) return;
         console.log(formState);
         const { ok, infoMessage } = await registerApi(formState);
         if (ok) {
@@ -102,148 +103,159 @@ export const ModalAddUser = () => {
                 aria-describedby="parent-modal-description"
             >
                 <Box sx={{ ...style, width: 800 }}>
-                    <Typography variant='h4' textAlign='center'>Datos del usuario</Typography>
-                    <TableContainer>
-                        <Table>
-                            <TableBody>
-                                <TableRow>
-                                    <Grid container direction='column' justifyContent='center' alignContent='center' alignItems='center' >
-                                        <Grid item>
-                                            <TableCell>
-                                                <TextField label='Nombre de usuario'
-                                                    name='userName'
-                                                    value={userName}
-                                                    onChange={onInputChange}
-                                                    error={!!userNameValid && formSubmitted}
-                                                    helperText={userNameValid}
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <TextField label='Nombres'
-                                                    name='name'
-                                                    value={name}
-                                                    onChange={onInputChange}
-                                                    error={!!nameValid && formSubmitted}
-                                                    helperText={nameValid}
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <TextField label='Apellidos'
-                                                    name='lastName'
-                                                    value={lastName}
-                                                    onChange={onInputChange}
-                                                    error={!!lastNameValid && formSubmitted}
-                                                    helperText={lastNameValid}
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <TextField label='Correo'
-                                                    name='email'
-                                                    value={email}
-                                                    onChange={onInputChange}
-                                                    error={!!emailValid && formSubmitted}
-                                                    helperText={emailValid}
-                                                />
-                                            </TableCell>
-                                        </Grid>
-                                        <Grid item>
-                                            <TableCell>
-                                                <TextField label='Contraseña'
-                                                    name='password'
-                                                    value={password}
-                                                    onChange={onInputChange}
-                                                    error={!!passwordValid && formSubmitted}
-                                                    helperText={passwordValid}
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <Box sx={{ minWidth: 220 }}>
-                                                    <FormControl fullWidth>
-                                                        <InputLabel id='demo-simple-select-label'>Rol del usuario</InputLabel>
-                                                        <Select
-                                                            labelId='demo-simple-select-label'
-                                                            id='demo-simple-select'
-                                                            value={roles}
-                                                            label='Rol del usuario'
-                                                            onChange={onInputChange}
-                                                            name='roles'
-                                                        >
-                                                            <MenuItem value={['ROLE_CUSTOMER_INTERNAL']}>Cliente Interno</MenuItem>
-                                                            <MenuItem value={['ROLE_CUSTOMER_EXTERNAL']}>Cliente externo</MenuItem>
-                                                            <MenuItem value={['ROLE_CARRIER']}>Transportista</MenuItem>
-                                                            <MenuItem value={['ROLE_CONSULTANT']}>Consultor</MenuItem>
-                                                            <MenuItem value={['ROLE_ADMIN']}>Administrador</MenuItem>
-                                                            <MenuItem value={['ROLE_PRODUCER']}>Productor</MenuItem>
-
-                                                        </Select>
-                                                    </FormControl>
-                                                </Box>
-                                            </TableCell>
-                                            <TableCell>
-                                                <TextField label='Razón social'
-                                                    name='businessName'
-                                                    value={businessName}
-                                                    onChange={onInputChange}
-                                                    error={!!businessNameValid && formSubmitted}
-                                                    helperText={businessNameValid}
-                                                />
-                                            </TableCell>
-                                        </Grid>
-                                        <Grid item>
-                                            <TableCell>
-                                                <TextField label='País'
-                                                    name='country'
-                                                    value={country}
-                                                    onChange={onInputChange}
-                                                    error={!!countryValid && formSubmitted}
-                                                    helperText={countryValid}
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <TextField label='Ciudad'
-                                                    name='city'
-                                                    value={city}
-                                                    onChange={onInputChange}
-                                                    error={!!cityValid && formSubmitted}
-                                                    helperText={cityValid} />
-                                            </TableCell>
-                                            <TableCell>
-                                                <TextField label='Comuna'
-                                                    name='commune'
-                                                    value={commune}
-                                                    onChange={onInputChange}
-                                                    error={!!communeValid && formSubmitted}
-                                                    helperText={communeValid}
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <TextField label='Dirección'
-                                                    name='address'
-                                                    value={address}
-                                                    onChange={onInputChange}
-                                                    error={!!addressValid && formSubmitted}
-                                                    helperText={addressValid}
-                                                />
-                                            </TableCell>
-                                        </Grid>
-                                        <Grid container
-                                            justifyContent='center'
-                                            spacing={10}>
-                                            <Grid item
-                                                sx={{ mt: '10px' }}>
-                                                <Button onClick={onClickAdd} variant='contained' color='success'>Agregar</Button>
+                    <form onSubmit={onSubmit}>
+                        <Typography variant='h4' textAlign='center'>Datos del usuario</Typography>
+                        <TableContainer>
+                            <Table>
+                                <TableBody>
+                                    <TableRow>
+                                        <Grid container direction='column' justifyContent='center' alignContent='center' alignItems='center' >
+                                            <Grid item>
+                                                <TableCell>
+                                                    <TextField label='Nombre de usuario'
+                                                        name='userName'
+                                                        value={userName}
+                                                        onChange={onInputChange}
+                                                        error={!!userNameValid && formSubmitted}
+                                                        helperText={userNameValid}
+                                                    />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <TextField label='Nombres'
+                                                        name='name'
+                                                        value={name}
+                                                        onChange={onInputChange}
+                                                        error={!!nameValid && formSubmitted}
+                                                        helperText={nameValid}
+                                                    />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <TextField label='Apellidos'
+                                                        name='lastName'
+                                                        value={lastName}
+                                                        onChange={onInputChange}
+                                                        error={!!lastNameValid && formSubmitted}
+                                                        helperText={lastNameValid}
+                                                    />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <TextField label='Correo'
+                                                        name='email'
+                                                        value={email}
+                                                        onChange={onInputChange}
+                                                        error={!!emailValid && formSubmitted}
+                                                        helperText={emailValid}
+                                                    />
+                                                </TableCell>
                                             </Grid>
-                                            <Grid item
-                                                sx={{ mt: '10px' }}>
-                                                <Button variant='contained' onClick={handleClose}>Cancelar</Button>
+                                            <Grid item>
+                                                <TableCell>
+                                                    <TextField label='Contraseña'
+                                                        name='password'
+                                                        value={password}
+                                                        onChange={onInputChange}
+                                                        error={!!passwordValid && formSubmitted}
+                                                        helperText={passwordValid}
+                                                    />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <TextField label='Rut'
+                                                        name='rut'
+                                                        value={rut}
+                                                        onChange={onInputChange}
+                                                        error={!!rutValid && formSubmitted}
+                                                        helperText={rutValid}
+                                                    />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Box sx={{ minWidth: 220 }}>
+                                                        <FormControl fullWidth>
+                                                            <InputLabel id='demo-simple-select-label'>Rol del usuario</InputLabel>
+                                                            <Select
+                                                                labelId='demo-simple-select-label'
+                                                                id='demo-simple-select'
+                                                                value={roles}
+                                                                label='Rol del usuario'
+                                                                onChange={onInputChange}
+                                                                name='roles'
+                                                            >
+                                                                <MenuItem value={['ROLE_CUSTOMER_INTERNAL']}>Cliente Interno</MenuItem>
+                                                                <MenuItem value={['ROLE_CUSTOMER_EXTERNAL']}>Cliente externo</MenuItem>
+                                                                <MenuItem value={['ROLE_CARRIER']}>Transportista</MenuItem>
+                                                                <MenuItem value={['ROLE_CONSULTANT']}>Consultor</MenuItem>
+                                                                <MenuItem value={['ROLE_ADMIN']}>Administrador</MenuItem>
+                                                                <MenuItem value={['ROLE_PRODUCER']}>Productor</MenuItem>
+
+                                                            </Select>
+                                                        </FormControl>
+                                                    </Box>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <TextField label='Razón social'
+                                                        name='businessName'
+                                                        value={businessName}
+                                                        onChange={onInputChange}
+                                                        error={!!businessNameValid && formSubmitted}
+                                                        helperText={businessNameValid}
+                                                    />
+                                                </TableCell>
+                                            </Grid>
+                                            <Grid item>
+                                                <TableCell>
+                                                    <TextField label='País'
+                                                        name='country'
+                                                        value={country}
+                                                        onChange={onInputChange}
+                                                        error={!!countryValid && formSubmitted}
+                                                        helperText={countryValid}
+                                                    />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <TextField label='Ciudad'
+                                                        name='city'
+                                                        value={city}
+                                                        onChange={onInputChange}
+                                                        error={!!cityValid && formSubmitted}
+                                                        helperText={cityValid} />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <TextField label='Comuna'
+                                                        name='commune'
+                                                        value={commune}
+                                                        onChange={onInputChange}
+                                                        error={!!communeValid && formSubmitted}
+                                                        helperText={communeValid}
+                                                    />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <TextField label='Dirección'
+                                                        name='address'
+                                                        value={address}
+                                                        onChange={onInputChange}
+                                                        error={!!addressValid && formSubmitted}
+                                                        helperText={addressValid}
+                                                    />
+                                                </TableCell>
+                                            </Grid>
+                                            <Grid container
+                                                justifyContent='center'
+                                                spacing={10}>
+                                                <Grid item
+                                                    sx={{ mt: '10px' }}>
+                                                    <Button type='submit' variant='contained' color='success'>Agregar</Button>
+                                                </Grid>
+                                                <Grid item
+                                                    sx={{ mt: '10px' }}>
+                                                    <Button variant='contained' onClick={handleClose}>Cancelar</Button>
+                                                </Grid>
                                             </Grid>
                                         </Grid>
-                                    </Grid>
-                                </TableRow>
-                            </TableBody>
+                                    </TableRow>
+                                </TableBody>
 
-                        </Table>
-                    </TableContainer>
+                            </Table>
+                        </TableContainer>
+                    </form>
                 </Box>
             </Modal>
         </div >

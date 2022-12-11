@@ -11,8 +11,6 @@ import { useNavigate } from 'react-router-dom';
 import './ui.css'
 import { Delete } from '@mui/icons-material';
 import { deleteItem } from '../../../store/auth';
-import { productsApi } from '../../../helpers/products';
-import { useEffect } from 'react';
 import { useSnackbar } from 'notistack';
 
 const style = {

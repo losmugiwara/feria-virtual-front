@@ -52,12 +52,6 @@ export const NavBar = () => {
                                 Home
                             </NavLink>
                         </li>
-                        <li className="nav-item p-1">
-                            <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active text-active fw-semibold' : ''}`}
-                                to='productos'>
-                                Productos
-                            </NavLink>
-                        </li>
 
                         {
                             (user.role === permisos.ROLE_ADMIN || user.role === permisos.ROLE_CARRIER)

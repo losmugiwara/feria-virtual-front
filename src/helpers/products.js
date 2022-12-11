@@ -8,30 +8,47 @@ export const productsApi = async () => {
 }
 
 export const productsApiByUser = async (id) => {
-
-    const token = localStorage.getItem("token");
-    const productsResp = await axiosApi.get(`/products/user=${id}`, {
-        'headers': {
-            'Authorization': `Bearer ${token}`
+    try {
+        const token = localStorage.getItem("token");
+        const productsResp = await axiosApi.get(`/products/user=${id}`, {
+            'headers': {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        console.log(productsResp)
+        const { data } = productsResp;
+        return {
+            ok: true,
+            data, productsResp
         }
-    });
-
-    const { data } = productsResp;
-    console.log(data);
-    return data;
+    } catch (error) {
+        const errorMessage = error.message;
+        return {
+            ok: false,
+            errorMessage,
+        }
+    }
 }
 
 export const productCreate = async (userId, categoryId, qualityId, p) => {
-    const token = localStorage.getItem("token");
+    try {
+        const token = localStorage.getItem("token");
 
-    const productResp = await axiosApi.post(`/products/user=${userId}/category=${categoryId}/quality=${qualityId}`, p, {
-        headers: {
-            'Authorization': `Bearer ${token}`
+        const productResp = await axiosApi.post(`/products/user=${userId}/category=${categoryId}/quality=${qualityId}`, p, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        const { data } = productResp;
+        return {
+            ok: true,
+            data,
         }
-    });
-
-    const { data } = productResp;
-    console.log(data);
-
-    return data;
+    } catch (error) {
+        const errorMessage = error.message;
+        return {
+            ok: false,
+            errorMessage,
+        }
+    }
 }
