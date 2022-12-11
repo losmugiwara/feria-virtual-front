@@ -52,3 +52,26 @@ export const productCreate = async (userId, categoryId, qualityId, p) => {
         }
     }
 }
+
+export const productUpdateById = async (productId, product, qualityId) => {
+    try {
+        const token = localStorage.getItem("token");
+
+        const productResp = await axiosApi.put(`/products/productId=${productId}/quality=${qualityId}`, product, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        const { data } = productResp;
+        return {
+            ok: true,
+            data,
+        }
+    } catch (error) {
+        const errorMessage = error.message;
+        return {
+            ok: false,
+            errorMessage,
+        }
+    }
+}
