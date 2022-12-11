@@ -38,6 +38,9 @@ export const CardImages = ({ product }) => {
                     <Typography gutterBottom variant='h5' component='div'>
                         {product.nameProduct}
                     </Typography>
+                    <Typography gutterBottom variant='secondary' component='div'>
+                        Unidades: {product.stock}
+                    </Typography>
                 </CardContent>
                 <CardActions>
                     <Typography>

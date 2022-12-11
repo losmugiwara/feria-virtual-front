@@ -71,12 +71,14 @@ export const InicioPage = () => {
                                 {
 
                                     (products?.length > 0) ? products.map((p) => (
+
+                                        ( p.stock >= 1 ) ?  
                                         <li className="card marco m-1" >
                                             <CardImages
                                                 key={p.id}
                                                 product={p}
                                             />
-                                        </li>
+                                        </li> : ""
                                     )) : <Typography>Producto no encontrado</Typography>
 
                                 }
