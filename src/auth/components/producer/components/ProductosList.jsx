@@ -12,7 +12,7 @@ export const ProductosList = () => {
 
     useEffect(() => {
         productsApiByUser(id).then((p) => {
-            setProductsCtx(p.data);
+            setProductsCtx(p);
         })
 
         return () => {
@@ -22,7 +22,6 @@ export const ProductosList = () => {
 
     }, []);
 
-    console.log(productsCtx.data)
 
     return (
         <div className='inp-datos'>
@@ -30,7 +29,7 @@ export const ProductosList = () => {
 
             <div className='product-list'>
                 {
-                    (productsCtx.data) ? productsCtx?.data.map((p) => (
+                    (productsCtx?.data) ? productsCtx?.data.map((p) => (
                         <CardProduct
                             key={p?.id}
                             product={p} />
