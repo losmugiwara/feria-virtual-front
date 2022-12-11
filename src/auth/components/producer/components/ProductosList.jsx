@@ -12,7 +12,7 @@ export const ProductosList = () => {
 
     useEffect(() => {
         productsApiByUser(id).then((p) => {
-            setProductsCtx(p);
+            setProductsCtx(p.data);
         })
 
         return () => {

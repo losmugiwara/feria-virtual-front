@@ -19,7 +19,7 @@ export const productsApiByUser = async (id) => {
         const { data } = productsResp;
         return {
             ok: true,
-            data, productsResp
+            data
         }
     } catch (error) {
         const errorMessage = error.message;
