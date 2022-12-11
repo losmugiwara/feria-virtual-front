@@ -1,12 +1,17 @@
 import { Delete } from '@mui/icons-material';
 import { Box, Button, Grid, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
+import { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { MaipoContext } from '../../context/maipoContext';
+import { createRequestSale } from '../../helpers/requestsSale';
 import { cancelCart, deleteItem } from '../../store/auth';
 
 
 export const Shop = () => {
+  const { user } = useContext(MaipoContext);
+  const [ shippingAddress, setShippingAddress ] = useState();
   const { cartItems, totalQuantity, totalAmount } = useSelector((state) => state.cart);
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
@@ -41,13 +46,18 @@ export const Shop = () => {
     nav('/home')
   }
 
-  const onClickRequestSale = () => {
+  const onChangeAddress = (e) => {
+    const data = e.target.value;
+
+    setShippingAddress(data);
+  }
+
+  const onClickRequestSale = async (e) => {
 
     let productsItem = [];
 
     cartItems.map((ci) => {
-      // console.log(ci);
-
+    
       const ProductItem = {
         idProduct: ci.id,
         count: ci.quantity
@@ -57,9 +67,14 @@ export const Shop = () => {
 
     });
 
+    const requestSale = {
+      productsItem: productsItem,
+      shippingAddress: shippingAddress
+    };
 
-    console.log(productsItem);
-
+    const resp = await createRequestSale(user.id, requestSale);
+  
+    console.log(resp);
   }
 
 
@@ -124,7 +139,7 @@ export const Shop = () => {
                     </Grid>
                     <Grid item
                       width={300}>
-                      <TextField disabled={!qunti} fullWidth size='small' name='direccion' placeholder='Su dirección para la entrega'></TextField>
+                      <TextField onChange={onChangeAddress} value={shippingAddress} disabled={!qunti} fullWidth size='small' name='direccion' placeholder='Su dirección para la entrega'></TextField>
                     </Grid>
                   </Grid> : ''}
               </Grid>

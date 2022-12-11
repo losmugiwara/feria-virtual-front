@@ -51,8 +51,10 @@ export const updateRequestsSaleStatus = async (idRequest, approvalStatus) => {
 };
 
 export const createRequestSale = async (idCustomer, requestSale) => {
+    const token = localStorage.getItem("token");
+    
     const requestResp = await axiosApi.post(`/requests-sale/${idCustomer}`, requestSale, {
-        headers: {
+        'headers': {
             'Authorization': `Bearer ${token}`
         }
     })
