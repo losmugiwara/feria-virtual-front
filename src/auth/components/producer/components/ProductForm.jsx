@@ -1,25 +1,35 @@
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material'
+import { useSnackbar } from 'notistack';
 import React, { useContext, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { MaipoContext } from '../../../../context/maipoContext';
 import { productCreate, productsApiByUser } from '../../../../helpers/products';
 import { useForm } from '../../../../hooks/useForm';
 
+const formData = {
+    nameProduct: '',
+    priceProduct: '',
+    stockProduct: '',
+    imageProduct: '',
+    kilogramProduct: 0,
+}
+const formValidations = {
+    nameProduct: [(value) => value.length > 1, 'Campo requerido.'],
+    priceProduct: [(value) => value.length > 1, 'Campo requerido.'],
+    stockProduct: [(value) => value.length > 1, 'Campo requerido.'],
+    imageProduct: [(value) => value.length > 1, 'Campo requerido.'],
+}
 export const ProductForm = () => {
 
     const { user, setProductsCtx } = useContext(MaipoContext);
     const [quality, setQuality] = useState();
     const [category, setCategory] = useState();
     const { id } = useSelector((state) => state.auth);
+    const { enqueueSnackbar } = useSnackbar();
 
-    const { nameProduct, priceProduct, stockProduct, imageProduct, kilogramProduct, formState, onInputChange } = useForm({
-        nameProduct: '',
-        priceProduct: '',
-        stockProduct: '',
-        imageProduct: '',
-        kilogramProduct: 0,
-
-    });
+    const {
+        nameProduct, priceProduct, stockProduct, imageProduct, kilogramProduct, formState, onInputChange
+    } = useForm(formData, formValidations);
 
     const handleChangeSelectCategory = async (e) => {
         const dataCategory = e.target.value;
@@ -44,8 +54,28 @@ export const ProductForm = () => {
             kilogram: formState.kilogramProduct
         };
 
-        await productCreate(id, category, quality, p);
-
+        const { ok } = await productCreate(id, category, quality, p);
+        if (ok) {
+            enqueueSnackbar(`producto agregado correctamente`,
+                {
+                    variant: 'success', autoHideDuration: 1000,
+                    anchorOrigin: {
+                        vertical: 'top',
+                        horizontal: 'right'
+                    }
+                }
+            );
+        } else {
+            enqueueSnackbar('No se pudo agregar un usuario',
+                {
+                    variant: 'error', autoHideDuration: 1000,
+                    anchorOrigin: {
+                        vertical: 'top',
+                        horizontal: 'right'
+                    }
+                }
+            );
+        }
 
         const productResp = await productsApiByUser(id);
 
