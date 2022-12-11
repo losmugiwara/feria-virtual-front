@@ -6,7 +6,7 @@ import { MaipoContext } from '../../../context/maipoContext';
 import { useContext } from 'react';
 import { permisos } from '../../../context/roles';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../../store/auth';
+import { cancelCart, logout } from '../../../store/auth';
 import { useMemo } from 'react';
 import { ModalShopping } from './ModalShopping';
 
@@ -25,6 +25,7 @@ export const NavBar = () => {
 
     const onClickLogout = () => {
         dispatch(logout());
+        dispatch(cancelCart());
         setUser({
             username: '',
             role: '',

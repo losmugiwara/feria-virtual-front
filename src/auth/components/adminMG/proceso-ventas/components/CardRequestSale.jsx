@@ -39,7 +39,7 @@ export const CardRequestSale = ({ request }) => {
                     Fecha aprobado: {
                         (request?.endDate != null) ?
 
-                        <strong>{approvalDate}</strong> : "Aun no se aprueba esta solicitud"
+                            <strong>{approvalDate}</strong> : "Aun no se aprueba esta solicitud"
                     }
                 </Typography>
                 <hr />

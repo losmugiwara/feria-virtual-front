@@ -7,7 +7,6 @@ import { MaipoContext } from '../../context/maipoContext';
 import { Datos, Sales, Payments } from '../../auth/components/adminMG/IndexAdmin';
 import { Shop, TransportePage, } from '../pages/Index';
 import { ProtectedRoute } from './ProtectedRoute'
-import { AddContract } from '../../auth/components/adminMG/proceso-ventas/contratos/AddContract';
 import { AddSales } from '../../auth/components/adminMG/proceso-ventas/ventas/AddSales';
 import { Contracts } from '../../auth/components/adminMG/proceso-ventas/contratos/Contracts';
 import { ContractDetail } from '../../auth/components/adminMG/proceso-ventas/contratos/ContractDetail';
@@ -99,11 +98,6 @@ export const FeriaRoutes = () => {
                         <ProtectedRoute user={user}>
                             {/* <ContractsCustomer /> */}
                             <ContractDetail />
-                        </ProtectedRoute>
-                    } />
-                    <Route path='profile/procesoventas/contratos/add' element={
-                        <ProtectedRoute user={user}>
-                            <AddContract />
                         </ProtectedRoute>
                     } />
                     <Route path='profile/datos' element={

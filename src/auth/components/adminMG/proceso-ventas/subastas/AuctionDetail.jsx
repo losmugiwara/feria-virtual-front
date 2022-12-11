@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { getAuctionById } from '../../../../../helpers/auctions';
 //importaciones
 import Table from '@mui/material/Table';
@@ -12,12 +12,15 @@ import Paper from '@mui/material/Paper';
 import { Button, Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 
 export const AuctionDetail = () => {
 
     const { id } = useParams();
     const [auction, setAuction] = useState();
     const [producer, setProducer] = useState();
+    const nav = useNavigate();
 
     useEffect(() => {
 
@@ -48,7 +51,9 @@ export const AuctionDetail = () => {
         <div>
             <h3>Subasta</h3>
             <hr />
-
+            <Button sx={{mb:'10px'}} variant='contained' color='success' onClick={() => nav(-1)}>
+                <ArrowBackIcon />
+            </Button>
             <div className='row'>
                 <div className='col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6'>
                     <b>Nro Solicitud de venta: {auction?.requestSale.id}</b>
@@ -70,11 +75,11 @@ export const AuctionDetail = () => {
                     </Typography>
                 </div>
                 <div className='col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6'>
-                    <Box textAlign='right' sx={{mb:5}}>
+                    <Box textAlign='right' sx={{ mb: 5 }}>
                         <Button variant='contained' color='success' endIcon={<AttachMoneyIcon />}>
                             Seguir Venta
                         </Button>
-                    </Box>                
+                    </Box>
                 </div>
             </div>
 
@@ -82,7 +87,7 @@ export const AuctionDetail = () => {
 
 
 
-            <Typography align='center' variant='h5' sx={{ mt:3, mb: 3 }}>
+            <Typography align='center' variant='h5' sx={{ mt: 3, mb: 3 }}>
                 Ofertas realizadas por transportistas
             </Typography>
             <TableContainer component={Paper}>

@@ -11,7 +11,7 @@ import { cancelCart, deleteItem } from '../../store/auth';
 
 export const Shop = () => {
   const { user } = useContext(MaipoContext);
-  const [ shippingAddress, setShippingAddress ] = useState();
+  const [shippingAddress, setShippingAddress] = useState();
   const { cartItems, totalQuantity, totalAmount } = useSelector((state) => state.cart);
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
@@ -53,11 +53,21 @@ export const Shop = () => {
   }
 
   const onClickRequestSale = async (e) => {
-
+    dispatch(cancelCart());
+    enqueueSnackbar('Compra realizada con exito',
+      {
+        variant: 'success', autoHideDuration: 2000,
+        anchorOrigin: {
+          vertical: 'top',
+          horizontal: 'right'
+        }
+      }
+    );
+    nav('/home')
     let productsItem = [];
 
     cartItems.map((ci) => {
-    
+
       const ProductItem = {
         idProduct: ci.id,
         count: ci.quantity
@@ -73,7 +83,7 @@ export const Shop = () => {
     };
 
     const resp = await createRequestSale(user.id, requestSale);
-  
+
     console.log(resp);
   }
 

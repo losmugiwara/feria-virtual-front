@@ -1,10 +1,12 @@
 import { Alert, Button, Grid, Stack, Typography } from '@mui/material';
 import { Container } from '@mui/system';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { createAuction } from '../../../../../helpers/auctions';
 import { getRequestsSaleByIdAPI, updateRequestsSaleStatus } from '../../../../../helpers/requestsSale';
 import { CardProduct } from '../components/CardProduct';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 
 export const RequestSaleDetail = () => {
 
@@ -14,6 +16,7 @@ export const RequestSaleDetail = () => {
   const [status, setStatus] = useState("ON_HOLD");
   const createdDate = new Date(request?.createdDate).toLocaleDateString();
 
+  const nav = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
@@ -63,6 +66,9 @@ export const RequestSaleDetail = () => {
         Solicitud de Venta
       </Typography>
       <hr />
+      <Button sx={{mb:'10px'}} variant='contained' color='success' onClick={() => nav(-1)}>
+        <ArrowBackIcon />
+      </Button>
       <p>
         <b>Nro Solicitud de venta: {request?.id}</b>
         <br />
