@@ -12,7 +12,7 @@ export const CardAuction = ({auction}) => {
 
   useEffect(() => {
     const product = auction?.requestSale.products[0];
-    setProducer(product.user.businessName);
+    setProducer(product?.user?.businessName);
     return () => {
 
     }

@@ -11,7 +11,7 @@ export const CardAuction = ({ auction }) => {
     const startDateAuction = new Date(auction.startDateAuction).toLocaleDateString();
 
     useEffect(() => {
-        const product = auction?.requestSale.products[0];
+        const product = auction?.requestSale?.products[0];
         console.log(product);
         setProducer(product?.user?.businessName);
         return () => {
