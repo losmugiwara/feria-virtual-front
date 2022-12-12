@@ -12,3 +12,4 @@ export * from './InfoUsers';
 // OTROS
 export * from './login/CreateAccount';
 export * from './login/Login';
+export * from './customer/Customer';

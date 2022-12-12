@@ -81,9 +81,9 @@ export const ModalShopping = () => {
                 aria-labelledby="parent-modal-title"
                 aria-describedby="parent-modal-description"
             >
-                <Box sx={{ ...style, width: 900 }}>
+                <Box sx={{ ...style, width: 800 }}>
                     <h2 id="parent-modal-title">Su carrito de compras</h2>
-                    <TableContainer>
+                    <TableContainer >
                         {cartItems.length != 0 ?
                             <Table>
                                 <TableHead  >
@@ -95,9 +95,9 @@ export const ModalShopping = () => {
                                         <TableCell>Accion</TableCell>
                                     </TableRow>
                                 </TableHead>
-                                <TableBody>
+                                <TableBody >
                                     {cartItems.map((c) => (
-                                        <TableRow key={c.id}>
+                                        <TableRow key={c.id} >
                                             <TableCell><img className='imgFrut' src={c.img} /></TableCell>
                                             <TableCell>{c.productName}</TableCell>
                                             <TableCell>{`$ ${c.totalPrice}`}</TableCell>

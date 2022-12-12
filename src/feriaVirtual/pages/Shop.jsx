@@ -18,7 +18,7 @@ export const Shop = () => {
   const nav = useNavigate();
 
   const qunti = totalQuantity > 0;
-
+  const dbuton = shippingAddress?.length > 1;
   const deleteItems = (id, variant) => {
     dispatch(deleteItem(id));
     enqueueSnackbar('Producto eliminado del carrito',
@@ -195,7 +195,7 @@ export const Shop = () => {
               <Grid item sx={{ mt: '10px', mb: '10px' }}>
                 <Grid container justifyContent='space-around' >
                   <Button variant='contained' color='error' onClick={() => cancelPurchase('error')}>Cancelar compra</Button>
-                  <Button onClick={onClickRequestSale} variant='contained' color='success'>Comprar</Button>
+                  <Button onClick={onClickRequestSale} disabled={!dbuton} variant='contained' color='success'>Comprar</Button>
                 </Grid>
               </Grid>
             </Grid>

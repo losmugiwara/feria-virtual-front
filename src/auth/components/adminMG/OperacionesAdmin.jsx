@@ -34,11 +34,6 @@ export const OperacionesAdmin = () => {
           </Button>
         </Grid>
         <Grid item>
-          <Button fullWidth variant='contained' component={LinkR} to='informeventas'>
-            Informe de ventas
-          </Button>
-        </Grid>
-        <Grid item>
           <Button fullWidth variant='contained' component={LinkR} to='addProducts'>
             Agregar productos
           </Button>

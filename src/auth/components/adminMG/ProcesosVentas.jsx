@@ -38,11 +38,11 @@ export const ProcesosVentas = () => {
             Contratos
           </Button>
         </Grid>
-        <Grid item>
+        {/* <Grid item>
           <Button fullWidth variant='contained' component={LinkR} to='ventas'>
             Ventas
           </Button>
-        </Grid>
+        </Grid> */}
         <Grid item>
           <Button fullWidth variant='contained' onClick={() => { navigate(-1) }}>
             <ArrowBackIcon />

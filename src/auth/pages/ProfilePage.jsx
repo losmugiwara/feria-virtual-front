@@ -1,7 +1,7 @@
 
 import { useSelector } from 'react-redux';
 import { permisos } from '../../context/roles';
-import { InfoUsers, OperacionesAdmin } from '../components/IndexAuth';
+import { Customer, OperacionesAdmin } from '../components/IndexAuth';
 import { OperacionesProducer } from '../components/producer/OperacionesProducer';
 import { Profile } from '../components/Profile';
 
@@ -23,9 +23,9 @@ export const ProfilePage = () => {
           <div className='col-xs-12 col-sm-6 col-lg-8 col-xl-8'>
             <OperacionesAdmin />
           </div>
-        </div> 
-          : ''
-        }
+        </div>
+        : ''
+      }
       {/* productor */}
       {roles[0]?.authority === permisos.ROLE_PRODUCER ?
         <div className='row'>
@@ -35,12 +35,71 @@ export const ProfilePage = () => {
           <div className='col-xs-12 col-sm-6 col-lg-8 col-xl-8'>
             <OperacionesProducer />
           </div>
-        </div> 
-          : ''
-        }
+        </div>
+        : ''
+      }
+      {/* CLiente interno */}
+      {roles[0]?.authority === permisos.ROLE_CUSTOMER_INTERNAL ?
+        <div className='row'>
+          <div className='col-xs-12 col-sm-6 col-lg-4 col-xl-4'>
+            <Profile />
+          </div>
+          <div className='col-xs-12 col-sm-6 col-lg-8 col-xl-8'>
+            <Customer />
+          </div>
+        </div>
+        : ''
+      }
+      {/* CLiente externo */}
+      {roles[0]?.authority === permisos.ROLE_CUSTOMER_EXTERNAL ?
+        <div className='row'>
+          <div className='col-xs-12 col-sm-6 col-lg-4 col-xl-4'>
+            <Profile />
+          </div>
+          <div className='col-xs-12 col-sm-6 col-lg-8 col-xl-8'>
+            <Customer />
+          </div>
+        </div>
+        : ''
+      }
+      {/* CLiente productor */}
+      {roles[0]?.authority === permisos.ROLE_PRODUCER ?
+        <div className='row'>
+          <div className='col-xs-12 col-sm-6 col-lg-4 col-xl-4'>
+            <Profile />
+          </div>
+          <div className='col-xs-12 col-sm-6 col-lg-8 col-xl-8'>
+            <OperacionesProducer />
+          </div>
+        </div>
+        : ''
+      }
+      {/* CLiente transportista */}
+      {roles[0]?.authority === permisos.ROLE_CARRIER ?
+        <div className='row'>
+          <div className='col-xs-12 col-sm-6 col-lg-4 col-xl-4'>
+            <Profile />
+          </div>
+          <div className='col-xs-12 col-sm-6 col-lg-8 col-xl-8'>
+            <OperacionesProducer />
+          </div>
+        </div>
+        : ''
+      }
+      {/* CLiente consultante */}
+      {roles[0]?.authority === permisos.ROLE_CONSULTANT ?
+        <div className='row'>
+          <div className='col-xs-12 col-sm-6 col-lg-4 col-xl-4'>
+            <Profile />
+          </div>
+          <div className='col-xs-12 col-sm-6 col-lg-8 col-xl-8'>
+            <OperacionesProducer />
+          </div>
+        </div>
+        : ''
+      }
 
 
-        
     </>
   )
 }

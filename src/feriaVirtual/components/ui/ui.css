@@ -1,4 +1,6 @@
-
+.tablita{
+    overflow-y: scroll !important;
+}
 .logo{
     height: 45px;
 }
