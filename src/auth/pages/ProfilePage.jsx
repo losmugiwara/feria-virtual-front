@@ -62,18 +62,6 @@ export const ProfilePage = () => {
         </div>
         : ''
       }
-      {/* CLiente productor */}
-      {roles[0]?.authority === permisos.ROLE_PRODUCER ?
-        <div className='row'>
-          <div className='col-xs-12 col-sm-6 col-lg-4 col-xl-4'>
-            <Profile />
-          </div>
-          <div className='col-xs-12 col-sm-6 col-lg-8 col-xl-8'>
-            <OperacionesProducer />
-          </div>
-        </div>
-        : ''
-      }
       {/* CLiente transportista */}
       {roles[0]?.authority === permisos.ROLE_CARRIER ?
         <div className='row'>
@@ -81,7 +69,6 @@ export const ProfilePage = () => {
             <Profile />
           </div>
           <div className='col-xs-12 col-sm-6 col-lg-8 col-xl-8'>
-            <OperacionesProducer />
           </div>
         </div>
         : ''
@@ -93,7 +80,6 @@ export const ProfilePage = () => {
             <Profile />
           </div>
           <div className='col-xs-12 col-sm-6 col-lg-8 col-xl-8'>
-            <OperacionesProducer />
           </div>
         </div>
         : ''
