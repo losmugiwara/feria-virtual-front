@@ -12,7 +12,6 @@ export const CardAuction = ({ auction }) => {
 
     useEffect(() => {
         const product = auction?.requestSale.products[0];
-        console.log(product);
         setProducer(product?.user?.businessName);
         return () => {
 

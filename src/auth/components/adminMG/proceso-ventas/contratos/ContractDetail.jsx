@@ -64,13 +64,13 @@ export const ContractDetail = () => {
                         (contract?.sale.saleStatusEnum == "PACKAGE") && <p>Estado actual del pedido: <b>Preparando</b></p>
                     }
                     {
-                        (contract?.sale.saleStatusEnum == "DISPATCH_PORT") && <p>Estado actual del pedido: <b>Saliendo de despacho</b></p>
+                        (contract?.sale.saleStatusEnum == "DISPATCH_PORT") && <p>Estado actual del pedido: <b>Saliendo a despacho</b></p>
                     }
                     {
                         (contract?.sale.saleStatusEnum == "IN_TRANSIT") && <p>Estado actual del pedido: <b>En transito</b></p>
                     }
                     {
-                        (contract?.sale.saleStatusEnum == "CUSTOMER_REVISION") && <p>Estado actual del pedido: <b>Revision del cliente</b></p>
+                        (contract?.sale.saleStatusEnum == "CUSTOMER_REVISION") && <p>Estado actual del pedido: <b>Revisión del cliente</b></p>
                     }
                     {
                         (contract?.sale.saleStatusEnum == "ACCEPTED") && <p>Estado actual del pedido: <b>Aceptado</b></p>

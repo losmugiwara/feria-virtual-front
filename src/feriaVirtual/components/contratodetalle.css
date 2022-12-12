@@ -1,0 +1,49 @@
+.contrato-detalle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #a8f8ff;
+    padding: 15px;
+    border-radius: 3px;
+}
+
+.contrato-detalle-label {
+    font-size: 20px;
+    font-weight: 600;
+    color: #686868;
+}
+
+.contrato-detalle-p {
+    font-size: 22px;
+}
+
+.contrato-detalle-fecha {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contrato-detalle-info-user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contrato-detalle-users {
+    border-radius: 3px;
+    background: #d2d2d2;
+    padding: 15px;
+}
+
+.contrato-detalle-etapa {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contrato-detalle-sale {
+    margin-top: 15px;
+    border-radius: 3px;
+    background: #fff4c4;
+    padding: 15px;
+}

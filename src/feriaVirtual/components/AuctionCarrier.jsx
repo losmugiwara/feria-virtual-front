@@ -3,6 +3,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { MaipoContext } from '../../context/maipoContext';
 import { generateBid, getAuctionById } from '../../helpers/auctions';
@@ -14,6 +15,7 @@ export const AuctionCarrier = () => {
 
     const [auction, setAuction] = useState();
     const [user, setUser] = useState();
+    const { id: idUser } = useSelector((state) => state.auth);
     const [valueAuction, setValueAuction] = useState();
 
     
@@ -38,7 +40,7 @@ export const AuctionCarrier = () => {
             setUser(u)
         });
 
-        generateBid(auction?.id, user?.id, valueAuction);
+        generateBid(auction?.id, idUser, valueAuction);
     }
 
     return (

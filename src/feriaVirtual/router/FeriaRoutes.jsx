@@ -19,6 +19,7 @@ import { AuctionDetail } from '../../auth/components/adminMG/proceso-ventas/suba
 import { AuctionCarrier } from '../components/AuctionCarrier';
 import { CreateAccount, Login } from '../../auth/components/IndexAuth';
 import { ProductosProducer } from '../../auth/components/producer/ProductosProducer';
+import { ContractsCarrierDetail } from '../components/ContractsCarrierDetail';
 
 
 export const FeriaRoutes = () => {
@@ -52,6 +53,11 @@ export const FeriaRoutes = () => {
                     <Route path='transporte' element={
                         <ProtectedRoute user={user}>
                             <TransportePage />
+                        </ProtectedRoute>
+                    } />
+                    <Route path='transporte/detalle-contrato/:id' element={
+                        <ProtectedRoute user={user}>
+                            <ContractsCarrierDetail />
                         </ProtectedRoute>
                     } />
                     <Route path='transporte/detalle/:id' element={
