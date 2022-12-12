@@ -23,7 +23,7 @@ export const CardAuction = ({ auction }) => {
     const onClickAuctionDetail = () => {
         navigate('./detalle/' + auction?.id);
     }
-  
+
 
     return (
         <Card sx={{ minWidth: 275 }}>
